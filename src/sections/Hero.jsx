@@ -1,24 +1,56 @@
-import React from 'react';
-import { motion, useScroll, useTransform } from 'framer-motion';
+import React, { useState, useEffect } from 'react';
+import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion';
 import Button from '../components/ui/Button';
 
+const HERO_IMAGES = [
+  "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80",
+  "/hero-2.jpg",
+  "/hero-3.jpg"
+];
+
 const Hero = () => {
+  const [currentIndex, setCurrentIndex] = useState(0);
   const { scrollYProgress } = useScroll();
   const y1 = useTransform(scrollYProgress, [0, 1], [0, -200]);
 
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentIndex((prev) => (prev + 1) % HERO_IMAGES.length);
+    }, 7000);
+    return () => clearInterval(timer);
+  }, []);
+
   return (
     <section className="relative h-screen min-h-[700px] flex items-center overflow-hidden bg-brand-dark">
-      {/* Background with Parallax effect */}
-      <motion.div 
+      {/* Background Slideshow with Parallax & Ken Burns effect */}
+      <motion.div
         style={{ y: y1 }}
         className="absolute inset-0 z-0"
       >
-        <div className="absolute inset-0 bg-brand-dark/40 z-10" />
-        <img 
-          src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80" 
-          alt="Modern Architecture" 
-          className="w-full h-full object-cover scale-110"
-        />
+        <div className="absolute inset-0 bg-brand-dark/40 z-10 pointer-events-none" />
+        <AnimatePresence mode="popLayout">
+          <motion.div
+            key={currentIndex}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 2.5, ease: "easeInOut" }}
+            className="absolute inset-0"
+          >
+            <motion.div
+              initial={{ scale: 1 }}
+              animate={{ scale: 1.15 }}
+              transition={{ duration: 8, ease: "linear" }}
+              className="w-full h-full"
+            >
+              <img 
+                src={HERO_IMAGES[currentIndex]} 
+                alt="Premium Architecture" 
+                className="w-full h-full object-cover"
+              />
+            </motion.div>
+          </motion.div>
+        </AnimatePresence>
       </motion.div>
 
       {/* Content */}
