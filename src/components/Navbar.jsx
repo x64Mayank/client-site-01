@@ -44,25 +44,25 @@ const Navbar = () => {
     <nav className="fixed top-0 left-0 right-0 z-50 flex flex-col items-center">
       {/* Row 1: Top Bar (Figma node 1:1356) */}
       <div className="w-full bg-[#075942] h-[79.94px] border-b border-white/10 hidden lg:flex items-center justify-center">
-        <div className="w-full h-full flex items-center px-[15px] max-w-[1920px]">
-          {/* Logo Area */}
-          <div className="flex-shrink-0 w-auto lg:max-w-[280px] xl:max-w-[307.19px] h-full flex items-center px-6 xl:px-10 border-r border-white/10">
+        <div className="w-full h-full flex items-center px-0 max-w-[1920px] flex-nowrap">
+          {/* Logo Area - Aligned with Row 2 Tagline Column */}
+          <div className="flex-shrink-0 lg:w-[280px] xl:w-[307.19px] h-full flex items-center px-6 xl:px-10 border-r border-white/10">
             <div className="w-[180px] xl:w-[220px] h-[58.94px] bg-contain bg-no-repeat bg-center opacity-90" style={{ backgroundImage: 'url("/logo.png")' }}>
-              {!window.logoExists && <span className="text-white font-display font-bold text-xl leading-tight">ALFA<br/>FACADE</span>}
+              {!window.logoExists && <span className="text-white font-display font-bold text-xl leading-tight uppercase">ALFA FACADE</span>}
             </div>
           </div>
 
-          {/* Contact Info Items - Fluid and Adaptive */}
+          {/* Contact Info Items - Middle Column */}
           <div className="flex items-center h-full flex-grow overflow-hidden flex-nowrap">
             {contactInfo.map((info) => (
               <div 
                 key={info.id} 
-                className={`flex-1 min-w-0 h-full flex items-center px-4 xl:px-10 border-r border-white/10 group hover:bg-white/5 transition-colors cursor-pointer ${
+                className={`flex-1 min-w-0 h-full flex items-center px-4 xl:px-8 border-r border-white/10 group hover:bg-white/5 transition-colors cursor-pointer ${
                   info.id === 'find' ? 'hidden xl:flex' : 'flex'
                 }`}
               >
-                <div className="flex items-center h-[43.5px] min-w-0">
-                  <div className="flex-shrink-0 mr-3 xl:mr-5 w-[41px] h-[41px] bg-[#09402C] flex items-center justify-center rounded-sm transition-transform duration-700 group-hover:scale-110">
+                <div className="flex items-center h-[43.5px] min-w-0 mx-auto">
+                  <div className="flex-shrink-0 mr-3 xl:mr-4 w-[41px] h-[41px] bg-[#09402C] flex items-center justify-center rounded-sm transition-transform duration-700 group-hover:scale-110">
                     {info.icon}
                   </div>
                   <div className="flex flex-col min-w-0">
@@ -74,8 +74,8 @@ const Navbar = () => {
             ))}
           </div>
 
-          {/* Search container */}
-          <div className="w-[80px] xl:w-[96px] h-full flex items-center justify-center flex-shrink-0">
+          {/* Search container - Aligned with Row 2 Quote Button */}
+          <div className="lg:w-[200px] xl:w-[320px] 2xl:w-[384px] h-full flex items-center justify-center flex-shrink-0 border-l border-white/10">
             <button className="p-2 text-white hover:scale-110 transition-transform duration-700">
               <Search size={28} strokeWidth={1.5} />
             </button>
@@ -87,7 +87,7 @@ const Navbar = () => {
       <div className={`w-full h-[82px] bg-[#075942] transition-all duration-[1200ms] ease-in-out flex items-center justify-center border-b border-black/5 lg:border-none ${
         isScrolled ? 'h-[70px] bg-[#075942]/95 backdrop-blur-md' : ''
       }`}>
-        <div className="w-full flex items-center h-full px-[15px] max-w-[1920px] flex-nowrap">
+        <div className="w-full flex items-center h-full px-[0px] max-w-[1920px] flex-nowrap">
           {/* Mobile Logo (Visible only on mobile) */}
           <div className="flex lg:hidden items-center h-full flex-grow">
             <div className="w-[120px] h-[40px] bg-contain bg-no-repeat bg-left opacity-90" style={{ backgroundImage: 'url("/logo.png")' }}>
@@ -95,8 +95,8 @@ const Navbar = () => {
             </div>
           </div>
 
-          {/* Tagline Area (Hidden on mobile) */}
-          <div className="hidden lg:flex w-auto lg:max-w-[250px] xl:max-w-[307.19px] h-full bg-[#075942] items-center px-4 xl:px-[15px] border-r border-white/10 flex-shrink-0">
+          {/* Tagline Area - Left Column */}
+          <div className="hidden lg:flex lg:w-[280px] xl:w-[307.19px] h-full bg-[#075942] items-center px-4 xl:px-10 border-r border-white/10 flex-shrink-0">
             <span className="font-display font-medium text-[14px] xl:text-[16px] leading-tight tracking-[1px] xl:tracking-[2px] text-[#E5F2DF] uppercase whitespace-nowrap">
               CREATE. INNOVATE.
             </span>
@@ -117,8 +117,8 @@ const Navbar = () => {
             </div>
           </div>
 
-          {/* Request A Quote Button - Scaleable */}
-          <div className="lg:min-w-[200px] lg:max-w-[250px] xl:max-w-[320px] 2xl:max-w-[384px] h-full bg-[#09402C] hidden lg:flex items-center justify-center group overflow-hidden relative flex-shrink-0">
+          {/* Request A Quote Button - Right Column */}
+          <div className="lg:w-[250px] xl:w-[320px] 2xl:w-[384px] h-full bg-[#09402C] hidden lg:flex items-center justify-center group overflow-hidden relative flex-shrink-0">
             <button className="relative z-10 w-full h-full font-display font-medium text-[14px] xl:text-[16px] tracking-[1px] text-white uppercase transition-all duration-700 whitespace-nowrap px-4">
               REQUEST A QUOTE
             </button>
