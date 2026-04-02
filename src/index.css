@@ -1,0 +1,28 @@
+@import "tailwindcss";
+
+@config "../tailwind.config.js";
+
+@theme {
+  --font-display: "Clash Grotesk Variable", sans-serif;
+  --font-body: "Satoshi Variable", sans-serif;
+
+  --color-brand-primary: #09402C;
+  --color-brand-secondary: #037353;
+  --color-brand-accent: #A6A182;
+  --color-brand-dark: #0D0D0D;
+  --color-brand-light: #EDEFED;
+  --color-brand-surface: #FFFFFF;
+
+  --radius-brand-sm: 3px;
+  --radius-brand-md: 4px;
+  --radius-brand-lg: 12px;
+  --radius-brand-xl: 20px;
+
+  --shadow-brand: 0 0 2px 2px rgba(219, 219, 219, 0.3);
+}
+
+/* 
+ * NOTE: Ensure the variable fonts "Clash Grotesk Variable" 
+ * and "Satoshi Variable" are imported in your HTML or 
+ * provided as local assets for these tokens to render correctly.
+ */
