@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion';
+import { ArrowUpRight } from 'lucide-react';
 import Button from '../components/ui/Button';
 
 const HERO_IMAGES = [
@@ -21,13 +22,13 @@ const Hero = () => {
   }, []);
 
   return (
-    <section className="relative h-screen min-h-[700px] flex items-center overflow-hidden bg-brand-dark">
+    <section className="relative h-[calc(100vh-82px)] lg:h-[calc(100vh-161.94px)] min-h-[650px] flex items-start md:items-center overflow-hidden bg-brand-dark">
       {/* Background Slideshow with Parallax & Ken Burns effect */}
-      <motion.div
+      <motion.div 
         style={{ y: y1 }}
         className="absolute inset-0 z-0"
       >
-        <div className="absolute inset-0 bg-brand-dark/40 z-10 pointer-events-none" />
+        <div className="absolute inset-0 bg-brand-dark/45 z-10 pointer-events-none" />
         <AnimatePresence mode="popLayout">
           <motion.div
             key={currentIndex}
@@ -45,7 +46,7 @@ const Hero = () => {
             >
               <img 
                 src={HERO_IMAGES[currentIndex]} 
-                alt="Premium Architecture" 
+                alt="Alfa Facade - Premium Architecture" 
                 className="w-full h-full object-cover"
               />
             </motion.div>
@@ -53,51 +54,52 @@ const Hero = () => {
         </AnimatePresence>
       </motion.div>
 
-      {/* Content */}
-      <div className="container mx-auto px-6 relative z-20 pt-[162px]">
+      {/* Content Container - Optimized for Immersive feel */}
+      <div className="container mx-auto px-6 md:px-12 relative z-20 pt-[58px] md:pt-0">
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1.5, ease: [0.22, 1, 0.36, 1] }}
-          className="max-w-4xl"
+          initial={{ opacity: 0, x: -50 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
+          className="max-w-3xl"
         >
-          <motion.span 
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.5, duration: 1.2 }}
-            className="text-brand-accent font-display font-bold tracking-[0.3em] uppercase mb-6 block"
-          >
-            Pioneering Precision in Glass & Aluminum
-          </motion.span>
-          <h1 className="text-white text-5xl md:text-7xl lg:text-8xl font-display font-bold leading-tight mb-8">
-            Excellence in <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-secondary to-brand-primary">
-              Facade Engineering
-            </span>
+          <h1 className="text-white text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-display font-medium leading-[1.1] mb-6 md:mb-8 tracking-tight">
+            Transforming India's <br />
+            <span className="font-bold">Skyline for 50+ Years</span>
           </h1>
-          <p className="text-white/80 text-lg md:text-xl font-body max-w-2xl mb-10 leading-relaxed">
-            Delivering cutting-edge facade solutions that blend innovative design with uncompromising structural integrity for the world's most iconic buildings.
+          
+          <p className="text-white/85 text-base md:text-lg lg:text-xl font-body max-w-xl md:max-w-2xl mb-8 md:mb-12 leading-relaxed tracking-wide">
+            From aluminium window installers in the 1970s to India's premier facade specialists, 
+            Alfa Facade Systems delivers world-class ACP cladding, structural glazing, and architectural solutions.
           </p>
-          <div className="flex flex-wrap gap-6">
-            <Button variant="primary" size="lg" className="px-10 py-5 text-lg">
-              Explore Our Projects
+
+          <div className="flex flex-col sm:flex-row gap-4 md:gap-5">
+            <Button 
+              variant="primary" 
+              icon={ArrowUpRight} 
+              className="py-4 md:py-5 px-8 md:px-10 text-sm md:text-base shadow-2xl"
+            >
+              View All Services
             </Button>
-            <Button variant="outline" size="lg" className="px-10 py-5 text-lg !text-white !border-white hover:!bg-white/10">
-              Our Expertise
+            <Button 
+              variant="primary" 
+              icon={ArrowUpRight} 
+              className="py-4 md:py-5 px-8 md:px-10 text-sm md:text-base bg-emerald-950/40 border border-white/20 backdrop-blur-md hover:bg-emerald-900/60 shadow-xl"
+            >
+              Our Projects
             </Button>
           </div>
         </motion.div>
       </div>
 
-      {/* Scroll Indicator */}
+      {/* Scroll Indicator - Adjusted for better visibility */}
       <motion.div 
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ delay: 1.5, duration: 2.0 }}
-        className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
+        transition={{ delay: 2.5, duration: 1.5 }}
+        className="absolute bottom-6 md:bottom-12 left-6 md:left-12 flex flex-col items-start gap-3 md:gap-4"
       >
-        <span className="text-white/40 text-xs uppercase tracking-widest font-display">Scroll Down</span>
-        <div className="w-[1px] h-12 bg-gradient-to-b from-brand-primary to-transparent" />
+        <span className="text-white/40 text-[9px] md:text-xs uppercase tracking-[0.4em] font-display">Scroll To Discover</span>
+        <div className="w-[80px] md:w-[120px] h-[1px] bg-gradient-to-r from-brand-primary to-transparent" />
       </motion.div>
     </section>
   );

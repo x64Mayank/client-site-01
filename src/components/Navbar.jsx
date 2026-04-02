@@ -41,7 +41,7 @@ const Navbar = () => {
   ];
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 flex flex-col items-center">
+    <nav className="relative w-full z-50 flex flex-col items-center">
       {/* Row 1: Top Bar (Figma node 1:1356) */}
       <div className="w-full bg-[#075942] h-[79.94px] border-b border-white/10 hidden lg:flex items-center justify-center">
         <div className="w-full h-full flex items-center px-0 max-w-[1920px] flex-nowrap">
