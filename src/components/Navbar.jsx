@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import useScroll from '../hooks/useScroll';
 import Button from './ui/Button';
-import { Phone, Mail, MapPin, Search, Menu, X, Construction } from 'lucide-react';
+import { Phone, Mail, MapPin, Search, Menu, X } from 'lucide-react';
 
 const Navbar = () => {
   const isScrolled = useScroll();
@@ -22,90 +22,134 @@ const Navbar = () => {
       icon: <Phone size={21} className="text-white" />, 
       label: 'Call Us', 
       value: '+91 20 26932918',
-      width: '384px'
     },
     { 
       id: 'email',
       icon: <Mail size={21} className="text-white" />, 
       label: 'Email Us', 
       value: 'info@alfafacades.com',
-      width: '384px'
     },
     { 
       id: 'find',
       icon: <MapPin size={21} className="text-white" />, 
       label: 'Find Us', 
       value: 'Sr. No. 27/9/1A/2, Burhani Industrial Estate, 411048',
-      width: '614.39px'
     },
   ];
 
   return (
     <nav className="relative w-full z-50 flex flex-col items-center">
-      {/* Row 1: Top Bar (Figma node 1:1356) */}
-      <div className="w-full bg-[#075942] h-[79.94px] border-b border-white/10 hidden lg:flex items-center justify-center">
+      {/* Row 1: Top Bar */}
+      <div className="w-full bg-[#075942] h-[87.94px] border-b border-white/10 hidden lg:flex items-center justify-center">
         <div className="w-full h-full flex items-center px-0 max-w-[1920px] flex-nowrap">
-          {/* Logo Area - Aligned with Row 2 Tagline Column */}
-          <div className="flex-shrink-0 lg:w-[280px] xl:w-[307.19px] h-full flex items-center justify-center px-4 border-r border-white/10">
-            <div className="flex items-center gap-2 text-[#E5F2DF] px1-cursor">
-              <Construction size={24} strokeWidth={2} />
-              <span className="font-display font-bold text-lg leading-tight uppercase tracking-[0.1em]">UNDER CONSTRUCTION</span>
+
+          {/* Logo */}
+          <div className="flex-shrink-0 w-[16%] h-full flex items-center px-6 xl:px-10 border-r border-white/10">
+            <div
+              className="w-[180px] xl:w-[220px] h-[58.94px] bg-contain bg-no-repeat bg-center opacity-90"
+              style={{ backgroundImage: 'url("/logo.png")' }}
+            >
+              {!window.logoExists && (
+                <span className="text-white font-display font-bold text-xl leading-tight uppercase">
+                  ALFA FACADE
+                </span>
+              )}
             </div>
           </div>
 
-          {/* Contact Info Items - Middle Column */}
-          <div className="flex items-center h-full flex-grow overflow-hidden flex-nowrap">
+          {/* Contact Info */}
+          <div className="flex items-center h-full flex-grow">
             {contactInfo.map((info) => (
-              <div 
-                key={info.id} 
-                className={`flex-1 min-w-0 h-full flex items-center px-4 xl:px-8 border-r border-white/10 group hover:bg-white/5 transition-colors cursor-pointer ${
-                  info.id === 'find' ? 'hidden xl:flex' : 'flex'
+              <div
+                key={info.id}
+                className={`h-full flex items-center px-4 xl:px-8 border-r border-white/10 group hover:bg-white/5 transition-colors cursor-pointer ${
+                  info.id === 'find'
+                    ? 'hidden xl:flex w-[calc(44%/84%*100%)]'
+                    : info.id === 'call'
+                    ? 'flex w-[calc(20%/84%*100%)]'
+                    : 'flex w-[calc(20%/84%*100%)]'
                 }`}
               >
-                <div className="flex items-center h-[43.5px] min-w-0 mx-auto">
-                  <div className="flex-shrink-0 mr-3 xl:mr-4 w-[41px] h-[41px] bg-[#09402C] flex items-center justify-center rounded-sm transition-transform duration-700 group-hover:scale-110">
-                    {info.icon}
+                {info.id === 'find' ? (
+                  <div className="flex items-center w-full justify-between">
+                    
+                    {/* Left side */}
+                    <div className="flex items-center">
+                      <div className="flex-shrink-0 mr-3 xl:mr-4 w-[41px] h-[41px] bg-[#09402C] flex items-center justify-center rounded-sm transition-transform duration-700 group-hover:scale-110">
+                        {info.icon}
+                      </div>
+
+                      <div className="flex flex-col">
+                        <span className="font-display font-normal text-[14px] xl:text-[16px] leading-tight text-white uppercase whitespace-nowrap">
+                          {info.label}
+                        </span>
+
+                        <span className="font-body font-normal text-[14px] xl:text-[16px] leading-tight text-[#C2C2C2] mt-1 whitespace-normal">
+                          {info.value}
+                        </span>
+                      </div>
+                    </div>
+
+                    {/* Search Icon */}
+                    <button className="p-2 text-white hover:scale-110 transition-transform duration-700 mr-6">
+                      <Search size={28} strokeWidth={1.5} />
+                    </button>
                   </div>
-                  <div className="flex flex-col min-w-0">
-                    <span className="font-display font-normal text-[14px] xl:text-[16px] leading-tight text-white uppercase truncate">{info.label}</span>
-                    <span className="font-body font-normal text-[14px] xl:text-[16px] leading-tight text-[#C2C2C2] mt-1 truncate">{info.value}</span>
+                ) : (
+                  <div className="flex items-center h-[43.5px] w-full">
+                    <div className="flex-shrink-0 mr-3 xl:mr-4 w-[41px] h-[41px] bg-[#09402C] flex items-center justify-center rounded-sm transition-transform duration-700 group-hover:scale-110">
+                      {info.icon}
+                    </div>
+
+                    <div className="flex flex-col">
+                      <span className="font-display font-normal text-[14px] xl:text-[16px] leading-tight text-white uppercase whitespace-nowrap">
+                        {info.label}
+                      </span>
+
+                      <span className="font-body font-normal text-[14px] xl:text-[16px] leading-tight text-[#C2C2C2] mt-1 whitespace-nowrap">
+                        {info.value}
+                      </span>
+                    </div>
                   </div>
-                </div>
+                )}
               </div>
             ))}
           </div>
 
-          {/* Search container - Aligned with Row 2 Quote Button */}
-          <div className="lg:w-[200px] xl:w-[320px] 2xl:w-[384px] h-full flex items-center justify-center flex-shrink-0 border-l border-white/10">
-            <button className="p-2 text-white hover:scale-110 transition-transform duration-700">
-              <Search size={28} strokeWidth={1.5} />
-            </button>
-          </div>
         </div>
       </div>
 
-      {/* Row 2: Main Navigation Bar (Figma node 1:1416) */}
-      <div className={`w-full h-[82px] bg-[#075942] transition-all duration-[1200ms] ease-in-out flex items-center justify-center border-b border-black/5 lg:border-none ${
-        isScrolled ? 'h-[70px] bg-[#075942]/95 backdrop-blur-md' : ''
-      }`}>
+      {/* Row 2: Main Navbar */}
+      <div
+        className={`w-full h-[90.94px] bg-[#075942] transition-all duration-[1200ms] ease-in-out flex items-center justify-center border-b border-black/5 lg:border-none ${
+          isScrolled ? 'h-[70px] bg-[#075942]/95 backdrop-blur-md' : ''
+        }`}
+      >
         <div className="w-full flex items-center h-full px-[0px] max-w-[1920px] flex-nowrap">
-          {/* Logo Area - Visible only on mobile in Row 2 */}
-          <div className="flex lg:hidden flex-shrink-0 lg:w-[280px] xl:w-[307.19px] h-full flex items-center justify-center px-4 border-r border-white/10">
-            <div className="flex items-center gap-2 text-brand-accent px1-cursor">
-              <Construction size={24} strokeWidth={2} />
-              <span className="font-display font-bold text-lg leading-tight uppercase tracking-wider">UNDER CONSTRUCTION</span>
+
+          {/* Mobile Logo */}
+          <div className="flex lg:hidden items-center h-full flex-grow">
+            <div
+              className="w-[120px] h-[40px] bg-contain bg-no-repeat bg-left opacity-90"
+              style={{ backgroundImage: 'url("/logo.png")' }}
+            >
+              {!window.logoExists && (
+                <span className="text-white font-display font-bold text-lg leading-tight">
+                  ALFA FACADE
+                </span>
+              )}
             </div>
           </div>
 
-          {/* Tagline Area - Left Column */}
-          <div className="hidden lg:flex lg:w-[280px] xl:w-[307.19px] h-full bg-[#075942] items-center px-4 xl:px-10 border-r border-white/10 flex-shrink-0">
-            <span className="font-display font-medium text-[14px] xl:text-[16px] leading-tight tracking-[1px] xl:tracking-[2px] text-[#E5F2DF] uppercase whitespace-nowrap">
-              CREATE. INNOVATE.
+          {/* Tagline */}
+          <div className="hidden lg:flex w-[16%] h-full bg-[#075942] items-center px-6 border-r border-white/10 flex-shrink-0">
+            <span className="font-display font-bold text-[14px] xl:text-[16px] leading-loose tracking-[1px] xl:tracking-[2px] text-[#E5F2DF] uppercase">
+              CREATE.<br />INNOVATE.
             </span>
           </div>
 
-          {/* Nav Links Center - Responsive gaps */}
-          <div className="flex-grow h-full bg-[#075942] hidden lg:flex items-center px-4 xl:px-6 2xl:px-[25px] overflow-hidden">
+          {/* Nav Links */}
+          <div className="w-[64%] h-full bg-[#075942] hidden lg:flex items-center px-4 xl:px-6 2xl:px-[25px] overflow-hidden flex-shrink-0">
             <div className="flex items-center flex-nowrap gap-4 xl:gap-6 2xl:gap-[36.7px] px-2 min-w-0">
               {navLinks.map((link) => (
                 <a
@@ -119,16 +163,16 @@ const Navbar = () => {
             </div>
           </div>
 
-          {/* Request A Quote Button - Right Column */}
-          <div className="lg:w-[250px] xl:w-[320px] 2xl:w-[384px] h-full bg-[#09402C] hidden lg:flex items-center justify-center group overflow-hidden relative flex-shrink-0">
+          {/* Request Button */}
+          <div className="flex-1 h-full bg-[#09402C] hidden lg:flex items-center justify-center group overflow-hidden relative flex-shrink-0">
             <button className="relative z-10 w-full h-full font-display font-medium text-[14px] xl:text-[16px] tracking-[1px] text-white uppercase transition-all duration-700 whitespace-nowrap px-4">
               REQUEST A QUOTE
             </button>
             <div className="absolute inset-0 bg-white/10 translate-y-full group-hover:translate-y-0 transition-transform duration-[800ms]" />
           </div>
 
-          {/* Mobile Overlay Toggle */}
-          <button 
+          {/* Mobile Menu Toggle */}
+          <button
             className="lg:hidden ml-auto p-4 text-white"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           >
@@ -137,7 +181,7 @@ const Navbar = () => {
         </div>
       </div>
 
-      {/* Mobile Menu Overlay */}
+      {/* Mobile Menu */}
       <AnimatePresence>
         {isMobileMenuOpen && (
           <motion.div
@@ -147,17 +191,28 @@ const Navbar = () => {
             className="fixed inset-0 z-50 lg:hidden bg-brand-dark flex flex-col p-8"
           >
             <div className="flex justify-end mb-8">
-              <button onClick={() => setIsMobileMenuOpen(false)} className="text-white">
+              <button
+                onClick={() => setIsMobileMenuOpen(false)}
+                className="text-white"
+              >
                 <X size={32} />
               </button>
             </div>
+
             <div className="flex flex-col gap-6 items-center">
               {navLinks.map((link) => (
-                <a key={link.name} href={link.href} className="text-2xl font-display font-bold text-white uppercase" onClick={() => setIsMobileMenuOpen(false)}>
+                <a
+                  key={link.name}
+                  href={link.href}
+                  className="text-2xl font-display font-bold text-white uppercase"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
                   {link.name}
                 </a>
               ))}
-              <Button variant="primary" className="mt-8 w-full">REQUEST A QUOTE</Button>
+              <Button variant="primary" className="mt-8 w-full">
+                REQUEST A QUOTE
+              </Button>
             </div>
           </motion.div>
         )}
