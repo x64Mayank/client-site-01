@@ -2,16 +2,17 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import useScroll from '../hooks/useScroll';
 import Button from './ui/Button';
-import { Phone, Mail, MapPin, Search, Menu, X } from 'lucide-react';
+import { Phone, Mail, MapPin, Search, Menu, X, ChevronDown } from 'lucide-react';
 
 const Navbar = () => {
   const isScrolled = useScroll();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [expandedLinks, setExpandedLinks] = useState({});
 
   const navLinks = [
     { name: 'HOME', href: '/' },
-    { name: 'ABOUT US', href: '#about' },
-    { name: 'SERVICES', href: '#services' },
+    { name: 'ABOUT US', href: '#about', hasDropdown: true },
+    { name: 'SERVICES', href: '#services', hasDropdown: true },
     { name: 'PROJECTS', href: '#projects' },
     { name: 'CONTACT US', href: '#contact' },
   ];
@@ -36,6 +37,10 @@ const Navbar = () => {
       value: <>Sr. No. 27/9/1A/2, Burhani Industrial Estate,<br />411048</>,
     },
   ];
+
+  const toggleExpanded = (name) => {
+    setExpandedLinks((prev) => ({ ...prev, [name]: !prev[name] }));
+  };
 
   return (
     <nav className="relative w-full z-50 flex flex-col items-center">
@@ -62,7 +67,7 @@ const Navbar = () => {
             {contactInfo.map((info) => (
               <div
                 key={info.id}
-                className={`h-full flex items-center px-4 xl:px-5 border-r border-white/10 group hover:bg-white/5 transition-colors cursor-pointer ${
+                className={`h-full flex items-center px-4 xl:px-8 border-r border-white/10 group hover:bg-white/5 transition-colors cursor-pointer ${
                   info.id === 'find'
                     ? 'flex w-[calc(44%/84%*100%)]'
                     : info.id === 'call'
@@ -91,7 +96,7 @@ const Navbar = () => {
                     </div>
 
                     {/* Search Icon */}
-                    <button className="p-2 text-white hover:scale-110 transition-transform duration-700 mr-10">
+                    <button className="p-2 text-white hover:scale-110 transition-transform duration-700 mr-6">
                       <Search size={28} strokeWidth={1.5} />
                     </button>
                   </div>
@@ -176,7 +181,7 @@ const Navbar = () => {
             className="lg:hidden ml-auto p-4 text-white"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           >
-            {isMobileMenuOpen ? <X size={32} /> : <Menu size={32} />}
+            <><span className="sm:hidden">{isMobileMenuOpen ? <X size={32} /> : <Menu size={32} />}</span><span className="hidden sm:inline"><Menu size={32} /></span></>
           </button>
         </div>
       </div>
@@ -184,37 +189,85 @@ const Navbar = () => {
       {/* Mobile Menu */}
       <AnimatePresence>
         {isMobileMenuOpen && (
-          <motion.div
-            initial={{ opacity: 0, x: '100%' }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: '100%' }}
-            className="fixed inset-0 z-50 lg:hidden bg-brand-dark flex flex-col p-8"
-          >
-            <div className="flex justify-end mb-8">
-              <button
-                onClick={() => setIsMobileMenuOpen(false)}
-                className="text-white"
-              >
-                <X size={32} />
-              </button>
-            </div>
+          <>
+            {/* Backdrop */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="fixed inset-0 z-40 lg:hidden bg-black/40"
+              onClick={() => setIsMobileMenuOpen(false)}
+            />
 
-            <div className="flex flex-col gap-6 items-center">
-              {navLinks.map((link) => (
-                <a
-                  key={link.name}
-                  href={link.href}
-                  className="text-2xl font-display font-bold text-white uppercase"
-                  onClick={() => setIsMobileMenuOpen(false)}
+            {/* Drawer */}
+            <motion.div
+              initial={{ opacity: 1, x: '-100%' }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 1, x: '-100%' }}
+              transition={{ type: 'tween', duration: 0.3 }}
+              className="fixed inset-y-0 left-0 z-50 lg:hidden bg-white flex flex-col w-full sm:w-1/3"
+            >
+              {/* Menu Header: Logo + Close */}
+              <div className="flex items-center justify-between px-5 py-4 border-b border-gray-200">
+                <div
+                  className="w-[130px] h-[45px] bg-contain bg-no-repeat bg-left"
+                  style={{ backgroundImage: 'url("/logo.png")' }}
                 >
-                  {link.name}
-                </a>
-              ))}
-              <Button variant="primary" className="mt-8 w-full">
-                REQUEST A QUOTE
-              </Button>
-            </div>
-          </motion.div>
+                  {!window.logoExists && (
+                    <span className="text-[#075942] font-display font-bold text-lg leading-tight uppercase">
+                      ALFA FACADE
+                    </span>
+                  )}
+                </div>
+                <button
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className="text-gray-600 hover:text-gray-900"
+                >
+                  <X size={24} />
+                </button>
+              </div>
+
+              {/* Search Bar */}
+              <div className="px-5 py-4 border-b border-gray-200">
+                <div className="flex items-center border border-gray-300 rounded px-3 py-2">
+                  <input
+                    type="text"
+                    placeholder="Search here..."
+                    className="flex-grow text-sm text-gray-600 outline-none bg-transparent"
+                  />
+                  <Search size={18} className="text-gray-400 flex-shrink-0" />
+                </div>
+              </div>
+
+              {/* Nav Links */}
+              <div className="flex flex-col overflow-y-auto flex-grow">
+                {navLinks.map((link) => (
+                  <div key={link.name} className="border-b border-gray-100">
+                    <div className="flex items-center justify-between px-5 py-4">
+                      <a
+                        href={link.href}
+                        className="font-display font-semibold text-[13px] tracking-[1px] text-[#075942] uppercase"
+                        onClick={() => !link.hasDropdown && setIsMobileMenuOpen(false)}
+                      >
+                        {link.name}
+                      </a>
+                      {link.hasDropdown && (
+                        <button
+                          onClick={() => toggleExpanded(link.name)}
+                          className="text-[#075942]"
+                        >
+                          <ChevronDown
+                            size={18}
+                            className={`transition-transform duration-300 ${expandedLinks[link.name] ? 'rotate-180' : ''}`}
+                          />
+                        </button>
+                      )}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </motion.div>
+          </>
         )}
       </AnimatePresence>
     </nav>
