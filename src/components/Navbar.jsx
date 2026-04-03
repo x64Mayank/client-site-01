@@ -33,7 +33,7 @@ const Navbar = () => {
       id: 'find',
       icon: <MapPin size={21} className="text-white" />, 
       label: 'Find Us', 
-      value: 'Sr. No. 27/9/1A/2, Burhani Industrial Estate, 411048',
+      value: <>Sr. No. 27/9/1A/2, Burhani Industrial Estate,<br />411048</>,
     },
   ];
 
@@ -62,9 +62,9 @@ const Navbar = () => {
             {contactInfo.map((info) => (
               <div
                 key={info.id}
-                className={`h-full flex items-center px-4 xl:px-8 border-r border-white/10 group hover:bg-white/5 transition-colors cursor-pointer ${
+                className={`h-full flex items-center px-4 xl:px-5 border-r border-white/10 group hover:bg-white/5 transition-colors cursor-pointer ${
                   info.id === 'find'
-                    ? 'hidden xl:flex w-[calc(44%/84%*100%)]'
+                    ? 'flex w-[calc(44%/84%*100%)]'
                     : info.id === 'call'
                     ? 'flex w-[calc(20%/84%*100%)]'
                     : 'flex w-[calc(20%/84%*100%)]'
@@ -91,7 +91,7 @@ const Navbar = () => {
                     </div>
 
                     {/* Search Icon */}
-                    <button className="p-2 text-white hover:scale-110 transition-transform duration-700 mr-6">
+                    <button className="p-2 text-white hover:scale-110 transition-transform duration-700 mr-10">
                       <Search size={28} strokeWidth={1.5} />
                     </button>
                   </div>
@@ -121,7 +121,7 @@ const Navbar = () => {
 
       {/* Row 2: Main Navbar */}
       <div
-        className={`w-full h-[90.94px] bg-[#075942] transition-all duration-[1200ms] ease-in-out flex items-center justify-center border-b border-black/5 lg:border-none ${
+        className={`w-full h-[87.94px] bg-[#075942] transition-all duration-[1200ms] ease-in-out flex items-center justify-center border-b border-black/5 lg:border-none ${
           isScrolled ? 'h-[70px] bg-[#075942]/95 backdrop-blur-md' : ''
         }`}
       >
@@ -142,7 +142,7 @@ const Navbar = () => {
           </div>
 
           {/* Tagline */}
-          <div className="hidden lg:flex w-[16%] h-full bg-[#075942] items-center px-6 border-r border-white/10 flex-shrink-0">
+          <div className="hidden lg:flex w-[16%] h-full bg-[#075942] items-center px-4 border-r border-white/10 flex-shrink-0">
             <span className="font-display font-bold text-[14px] xl:text-[16px] leading-loose tracking-[1px] xl:tracking-[2px] text-[#E5F2DF] uppercase">
               CREATE.<br />INNOVATE.
             </span>
