@@ -2,11 +2,13 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import useScroll from '../hooks/useScroll';
 import Button from './ui/Button';
+import SearchOverlay from './ui/Search';
 import { Phone, Mail, MapPin, Search, Menu, X, ChevronDown } from 'lucide-react';
 
 const Navbar = () => {
   const isScrolled = useScroll();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [expandedLinks, setExpandedLinks] = useState({});
 
   const navLinks = [
@@ -96,7 +98,7 @@ const Navbar = () => {
                     </div>
 
                     {/* Search Icon */}
-                    <button className="p-2 text-white hover:scale-110 transition-transform duration-700 mr-6">
+                    <button onClick={() => setIsSearchOpen(true)} className="p-2 text-white hover:scale-110 transition-transform duration-700 mr-6">
                       <Search size={28} strokeWidth={1.5} />
                     </button>
                   </div>
@@ -270,6 +272,7 @@ const Navbar = () => {
           </>
         )}
       </AnimatePresence>
+      <SearchOverlay isOpen={isSearchOpen} onClose={() => setIsSearchOpen(false)} />
     </nav>
   );
 };
