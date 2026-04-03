@@ -47,7 +47,7 @@ const Navbar = () => {
         <div className="w-full h-full flex items-center px-0 max-w-[1920px] flex-nowrap">
           {/* Logo Area - Aligned with Row 2 Tagline Column */}
           <div className="flex-shrink-0 lg:w-[280px] xl:w-[307.19px] h-full flex items-center justify-center px-4 border-r border-white/10">
-            <div className="flex items-center gap-2 text-[#E5F2DF]">
+            <div className="flex items-center gap-2 text-[#E5F2DF] px1-cursor">
               <Construction size={24} strokeWidth={2} />
               <span className="font-display font-bold text-lg leading-tight uppercase tracking-[0.1em]">UNDER CONSTRUCTION</span>
             </div>
@@ -91,7 +91,7 @@ const Navbar = () => {
         <div className="w-full flex items-center h-full px-[0px] max-w-[1920px] flex-nowrap">
           {/* Logo Area - Visible only on mobile in Row 2 */}
           <div className="flex lg:hidden flex-shrink-0 lg:w-[280px] xl:w-[307.19px] h-full flex items-center justify-center px-4 border-r border-white/10">
-            <div className="flex items-center gap-2 text-brand-accent">
+            <div className="flex items-center gap-2 text-brand-accent px1-cursor">
               <Construction size={24} strokeWidth={2} />
               <span className="font-display font-bold text-lg leading-tight uppercase tracking-wider">UNDER CONSTRUCTION</span>
             </div>

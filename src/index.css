@@ -21,8 +21,3 @@
   --shadow-brand: 0 0 2px 2px rgba(219, 219, 219, 0.3);
 }
 
-/* 
- * NOTE: Ensure the variable fonts "Clash Grotesk Variable" 
- * and "Satoshi Variable" are imported in your HTML or 
- * provided as local assets for these tokens to render correctly.
- */

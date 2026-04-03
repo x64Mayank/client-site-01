@@ -62,12 +62,12 @@ const Hero = () => {
           transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
           className="max-w-3xl"
         >
-          <h1 className="text-white text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-display font-medium leading-[1.1] mb-6 md:mb-8 tracking-tight">
+          <h1 className="text-white text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-display font-medium leading-[1.1] mb-6 md:mb-8 tracking-tight px1-cursor">
             Transforming India's <br />
             <span className="font-bold">Skyline for 50+ Years</span>
           </h1>
           
-          <p className="text-white/85 text-base md:text-lg lg:text-xl font-body max-w-xl md:max-w-2xl mb-8 md:mb-12 leading-relaxed tracking-wide">
+          <p className="text-white/85 text-base md:text-lg lg:text-xl font-body max-w-xl md:max-w-2xl mb-8 md:mb-12 leading-relaxed tracking-wide px1-cursor">
             From aluminium window installers in the 1970s to India's premier facade specialists, 
             Alfa Facade Systems delivers world-class ACP cladding, structural glazing, and architectural solutions.
           </p>
@@ -76,14 +76,14 @@ const Hero = () => {
             <Button 
               variant="primary" 
               icon={ArrowUpRight} 
-              className="py-4 md:py-5 px-8 md:px-10 text-sm md:text-base shadow-2xl"
+              className="py-4 md:py-5 px-8 md:px-10 text-sm md:text-base shadow-2xl px1-cursor"
             >
               View All Services
             </Button>
             <Button 
               variant="primary" 
               icon={ArrowUpRight} 
-              className="py-4 md:py-5 px-8 md:px-10 text-sm md:text-base bg-emerald-950/40 border border-white/20 backdrop-blur-md hover:bg-emerald-900/60 shadow-xl"
+              className="py-4 md:py-5 px-8 md:px-10 text-sm md:text-base bg-emerald-950/40 border border-white/20 backdrop-blur-md hover:bg-emerald-900/60 shadow-xl px1-cursor"
             >
               Our Projects
             </Button>
@@ -96,7 +96,7 @@ const Hero = () => {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 2.5, duration: 1.5 }}
-        className="absolute bottom-6 md:bottom-12 left-6 md:left-12 flex flex-col items-start gap-3 md:gap-4"
+        className="absolute bottom-6 md:bottom-12 left-6 md:left-12 flex flex-col items-start gap-3 md:gap-4 px1-cursor"
       >
         <span className="text-white/40 text-[9px] md:text-xs uppercase tracking-[0.4em] font-display">Scroll To Discover</span>
         <div className="w-[80px] md:w-[120px] h-[1px] bg-gradient-to-r from-brand-primary to-transparent" />
