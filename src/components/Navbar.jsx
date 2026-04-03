@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import useScroll from '../hooks/useScroll';
 import Button from './ui/Button';
-import { Phone, Mail, MapPin, Search, Menu, X } from 'lucide-react';
+import { Phone, Mail, MapPin, Search, Menu, X, Construction } from 'lucide-react';
 
 const Navbar = () => {
   const isScrolled = useScroll();
@@ -46,9 +46,10 @@ const Navbar = () => {
       <div className="w-full bg-[#075942] h-[79.94px] border-b border-white/10 hidden lg:flex items-center justify-center">
         <div className="w-full h-full flex items-center px-0 max-w-[1920px] flex-nowrap">
           {/* Logo Area - Aligned with Row 2 Tagline Column */}
-          <div className="flex-shrink-0 lg:w-[280px] xl:w-[307.19px] h-full flex items-center px-6 xl:px-10 border-r border-white/10">
-            <div className="w-[180px] xl:w-[220px] h-[58.94px] bg-contain bg-no-repeat bg-center opacity-90" style={{ backgroundImage: 'url("/logo.png")' }}>
-              {!window.logoExists && <span className="text-white font-display font-bold text-xl leading-tight uppercase">ALFA FACADE</span>}
+          <div className="flex-shrink-0 lg:w-[280px] xl:w-[307.19px] h-full flex items-center justify-center px-4 border-r border-white/10">
+            <div className="flex items-center gap-2 text-[#E5F2DF]">
+              <Construction size={24} strokeWidth={2} />
+              <span className="font-display font-bold text-lg leading-tight uppercase tracking-[0.1em]">UNDER CONSTRUCTION</span>
             </div>
           </div>
 
@@ -88,10 +89,11 @@ const Navbar = () => {
         isScrolled ? 'h-[70px] bg-[#075942]/95 backdrop-blur-md' : ''
       }`}>
         <div className="w-full flex items-center h-full px-[0px] max-w-[1920px] flex-nowrap">
-          {/* Mobile Logo (Visible only on mobile) */}
-          <div className="flex lg:hidden items-center h-full flex-grow">
-            <div className="w-[120px] h-[40px] bg-contain bg-no-repeat bg-left opacity-90" style={{ backgroundImage: 'url("/logo.png")' }}>
-              {!window.logoExists && <span className="text-white font-display font-bold text-lg leading-tight">ALFA FACADE</span>}
+          {/* Logo Area - Visible only on mobile in Row 2 */}
+          <div className="flex lg:hidden flex-shrink-0 lg:w-[280px] xl:w-[307.19px] h-full flex items-center justify-center px-4 border-r border-white/10">
+            <div className="flex items-center gap-2 text-brand-accent">
+              <Construction size={24} strokeWidth={2} />
+              <span className="font-display font-bold text-lg leading-tight uppercase tracking-wider">UNDER CONSTRUCTION</span>
             </div>
           </div>
 
