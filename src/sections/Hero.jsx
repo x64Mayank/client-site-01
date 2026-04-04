@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion';
-import { ArrowUpRight } from 'lucide-react';
+import { ArrowUpRight, ArrowRight } from 'lucide-react';
 import Button from '../components/ui/Button';
 
 const HERO_IMAGES = [
@@ -22,7 +22,7 @@ const Hero = () => {
   }, []);
 
   return (
-    <section className="relative h-[calc(100vh-82px)] lg:h-[calc(100vh-161.94px)] min-h-[650px] flex items-start md:items-center overflow-hidden bg-brand-dark">
+    <section className="relative min-h-[calc(100vh-82px)] lg:min-h-[calc(100vh-140px)] xl:max-h-[900px] flex items-start md:items-center overflow-hidden bg-brand-dark pt-32 pb-20 md:py-28 xl:py-32">
       {/* Background Slideshow with Parallax & Ken Burns effect */}
       <motion.div 
         style={{ y: y1 }}
@@ -54,15 +54,15 @@ const Hero = () => {
         </AnimatePresence>
       </motion.div>
 
-      {/* Content Container - Optimized for Immersive feel */}
-      <div className="container mx-auto px-6 md:px-12 relative z-20 pt-[58px] md:pt-0">
+      {/* Content Container - Centered and Scale-Optimized */}
+      <div className="container mx-auto px-6 md:px-12 relative z-20">
         <motion.div
           initial={{ opacity: 0, x: -50 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
-          className="max-w-3xl"
+          className="max-w-3xl xl:max-w-4xl"
         >
-          <h1 className="text-white text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-display font-medium leading-[1.1] mb-6 md:mb-8 tracking-tight px1-cursor">
+          <h1 className="text-white text-4xl sm:text-5xl md:text-7xl xl:text-7xl font-display font-medium leading-[1.1] mb-6 md:mb-8 tracking-tight px1-cursor">
             Transforming India's <br />
             <span className="font-bold">Skyline for 50+ Years</span>
           </h1>
@@ -76,6 +76,7 @@ const Hero = () => {
             <Button 
               variant="primary" 
               icon={ArrowUpRight} 
+              rotateOnHover
               className="py-4 md:py-5 px-8 md:px-10 text-sm md:text-base shadow-2xl px1-cursor"
             >
               View All Services
@@ -83,6 +84,7 @@ const Hero = () => {
             <Button 
               variant="primary" 
               icon={ArrowUpRight} 
+              rotateOnHover
               className="py-4 md:py-5 px-8 md:px-10 text-sm md:text-base bg-emerald-950/40 border border-white/20 backdrop-blur-md hover:bg-emerald-900/60 shadow-xl px1-cursor"
             >
               Our Projects
