@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import useScroll from '../hooks/useScroll';
 import Button from './ui/Button';
 import SearchOverlay from './ui/Search';
-import { Phone, Mail, MapPin, Search, Menu, X, ChevronDown } from 'lucide-react';
+import { Phone, Mail, MapPin, Search, Menu, X, ChevronDown, Construction } from 'lucide-react';
 
 const Navbar = () => {
   const isScrolled = useScroll();
@@ -36,7 +36,7 @@ const Navbar = () => {
       id: 'find',
       icon: <MapPin size={21} className="text-white" />, 
       label: 'Find Us', 
-      value: <>Sr. No. 27/9/1A/2, Burhani Industrial Estate,<br />411048</>,
+      value: 'Sr. No. 27/9/1A/2, Burhani Industrial Estate, 411048',
     },
   ];
 
@@ -50,17 +50,13 @@ const Navbar = () => {
       <div className="w-full bg-[#075942] h-[87.94px] border-b border-white/10 hidden lg:flex items-center justify-center">
         <div className="w-full h-full flex items-center px-0 max-w-[1920px] flex-nowrap">
 
-          {/* Logo */}
-          <div className="flex-shrink-0 w-[16%] h-full flex items-center px-6 xl:px-10 border-r border-white/10">
-            <div
-              className="w-[180px] xl:w-[220px] h-[58.94px] bg-contain bg-no-repeat bg-center opacity-90"
-              style={{ backgroundImage: 'url("/logo.png")' }}
-            >
-              {!window.logoExists && (
-                <span className="text-white font-display font-bold text-xl leading-tight uppercase">
-                  ALFA FACADE
-                </span>
-              )}
+          {/* Rebranded Logo - "Under Construction" */}
+          <div className="flex-shrink-0 lg:w-[180px] xl:w-[240px] h-full flex items-center justify-center px-4 border-r border-white/10 px1-cursor group relative overflow-hidden">
+            <div className="flex flex-col items-center justify-center gap-1.5 transition-transform duration-700 group-hover:scale-105">
+              <Construction size={22} className="text-[#E5F2DF]" strokeWidth={2} />
+              <span className="text-[#E5F2DF] font-display font-bold text-xs xl:text-[13px] leading-none uppercase tracking-[0.1em] text-center whitespace-normal">
+                Under Construction
+              </span>
             </div>
           </div>
 
@@ -69,58 +65,38 @@ const Navbar = () => {
             {contactInfo.map((info) => (
               <div
                 key={info.id}
-                className={`h-full flex items-center px-4 xl:px-8 border-r border-white/10 group hover:bg-white/5 transition-colors cursor-pointer ${
-                  info.id === 'find'
-                    ? 'flex w-[calc(44%/84%*100%)]'
-                    : info.id === 'call'
-                    ? 'flex w-[calc(20%/84%*100%)]'
-                    : 'flex w-[calc(20%/84%*100%)]'
+                className={`h-full flex items-center px-2 2xl:px-8 group hover:bg-white/5 transition-colors cursor-pointer flex-grow min-w-0 ${
+                  info.id === 'find' ? 'border-none' : 'border-r border-white/10'
                 }`}
               >
-                {info.id === 'find' ? (
-                  <div className="flex items-center w-full justify-between">
-                    
-                    {/* Left side */}
-                    <div className="flex items-center">
-                      <div className="flex-shrink-0 mr-3 xl:mr-4 w-[41px] h-[41px] bg-[#09402C] flex items-center justify-center rounded-sm transition-transform duration-700 group-hover:scale-110">
-                        {info.icon}
-                      </div>
-
-                      <div className="flex flex-col">
-                        <span className="font-display font-normal text-[14px] xl:text-[16px] leading-tight text-white uppercase whitespace-nowrap">
-                          {info.label}
-                        </span>
-
-                        <span className="font-body font-normal text-[14px] xl:text-[16px] leading-tight text-[#C2C2C2] mt-1 whitespace-normal">
-                          {info.value}
-                        </span>
-                      </div>
-                    </div>
-
-                    {/* Search Icon */}
-                    <button onClick={() => setIsSearchOpen(true)} className="p-2 text-white hover:scale-110 transition-transform duration-700 mr-6">
-                      <Search size={28} strokeWidth={1.5} />
-                    </button>
+                <div className="flex items-center gap-3 xl:gap-4 w-full">
+                  <div className="flex-shrink-0 w-[41px] h-[41px] bg-[#09402C] flex items-center justify-center rounded-sm transition-transform duration-700 group-hover:scale-110">
+                    {info.icon}
                   </div>
-                ) : (
-                  <div className="flex items-center h-[43.5px] w-full">
-                    <div className="flex-shrink-0 mr-3 xl:mr-4 w-[41px] h-[41px] bg-[#09402C] flex items-center justify-center rounded-sm transition-transform duration-700 group-hover:scale-110">
-                      {info.icon}
-                    </div>
 
-                    <div className="flex flex-col">
-                      <span className="font-display font-normal text-[14px] xl:text-[16px] leading-tight text-white uppercase whitespace-nowrap">
-                        {info.label}
-                      </span>
+                  <div className="flex flex-col min-w-0">
+                    <span className="font-display font-normal text-[14px] xl:text-[16px] leading-tight text-white uppercase whitespace-nowrap">
+                      {info.label}
+                    </span>
 
-                      <span className="font-body font-normal text-[14px] xl:text-[16px] leading-tight text-[#C2C2C2] mt-1 whitespace-nowrap">
-                        {info.value}
-                      </span>
-                    </div>
+                    <span className="font-body font-normal text-[12px] xl:text-[14px] leading-tight text-[#C2C2C2] mt-1 whitespace-nowrap">
+                      {info.value}
+                    </span>
                   </div>
-                )}
+                </div>
               </div>
             ))}
+
+            {/* Standalone Search Icon Container - Resolves hover bug, Seamless Border */}
+            <div className="flex-shrink-0 flex items-center px-4 xl:px-10 h-full px1-cursor">
+              <button 
+                onClick={() => setIsSearchOpen(true)} 
+                className="p-3 text-white hover:scale-110 transition-transform duration-700 hover:text-white group relative"
+              >
+                <Search size={26} strokeWidth={1.5} />
+                <div className="absolute inset-0 bg-white/5 scale-0 group-hover:scale-100 transition-transform duration-500 rounded-full" />
+              </button>
+            </div>
           </div>
 
         </div>
@@ -134,24 +110,18 @@ const Navbar = () => {
       >
         <div className="w-full flex items-center h-full px-[0px] max-w-[1920px] flex-nowrap">
 
-          {/* Mobile Logo */}
-          <div className="flex lg:hidden items-center h-full flex-grow">
-            <div
-              className="w-[120px] h-[40px] bg-contain bg-no-repeat bg-left opacity-90"
-              style={{ backgroundImage: 'url("/logo.png")' }}
-            >
-              {!window.logoExists && (
-                <span className="text-white font-display font-bold text-lg leading-tight">
-                  ALFA FACADE
-                </span>
-              )}
+          {/* Mobile Logo - Updated to "Under Construction" */}
+          <div className="flex lg:hidden items-center h-full flex-grow px-4 px1-cursor">
+            <div className="flex items-center gap-2 text-brand-accent">
+              <Construction size={24} strokeWidth={2} />
+              <span className="font-display font-bold text-lg leading-tight uppercase tracking-wider">UNDER CONSTRUCTION</span>
             </div>
           </div>
 
-          {/* Tagline */}
-          <div className="hidden lg:flex w-[16%] h-full bg-[#075942] items-center px-4 border-r border-white/10 flex-shrink-0">
-            <span className="font-display font-bold text-[14px] xl:text-[16px] leading-loose tracking-[1px] xl:tracking-[2px] text-[#E5F2DF] uppercase">
-              CREATE.<br />INNOVATE.
+          {/* Tagline - Centered and Reflow-friendly */}
+          <div className="hidden lg:flex lg:w-[180px] xl:w-[240px] h-full bg-[#075942] items-center justify-center px-4 border-r border-white/10 flex-shrink-0 px1-cursor">
+            <span className="font-display font-bold text-[14px] xl:text-[15px] leading-tight tracking-[2px] text-[#E5F2DF] uppercase text-center whitespace-normal">
+              CREATE. INNOVATE.
             </span>
           </div>
 
