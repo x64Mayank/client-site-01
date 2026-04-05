@@ -55,7 +55,7 @@ const Hero = () => {
       </motion.div>
 
       {/* Content Container - Centered and Scale-Optimized */}
-      <div className="container mx-auto px-6 md:px-12 relative z-20">
+      <div className="w-full pl-6 md:pl-10 lg:pl-10 relative z-20">
         <motion.div
           initial={{ opacity: 0, x: -50 }}
           animate={{ opacity: 1, x: 0 }}
@@ -77,7 +77,7 @@ const Hero = () => {
               variant="primary" 
               icon={ArrowUpRight} 
               rotateOnHover
-              className="py-4 md:py-5 px-8 md:px-10 text-sm md:text-base shadow-2xl px1-cursor"
+              className="py-4 md:py-5 px-8 md:px-10 text-sm md:text-base shadow-2xl px1-cursor w-[80%] md:w-auto"
             >
               View All Services
             </Button>
@@ -85,7 +85,7 @@ const Hero = () => {
               variant="primary" 
               icon={ArrowUpRight} 
               rotateOnHover
-              className="py-4 md:py-5 px-8 md:px-10 text-sm md:text-base bg-emerald-950/40 border border-white/20 backdrop-blur-md hover:bg-emerald-900/60 shadow-xl px1-cursor"
+              className="py-4 md:py-5 px-8 md:px-10 text-sm md:text-base bg-emerald-950/40 border border-white/20 backdrop-blur-md hover:bg-emerald-900/60 shadow-xl px1-cursor w-[70%] md:w-auto"
             >
               Our Projects
             </Button>
