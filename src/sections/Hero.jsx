@@ -30,7 +30,7 @@ const Hero = () => {
   }, []);
 
   return (
-    <section className="relative min-h-[calc(100vh-82px)] lg:min-h-[calc(100vh-140px)] xl:max-h-[900px] flex items-start md:items-center overflow-hidden bg-brand-dark pt-32 pb-20 md:py-28 xl:py-32">
+    <section className="relative min-h-[calc(100vh-82px)] lg:min-h-[calc(100vh-140px)] xl:max-h-[900px] flex items-start md:items-center overflow-hidden bg-brand-dark pt-16 sm:pt-32 pb-20 md:py-28 xl:py-32">
       {/* Background Slideshow with Parallax & Ken Burns effect */}
       <motion.div 
         style={{ y: y1 }}
@@ -56,7 +56,7 @@ const Hero = () => {
                 src={HERO_IMAGES[currentIndex]} 
                 alt="Alfa Facade - Premium Architecture" 
                 className="w-full h-full object-cover"
-                fetchpriority={currentIndex === 0 ? "high" : "auto"}
+                fetchPriority={currentIndex === 0 ? "high" : "auto"}
                 loading="eager"
                 decoding="async"
               />
@@ -66,7 +66,7 @@ const Hero = () => {
       </motion.div>
 
       {/* Content Container - Centered and Scale-Optimized */}
-      <div className="w-full pl-6 md:pl-10 lg:pl-10 relative z-20">
+      <div className="w-full pl-6 md:pl-10 lg:pl-10 pr-6 md:pr-10 relative z-20">
         <motion.div
           initial={{ opacity: 0, x: -50 }}
           animate={{ opacity: 1, x: 0 }}
@@ -88,7 +88,7 @@ const Hero = () => {
               variant="primary" 
               icon={ArrowUpRight} 
               rotateOnHover
-              className="py-4 md:py-5 px-8 md:px-10 text-sm md:text-base shadow-2xl px1-cursor w-[80%] md:w-auto"
+              className="py-4 sm:py-5 px-8 sm:px-10 text-sm sm:text-base shadow-2xl px1-cursor w-[80%] sm:w-auto"
             >
               View All Services
             </Button>
@@ -96,7 +96,7 @@ const Hero = () => {
               variant="primary" 
               icon={ArrowUpRight} 
               rotateOnHover
-              className="py-4 md:py-5 px-8 md:px-10 text-sm md:text-base bg-emerald-950/40 border border-white/20 backdrop-blur-md hover:bg-emerald-900/60 shadow-xl px1-cursor w-[70%] md:w-auto"
+              className="py-4 sm:py-5 px-8 sm:px-10 text-sm sm:text-base bg-emerald-950/40 border border-white/20 backdrop-blur-md hover:bg-emerald-900/60 shadow-xl px1-cursor w-[70%] sm:w-auto"
             >
               Our Projects
             </Button>
