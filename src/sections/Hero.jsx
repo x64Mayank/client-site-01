@@ -4,15 +4,23 @@ import { ArrowUpRight, ArrowRight } from 'lucide-react';
 import Button from '../components/ui/Button';
 
 const HERO_IMAGES = [
-  "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80",
-  "/hero-2.jpg",
-  "/hero-3.jpg"
+  "/hero-1.webp",
+  "/hero-2.webp",
+  "/hero-3.webp"
 ];
 
 const Hero = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const { scrollYProgress } = useScroll();
   const y1 = useTransform(scrollYProgress, [0, 1], [0, -200]);
+
+  // Preload subsequent images to avoid transition flicker
+  useEffect(() => {
+    HERO_IMAGES.forEach((src) => {
+      const img = new Image();
+      img.src = src;
+    });
+  }, []);
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -48,6 +56,9 @@ const Hero = () => {
                 src={HERO_IMAGES[currentIndex]} 
                 alt="Alfa Facade - Premium Architecture" 
                 className="w-full h-full object-cover"
+                fetchpriority={currentIndex === 0 ? "high" : "auto"}
+                loading="eager"
+                decoding="async"
               />
             </motion.div>
           </motion.div>
