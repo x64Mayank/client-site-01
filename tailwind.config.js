@@ -8,20 +8,12 @@ export default {
     extend: {
       colors: {
         brand: {
-          primary: '#09402C',    // Extracted from VariableID:1:56
-          secondary: '#037353',  // Shorter variable shade
-          accent: '#A6A182',     // Muted gold/khaki
-          dark: '#0D0D0D',       // VariableID:1:29
-          light: '#EDEFED',      // Background shade
-          surface: '#FFFFFF',    // VariableID:1:4
-        },
-        alfa: {
-          green: {
-            50: '#E5F2DF',
-            500: '#038C65',
-            700: '#075942',
-            900: '#09402C',
-          }
+          primary: '#E6353A',    // Base Red
+          secondary: '#C9050B',  // Dark Red
+          accent: '#E5F2DF',     // Zanah Light Green
+          dark: '#313131',       // Mine Shaft
+          light: '#F2F2F2',      // Concrete
+          surface: '#FFFFFF',
         }
       },
       fontFamily: {

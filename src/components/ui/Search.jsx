@@ -62,9 +62,9 @@ const SearchOverlay = ({ isOpen, onClose }) => {
                   value={query}
                   onChange={(e) => setQuery(e.target.value)}
                   placeholder="Search here..."
-                  className="flex-grow text-[#075942] text-xl font-display bg-transparent outline-none placeholder-[#075942]/60 tracking-wide"
+                  className="flex-grow text-brand-primary text-xl font-display bg-transparent outline-none placeholder-brand-primary/60 tracking-wide"
                 />
-                <button className="ml-4 text-gray-400 hover:text-[#075942] transition-colors duration-200 flex-shrink-0">
+                <button className="ml-4 text-gray-400 hover:text-brand-primary transition-colors duration-200 flex-shrink-0">
                   <Search size={24} strokeWidth={2.5} />
                 </button>
                 <motion.div
