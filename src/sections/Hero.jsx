@@ -74,13 +74,11 @@ const Hero = () => {
           className="max-w-3xl xl:max-w-4xl"
         >
           <h1 className="text-white text-4xl sm:text-5xl md:text-7xl xl:text-7xl font-display font-medium leading-[1.1] mb-6 md:mb-8 tracking-tight px1-cursor">
-            Transforming India's <br />
-            <span className="font-bold">Skyline for 50+ Years</span>
+            Welcome to the world of Shri Shyam G Group.
           </h1>
           
           <p className="text-white/85 text-base md:text-lg lg:text-xl font-body max-w-xl md:max-w-2xl mb-8 md:mb-12 leading-relaxed tracking-wide px1-cursor">
-            From aluminium window installers in the 1970s to India's premier facade specialists, 
-            Alfa Facade Systems delivers world-class ACP cladding, structural glazing, and architectural solutions.
+            For over a decade since 2012, our passion and dedication have allowed us to transform the face of residential and commercial projects across Uttar Pradesh, Bihar, and Nepal.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 md:gap-5">
@@ -88,15 +86,18 @@ const Hero = () => {
               variant="primary" 
               icon={ArrowUpRight} 
               rotateOnHover
-              className="py-4 sm:py-5 px-8 sm:px-10 text-sm sm:text-base shadow-2xl px1-cursor w-[80%] sm:w-auto"
+              href="#services"
+              className="w-full sm:w-fit xl:w-[303px]"
             >
               View All Services
             </Button>
+
             <Button 
               variant="primary" 
               icon={ArrowUpRight} 
               rotateOnHover
-              className="py-4 sm:py-5 px-8 sm:px-10 text-sm sm:text-base bg-emerald-950/40 border border-white/20 backdrop-blur-md hover:bg-emerald-900/60 shadow-xl px1-cursor w-[70%] sm:w-auto"
+              href="#projects"
+              className="w-full sm:w-fit xl:w-[273px]"
             >
               Our Projects
             </Button>
