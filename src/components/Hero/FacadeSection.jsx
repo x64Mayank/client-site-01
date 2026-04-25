@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { ArrowUpRight, ArrowLeft, ArrowRight } from "lucide-react";
+import StatsSection from "./StatsSection";
 
 const FacadeSection = () => {
   const cards = [
@@ -53,9 +54,13 @@ const FacadeSection = () => {
   };
 
   return (
-    <section className="w-full">
+    <section className="w-full bg-white">
+
+      <div className="mb-3 lg:mb-5">
+        <StatsSection />
+      </div>
       {/* TOP SECTION */}
-      <div className="bg-[#E9C14B] w-full py-16 px-6 lg:px-16 relative">
+      <div className="bg-[#FACE4D] w-full py-16 px-6 lg:px-16 relative">
         <div className="max-w-[1200px] mx-auto flex justify-center relative">
           <div className="max-w-[700px] flex gap-6 mx-auto">
             <div className="w-[3px] bg-red-500 mt-2" />
