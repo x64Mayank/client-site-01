@@ -17,7 +17,23 @@ const FacadeSection = () => {
       img: "/images/facade1.png",
     },
     {
-      title: "Glazing & Facade",
+      title: "Steel & Glass Railing",
+      img: "/images/facade1.png",
+    },
+    {
+      title: "System Aluminium & Doors & Windows",
+      img: "/images/facade1.png",
+    },
+    {
+      title: "Rainscreen Cladding",
+      img: "/images/facade1.png",
+    },
+    {
+      title: "UPVC Window & Door",
+      img: "/images/facade1.png",
+    },
+    {
+      title: "Installation",
       img: "/images/facade1.png",
     },
   ];
@@ -54,7 +70,7 @@ const FacadeSection = () => {
   };
 
   return (
-    <section className="w-full bg-white">
+    <section className="w-full bg-white relative">
 
       <div className="mb-3 lg:mb-5">
         <StatsSection />
@@ -158,7 +174,7 @@ const FacadeSection = () => {
         </div>
       </div>
 
-      <div className="hidden lg:block absolute bottom-0 left-0 right-0 h-[1px] bg-black/20 z-20"></div>
+      <div className="w-full h-[1px] bg-black/20"></div>
     </section>
   );
 };
