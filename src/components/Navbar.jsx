@@ -76,11 +76,11 @@ const Navbar = () => {
                   </div>
 
                   <div className="flex flex-col min-w-0">
-                    <span className="font-display font-normal text-body-sm xl:text-body-lg leading-[19px] text-white whitespace-nowrap">
+                    <span className="font-display font-normal text-[13px] xl:text-[17px] leading-[19px] text-white whitespace-nowrap">
                       {info.label}
                     </span>
 
-                    <span className="font-body font-normal text-body-sm xl:text-body-md 2xl:text-body-lg leading-normal text-brand-light mt-1 whitespace-normal line-clamp-2">
+                    <span className="font-body font-normal text-[13px] xl:text-[16px] 2xl:text-[18px] leading-[18.6px] text-brand-light mt-1 whitespace-normal line-clamp-2">
                       {info.value}
                     </span>
                   </div>
