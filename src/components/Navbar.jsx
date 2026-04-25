@@ -66,7 +66,7 @@ const Navbar = () => {
             {contactInfo.map((info) => (
               <div
                 key={info.id}
-                className={`h-full flex items-center px-1 xl:px-6 2xl:px-8 group hover:bg-white/5 transition-colors cursor-pointer flex-grow min-w-0 ${
+                className={`h-full flex items-center px-1 xl:px-3.5 2xl:px-6 group hover:bg-white/5 transition-colors cursor-pointer flex-grow min-w-0 ${
                   info.id === 'find' ? 'border-none' : 'border-r border-brand-dark'
                 }`}
               >
@@ -81,7 +81,7 @@ const Navbar = () => {
                     </span>
 
                     <span
-                      className={`font-body font-normal text-[11px] xl:text-[13px] 2xl:text-[16px] leading-[17.6px] text-brand-light mt-1 ${
+                      className={`font-body font-normal text-[11px] xl:text-[14px] 2xl:text-[16px] leading-[17.6px] text-brand-light mt-1 ${
                         info.id === 'find'
                           ? 'whitespace-normal line-clamp-2'
                           : 'whitespace-nowrap'

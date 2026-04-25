@@ -1,6 +1,7 @@
 import React from 'react';
 import Navbar from './components/Navbar';
 import Hero from './sections/Hero';
+import FacadeSection from './components/Hero/FacadeSection';
 import SmoothScroll from './components/ui/SmoothScroll';
 
 import { Construction } from 'lucide-react';
@@ -15,7 +16,7 @@ function App() {
         <Navbar />
         <main>
           <Hero />
-          
+          <FacadeSection />
           {/* Site Under Construction Section */}
           <section className="h-[80vh] flex flex-col items-center justify-center bg-brand-dark relative overflow-hidden border-y border-white/5">
             <div className="absolute inset-0 bg-brand-primary/5 pointer-events-none" />
