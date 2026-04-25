@@ -164,6 +164,87 @@ const Navbar = () => {
           </button>
         </div>
       </div>
+       
+      {/* Mobile Menu */}
+      <AnimatePresence>
+        {isMobileMenuOpen && (
+          <>
+            {/* Backdrop */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="fixed inset-0 z-40 lg:hidden bg-black/40"
+              onClick={() => setIsMobileMenuOpen(false)}
+            />
+
+            {/* Drawer */}
+            <motion.div
+              initial={{ opacity: 1, x: '-100%' }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 1, x: '-100%' }}
+              transition={{ type: 'tween', duration: 0.3 }}
+              className="fixed inset-y-0 left-0 z-50 lg:hidden bg-white flex flex-col w-full sm:w-1/3"
+            >
+              {/* Menu Header: Logo + Close */}
+              <div className="flex items-center justify-between px-5 py-4 border-b border-gray-200">
+                <div className="flex flex-row items-center gap-[12px]">
+                  <img src={logo} alt="Shri Shyam G Group Logo" className="w-[40px] h-[40px] object-contain flex-shrink-0" />
+                  <span className="text-brand-primary font-display font-bold text-[13px] sm:text-[14.6px] leading-[25.92px] uppercase tracking-[0.137em] whitespace-normal">
+                    Shri Shyam G Group
+                  </span>
+                </div>
+                <button
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className="text-gray-600 hover:text-gray-900"
+                >
+                  <X size={24} />
+                </button>
+              </div>
+
+              {/* Search Bar */}
+              <div className="px-5 py-4 border-b border-gray-200">
+                <div className="flex items-center border border-gray-300 rounded px-3 py-2">
+                  <input
+                    type="text"
+                    placeholder="Search here..."
+                    className="flex-grow text-sm text-gray-600 outline-none bg-transparent"
+                  />
+                  <Search size={18} className="text-gray-400 flex-shrink-0" />
+                </div>
+              </div>
+
+              {/* Nav Links */}
+              <div className="flex flex-col overflow-y-auto flex-grow">
+                {navLinks.map((link) => (
+                  <div key={link.name} className="border-b border-gray-100">
+                    <div className="flex items-center justify-between px-5 py-4">
+                      <a
+                        href={link.href}
+                        className="font-display font-semibold text-[13px] tracking-[1px] text-brand-primary uppercase"
+                        onClick={() => !link.hasDropdown && setIsMobileMenuOpen(false)}
+                      >
+                        {link.name}
+                      </a>
+                      {link.hasDropdown && (
+                        <button
+                          onClick={() => toggleExpanded(link.name)}
+                          className="text-brand-primary"
+                        >
+                          <ChevronDown
+                            size={18}
+                            className={`transition-transform duration-300 ${expandedLinks[link.name] ? 'rotate-180' : ''}`}
+                          />
+                        </button>
+                      )}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </motion.div>
+          </>
+        )}
+      </AnimatePresence>  
 
       <SearchOverlay isOpen={isSearchOpen} onClose={() => setIsSearchOpen(false)} />
     </nav>
