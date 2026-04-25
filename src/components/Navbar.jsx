@@ -48,7 +48,7 @@ const Navbar = () => {
   return (
     <nav className="relative w-full z-50 flex flex-col items-center">
       {/* Row 1: Top Bar */}
-      <div className="w-full bg-brand-primary h-[62px] border-b border-brand-dark hidden lg:flex items-center justify-center">
+      <div className="w-full bg-brand-primary h-[86.94px] border-b border-brand-dark hidden lg:flex items-center justify-center">
         <div className="w-full h-full flex items-center px-0 max-w-[1920px] flex-nowrap">
 
           {/* Rebranded Logo */}
@@ -76,11 +76,11 @@ const Navbar = () => {
                   </div>
 
                   <div className="flex flex-col min-w-0">
-                    <span className="font-display font-normal text-[12px] xl:text-[14px] leading-[17.6px] text-white whitespace-nowrap">
+                    <span className="font-display font-normal text-[13px] xl:text-[17px] leading-[19px] text-white whitespace-nowrap">
                       {info.label}
                     </span>
 
-                    <span className="font-body font-normal text-[12px] xl:text-[14px] 2xl:text-[16px] leading-[17.6px] text-brand-light mt-1 whitespace-normal line-clamp-2">
+                    <span className="font-body font-normal text-[13px] xl:text-[16px] 2xl:text-[18px] leading-[18.6px] text-brand-light mt-1 whitespace-normal line-clamp-2">
                       {info.value}
                     </span>
                   </div>
@@ -123,7 +123,7 @@ const Navbar = () => {
 
           {/* Tagline - Centered and Reflow-friendly */}
           <div className="hidden lg:flex lg:w-[240px] xl:w-[300px] h-full bg-brand-primary items-center justify-center px-4 border-r border-brand-dark flex-shrink-0 px1-cursor">
-            <span className="text-brand-accent font-display font-medium text-[12px] xl:text-[14px] 2xl:text-[15px] leading-[25.92px] tracking-[0.1133em] uppercase text-center whitespace-nowrap">
+            <span className="text-brand-accent font-display font-semibold text-[12px] xl:text-[14px] 2xl:text-[15px] leading-[25.92px] tracking-[0.1133em] uppercase text-center whitespace-nowrap">
               YOUR DELIGHT,OUR VICTORY.
             </span>
           </div>
