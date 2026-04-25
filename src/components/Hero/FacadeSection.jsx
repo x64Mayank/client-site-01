@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { ArrowUpRight, ArrowLeft, ArrowRight } from "lucide-react";
 
 const FacadeSection = () => {
@@ -22,7 +22,23 @@ const FacadeSection = () => {
   ];
 
   const [currentIndex, setCurrentIndex] = useState(0);
-  const visibleCards = 3;
+  const [visibleCards, setVisibleCards] = useState(3);
+
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth < 640) {
+        setVisibleCards(1);
+      } else if (window.innerWidth < 1024) {
+        setVisibleCards(2);
+      } else {
+        setVisibleCards(3);
+      }
+    };
+
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   const handleNext = () => {
     if (currentIndex < cards.length - visibleCards) {
@@ -65,7 +81,7 @@ const FacadeSection = () => {
       {/* CARDS SECTION */}
       <div className="relative bg-[#f5f5f5] py-0">
         {/* VIEWPORT */}
-        <div className="overflow-hidden pl-0 pr-[80px]">
+        <div className="overflow-hidden pl-0 lg:pr-[80px] pr-0">
           {/* SLIDER */}
           <div
             className="flex transition-transform duration-500 ease-in-out"
@@ -76,7 +92,7 @@ const FacadeSection = () => {
             {cards.map((card, index) => (
               <div
                 key={index}
-                className="min-w-[33.3333%] flex flex-col px-4 py-6 relative z-10"
+                className="min-w-full sm:min-w-[50%] lg:min-w-[33.3333%] flex flex-col px-4 py-6 relative z-10"
               >
                 {/* MOVING SEPARATOR LINE */}
                 {index !== 0 && (
@@ -100,7 +116,7 @@ const FacadeSection = () => {
           </div>
         </div>
 
-        {/* SIDE ARROWS */}
+        {/* SIDE ARROWS (DESKTOP) */}
         <div className="hidden lg:flex flex-col absolute right-0 top-0 h-full w-[60px] gap-[3px] bg-[#f5f5f5]">
           <button
             onClick={handleNext}
@@ -114,6 +130,25 @@ const FacadeSection = () => {
             className="flex-1 bg-red-600 text-white flex items-center justify-center"
           >
             <ArrowLeft size={22} />
+          </button>
+        </div>
+        
+        <div className="block lg:hidden w-full h-[1px] bg-black/20 mt-1"></div>
+
+        {/* BOTTOM ARROWS (TABLET & MOBILE) */}
+        <div className="flex lg:hidden justify-center gap-4 mt-6">
+          <button
+            onClick={handlePrev}
+            className="bg-red-600 text-white p-3 flex items-center justify-center"
+          >
+            <ArrowLeft size={30} />
+          </button>
+
+          <button
+            onClick={handleNext}
+            className="bg-red-600 text-white p-3 flex items-center justify-center"
+          >
+            <ArrowRight size={30} />
           </button>
         </div>
       </div>
