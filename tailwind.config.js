@@ -12,8 +12,10 @@ export default {
           secondary: '#C9050B',  // Dark Red
           accent: '#E5F2DF',     // Zanah Light Green
           dark: '#313131',       // Mine Shaft
+          text: '#0D0D0D',       // Cod Gray
           light: '#F2F2F2',      // Concrete
           surface: '#FFFFFF',
+          border: '#D9D9D9',     // Alto
         }
       },
       fontFamily: {
