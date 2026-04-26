@@ -10,6 +10,7 @@ import { motion } from 'framer-motion';
 import Cursor from './components/ui/Cursor';
 
 import About from './sections/About';
+import Partners from './sections/Partners';
 import HowWeWork from './sections/HowWeWork';
 import Sustainability from './sections/Sustainability';
 
@@ -22,8 +23,9 @@ function App() {
           <Hero />
           <About />
           <FacadeSection />
-          <HowWeWork />
           <Sustainability />
+          <HowWeWork />
+          <Partners />
           
           {/* Site Under Construction Section */}
           <section className="h-[80vh] flex flex-col items-center justify-center bg-brand-dark relative overflow-hidden border-y border-white/5">
