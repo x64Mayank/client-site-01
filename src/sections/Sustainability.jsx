@@ -1,10 +1,12 @@
 import React from "react";
 import { ArrowUpRight } from "lucide-react";
 import { motion } from "framer-motion";
+import SustainabilityTabs from "../components/SustainabilityTabs";
 
 const SustainabilitySection = () => {
   return (
-    <section className="w-full bg-[#E6C04A] px-6 lg:px-16 py-14 relative">
+    <>
+    <section className="w-full bg-[#FACE4D] px-6 lg:px-16 py-14 relative">
       
       {/* CONTENT */}
       <div className="max-w-[1400px] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
@@ -63,8 +65,9 @@ const SustainabilitySection = () => {
         </div>
 
       </div>
-
     </section>
+    <SustainabilityTabs />
+    </>
   );
 };
 
