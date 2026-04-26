@@ -55,17 +55,14 @@ const HowWeWork = () => {
         </div>
       </div>
 
-      {/* FULL WIDTH LINE */}
       <div className="w-full h-[1px] bg-black/10 mb-6"></div>
 
-      {/* CONTENT */}
       <div className="relative">
         
-        {/* LEFT + CENTER */}
         <div className="mx-auto grid grid-cols-1 lg:grid-cols-[1fr_2.6fr_1.7fr] gap-10">
           
           {/* LEFT - STEPS */}
-          <div className="flex flex-col border-r border-black/10">
+          <div className="flex flex-col">
             {steps.map((step) => {
               const isActive = activeStep === step.id;
 
@@ -74,33 +71,35 @@ const HowWeWork = () => {
                   key={step.id}
                   onClick={() => setActiveStep(step.id)}
                   className={`relative flex items-center gap-4 px-5 py-8 lg:py-10 cursor-pointer 
+                    border-r border-black/10
                     ${step.id !== steps.length ? "border-b border-black/10" : ""}
                     ${isActive ? "bg-white" : "opacity-60"}
                   `}
                 >
-                  {/* TOP RED LINE */}
                   {isActive && (
                     <div className="absolute top-0 left-0 w-full h-[2px] bg-[#C9050B]" />
                   )}
 
-                  {/* BOTTOM RED LINE */}
                   {isActive && (
                     <div className="absolute bottom-0 left-0 w-full h-[2px] bg-[#C9050B]" />
                   )}
 
-                  {/* NUMBER */}
+                  {/* Mask extra vertical line only for last active */}
+                  {step.id === steps.length && isActive && (
+                    <div className="absolute right-0 bottom-0 w-[1px] h-[6px] bg-white z-10"></div>
+                  )}
+
                   <span
                     className={`font-semibold text-[20px] lg:text-[22px] ${
-                      isActive ? "text-[#C9050B]" : "text-black/50"
+                      isActive ? "text-[#C9050B]" : "text-[#7D0000]"
                     }`}
                   >
                     {String(step.id).padStart(2, "0")}.
                   </span>
 
-                  {/* TITLE */}
                   <p
                     className={`text-[15px] lg:text-[16px] font-medium ${
-                      isActive ? "text-[#C9050B]" : "text-black/50"
+                      isActive ? "text-[#7D0000]" : "text-black/50"
                     }`}
                   >
                     {step.title}
@@ -126,32 +125,32 @@ const HowWeWork = () => {
               {current.description}
             </p>
           </div>
-        </div>
 
-        {/* RIGHT - EXTENDED */}
-        <div className="lg:absolute lg:right-0 lg:top-0 lg:w-[32%] mt-10 lg:mt-0">
-          <div className="flex flex-col gap-10">
-            <img
-              src={current.img}
-              alt=""
-              className="w-full h-[500px] object-cover"
-            />
+          {/* RIGHT */}
+          <div className="mt-10 lg:mt-0">
+            <div className="flex flex-col gap-10">
+              <img
+                src={current.img}
+                alt=""
+                className="w-full h-[500px] object-cover"
+              />
 
-            <Button 
-              variant="primary" 
-              icon={ArrowUpRight} 
-              rotateOnHover
-              href="#services"
-              className="w-full sm:w-fit xl:w-[410px]"
-            >
-              Let's Work Together
-            </Button>
+              <Button 
+                variant="primary" 
+                icon={ArrowUpRight} 
+                rotateOnHover
+                href="#services"
+                className="w-full"
+              >
+                Let's Work Together
+              </Button>
+            </div>
           </div>
+
         </div>
       </div>
 
-      {/* FOOTER TEXT */}
-      <div className="mx-auto mt-10 text-[12px] tracking-wide text-black/50">
+      <div className="mx-auto mt-2 text-[15px] tracking-wide text-black/50">
         READY TO START YOUR PROJECT WITH A PROVEN PROCESS?
       </div>
     </section>
