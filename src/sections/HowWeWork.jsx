@@ -66,21 +66,48 @@ const HowWeWork = () => {
           
           {/* LEFT - STEPS */}
           <div className="flex flex-col border-r border-black/10">
-            {steps.map((step) => (
-              <div
-                key={step.id}
-                onClick={() => setActiveStep(step.id)}
-                className={`flex items-center gap-4 px-5 py-8 lg:py-10 cursor-pointer 
-                  ${step.id !== steps.length ? "border-b border-black/10" : ""}
-                  ${activeStep === step.id ? "bg-white" : "opacity-60"}
-                `}
-              >
-                <span className="text-[#C9050B] font-semibold text-[20px] lg:text-[22px]">
-                  {String(step.id).padStart(2, "0")}.
-                </span>
-                <p className="text-[15px] lg:text-[16px] font-medium">{step.title}</p>
-              </div>
-            ))}
+            {steps.map((step) => {
+              const isActive = activeStep === step.id;
+
+              return (
+                <div
+                  key={step.id}
+                  onClick={() => setActiveStep(step.id)}
+                  className={`relative flex items-center gap-4 px-5 py-8 lg:py-10 cursor-pointer 
+                    ${step.id !== steps.length ? "border-b border-black/10" : ""}
+                    ${isActive ? "bg-white" : "opacity-60"}
+                  `}
+                >
+                  {/* TOP RED LINE */}
+                  {isActive && (
+                    <div className="absolute top-0 left-0 w-full h-[2px] bg-[#C9050B]" />
+                  )}
+
+                  {/* BOTTOM RED LINE */}
+                  {isActive && (
+                    <div className="absolute bottom-0 left-0 w-full h-[2px] bg-[#C9050B]" />
+                  )}
+
+                  {/* NUMBER */}
+                  <span
+                    className={`font-semibold text-[20px] lg:text-[22px] ${
+                      isActive ? "text-[#C9050B]" : "text-black/50"
+                    }`}
+                  >
+                    {String(step.id).padStart(2, "0")}.
+                  </span>
+
+                  {/* TITLE */}
+                  <p
+                    className={`text-[15px] lg:text-[16px] font-medium ${
+                      isActive ? "text-[#C9050B]" : "text-black/50"
+                    }`}
+                  >
+                    {step.title}
+                  </p>
+                </div>
+              );
+            })}
           </div>
 
           {/* CENTER */}

@@ -56,7 +56,7 @@ const About = () => {
           {/* 768/1024: row, 50/50, h:180, red box p:30/20              */}
           {/* 1440: 1270×348 absolute, logo+lines+redbox                 */}
           {/* ═══════════════════════════════════════════════════════════ */}
-          <div className="md:h-[180px] xl:h-auto xl:absolute xl:top-[135px] xl:left-[15px] xl:w-[1270px] xl:h-[348px] z-20 pointer-events-none">
+          <div className="mt-6 md:mt-0 md:h-[180px] xl:h-auto xl:absolute xl:top-[135px] xl:left-[15px] xl:w-[1270px] xl:h-[348px] z-20 pointer-events-none">
             
             <div className="flex flex-col md:flex-row w-full h-full">
               

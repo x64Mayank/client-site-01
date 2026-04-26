@@ -174,7 +174,7 @@ const FacadeSection = () => {
         </div>
       </div>
 
-      <div className="w-full h-[1px] bg-black/20"></div>
+      <div className="hidden lg:block w-full h-[1px] bg-black/20 mt-0 lg:mt-0"></div>
     </section>
   );
 };
