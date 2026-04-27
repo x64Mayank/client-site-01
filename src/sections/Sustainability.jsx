@@ -12,14 +12,14 @@ const SustainabilitySection = () => {
       <div className="max-w-[1400px] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
         
         {/* LEFT */}
-        <h2 className="text-[#C9050B] text-[32px] lg:text-[48px] font-semibold leading-tight max-w-[600px]">
+        <h2 className="text-[#C9050B] text-[32px] lg:text-[48px] font-semibold leading-tight">
           We Are Committed To Environmental
           <br />
           And Social Sustainability
         </h2>
 
         {/* RIGHT */}
-        <div className="flex flex-col gap-6 max-w-[520px]">
+        <div className="flex flex-col gap-6 w-full">
           <p className="text-[14px] text-black/70 leading-relaxed">
             At Alfa Facade Systems, sustainability isn’t an afterthought—it’s
             integral to how we engineer, source, and install. We’re committed
