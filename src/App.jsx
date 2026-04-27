@@ -15,6 +15,7 @@ import HowWeWork from './sections/HowWeWork';
 import Sustainability from './sections/Sustainability';
 import Projects from './sections/Projects';
 import Leadership from './sections/Leadership';
+import Testimonials from './sections/Testimonials';
 
 function App() {
   return (
@@ -30,6 +31,7 @@ function App() {
           <Partners />
           <Projects />
           <Leadership />
+          <Testimonials />
         </main>
         {/* Cursor placed inside the inner-most scroll wrapper for best blending */}
         <Cursor />
