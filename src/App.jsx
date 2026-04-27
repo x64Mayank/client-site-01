@@ -23,8 +23,8 @@ function App() {
           <Hero />
           <About />
           <FacadeSection />
-          <Sustainability />
           <HowWeWork />
+          <Sustainability />
           <Partners />
           
           {/* Site Under Construction Section */}
