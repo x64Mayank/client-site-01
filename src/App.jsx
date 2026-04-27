@@ -14,11 +14,12 @@ import Partners from './sections/Partners';
 import HowWeWork from './sections/HowWeWork';
 import Sustainability from './sections/Sustainability';
 import Projects from './sections/Projects';
+import Leadership from './sections/Leadership';
 
 function App() {
   return (
     <SmoothScroll>
-      <div className="min-h-screen bg-brand-dark overflow-hidden">
+      <div className="min-h-screen bg-white overflow-hidden">
         <Navbar />
         <main>
           <Hero />
@@ -28,6 +29,7 @@ function App() {
           <Sustainability />
           <Partners />
           <Projects />
+          <Leadership />
         </main>
         {/* Cursor placed inside the inner-most scroll wrapper for best blending */}
         <Cursor />
