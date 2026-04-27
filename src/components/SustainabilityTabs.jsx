@@ -30,17 +30,17 @@ const SustainabilityTabs = () => {
     <section className="w-full">
       
       {/* TOP TABS */}
-      <div className="flex flex-wrap w-full">
-        {tabs.map((tab) => {
+      <div className="flex flex-col lg:flex-row w-full">
+        {tabs.map((tab, index) => {
           const isActive = activeTab === tab.id;
 
           return (
             <div
               key={tab.id}
               onMouseEnter={() => setActiveTab(tab.id)}
-              className={`w-full md:w-1/2 lg:flex-1 cursor-pointer px-6 py-7 flex items-center justify-between transition-all duration-300 
+              className={`w-full lg:flex-1 cursor-pointer px-4 md:px-6 py-5 md:py-7 flex items-center justify-between transition-all duration-300 
                 ${isActive ? "bg-[#FFFFFF] text-[#7D0000]" : "bg-[#C9050B] text-[#FFFFFF]"}
-                ${tab.id !== tabs.length ? "border-r border-white/30" : ""}
+                ${index !== tabs.length - 1 ? "border-b lg:border-b-0 lg:border-r border-white/20" : ""}
               `}
             >
               
@@ -49,19 +49,19 @@ const SustainabilityTabs = () => {
                 
                 {/* VERTICAL LINE */}
                 <div
-                  className={`w-[2px] h-[18px] ${
+                  className={`w-[2px] h-[16px] md:h-[18px] ${
                     isActive ? "bg-[#7D0000]" : "bg-[#FFFFFF]/70"
                   }`}
                 />
 
                 {/* TITLE */}
-                <span className="text-[18px] font-medium">
+                <span className="text-[15px] md:text-[18px] font-medium leading-tight">
                   {tab.title}
                 </span>
               </div>
 
               {/* NUMBER */}
-              <span className={`text-[18px] ${
+              <span className={`text-[15px] md:text-[18px] ml-4 ${
                 isActive ? "text-[#7D0000]" : "text-[#FFFFFF]"
               }`}>
                 {tab.number}
