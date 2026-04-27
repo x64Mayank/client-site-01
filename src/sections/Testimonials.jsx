@@ -29,7 +29,7 @@ const testimonialsData = [
   },
 ];
 
-// ✅ FIX: clone BOTH sides
+// clone BOTH sides
 const extendedData = [
   ...testimonialsData.slice(-3),
   ...testimonialsData,
@@ -37,20 +37,13 @@ const extendedData = [
 ];
 
 const Testimonials = () => {
-  // ✅ FIX: start from real first slide
   const [index, setIndex] = useState(3);
   const [transition, setTransition] = useState(true);
   const sliderRef = useRef(null);
 
-  const handleNext = () => {
-    setIndex((prev) => prev + 1);
-  };
+  const handleNext = () => setIndex((prev) => prev + 1);
+  const handlePrev = () => setIndex((prev) => prev - 1);
 
-  const handlePrev = () => {
-    setIndex((prev) => prev - 1);
-  };
-
-  // ✅ FIX: proper reset logic
   useEffect(() => {
     if (index === testimonialsData.length + 3) {
       setTimeout(() => {
@@ -67,35 +60,52 @@ const Testimonials = () => {
     }
   }, [index]);
 
-  // 👉 re-enable transition after reset
   useEffect(() => {
     if (!transition) {
       requestAnimationFrame(() => setTransition(true));
     }
   }, [transition]);
 
+  const getTranslateValue = () => {
+    if (typeof window === "undefined") return 100 / 3;
+
+    if (window.innerWidth >= 1024) return 100 / 3;
+    if (window.innerWidth >= 768) return 100 / 2;
+    return 100;
+  };
+
   return (
     <section className="w-full h-[600px] bg-[#F5F5F5] relative overflow-hidden">
       
       {/* TOP AREA */}
-      <div className="h-[223px] flex items-end relative px-16">
-        <div className="absolute left-32 top-0 flex gap-4">
-          <div className="w-[108px] h-[215px] bg-[#C9050B] [clip-path:polygon(0_0,100%_0,100%_70%,60%_100%,0_100%)]"></div>
-          <div className="w-[108px] h-[215px] bg-[#C9050B] [clip-path:polygon(0_0,100%_0,100%_70%,60%_100%,0_100%)]"></div>
+      <div className="h-[160px] md:h-[223px] flex items-center md:items-end justify-center relative px-4 overflow-visible">
+        
+        {/* SHAPES (FIXED) */}
+        <div className="hidden md:flex absolute top-0 left-1/2 -translate-x-1/2 w-full md:max-w-[800px] lg:max-w-[1140px] pointer-events-none">
+          <div className="flex gap-4">
+            <div className="w-[108px] h-[215px] bg-[#C9050B] [clip-path:polygon(0_0,100%_0,100%_70%,60%_100%,0_100%)]"></div>
+            <div className="w-[108px] h-[215px] bg-[#C9050B] [clip-path:polygon(0_0,100%_0,100%_70%,60%_100%,0_100%)]"></div>
+          </div>
         </div>
 
-        <h2 className="text-[48px] lg:text-[82px] max-w-[722px] ml-[200px] lg:ml-[450px] font-semibold">
-          Testimonials
-        </h2>
+        {/* CENTERED CONTAINER */}
+        <div className="w-full md:max-w-[800px] lg:max-w-[1140px] flex items-end gap-16 mx-auto">
+          
+          {/* HEADING */}
+          <h2 className="text-[36px] md:text-[48px] lg:text-[82px] max-w-[722px] mx-auto md:ml-80 text-center md:text-right lg:text-left lg:ml-100 font-semibold">
+            Testimonials
+          </h2>
+
+        </div>
       </div>
 
       {/* BOTTOM AREA */}
-      <div className="h-[377px] flex relative">
+      <div className="h-[377px] flex flex-col lg:flex-row relative">
         
-        {/* LEFT ARROW */}
+        {/* LEFT ARROW (desktop only) */}
         <div 
           onClick={handlePrev}
-          className="w-[80px] bg-[#C9050B] flex items-center justify-center cursor-pointer"
+          className="hidden lg:flex w-[80px] bg-[#C9050B] items-center justify-center cursor-pointer"
         >
           <ArrowLeft className="text-white" />
         </div>
@@ -107,25 +117,25 @@ const Testimonials = () => {
             ref={sliderRef}
             className={`flex h-full ${transition ? "transition-transform duration-500 ease-in-out" : ""}`}
             style={{
-              transform: `translateX(-${index * 33.333}%)`,
+              transform: `translateX(-${index * getTranslateValue()}%)`,
             }}
           >
             {extendedData.map((item, i) => (
               <div
                 key={i}
-                className="flex-[0_0_33.333%] p-8 border-r border-black/10"
+                className="flex-[0_0_100%] md:flex-[0_0_50%] lg:flex-[0_0_33.333%] p-8 border-r border-black/10"
               >
-                <h4 className="text-lg text-[#C9050B] font-medium">
+                <h4 className="text-[16px] text-[#C9050B] font-medium">
                   {item.title}
                 </h4>
 
-                <p className="text-lg text-black/50 mb-6">
+                <p className="text-[14px] text-black/50 mb-6">
                   {item.role}
                 </p>
 
                 <div className="h-[1px] bg-black/10 mb-16"></div>
 
-                <p className="text-[18px] text-black/70">
+                <p className="text-[16px] text-black/70">
                   {item.text}
                 </p>
               </div>
@@ -134,12 +144,29 @@ const Testimonials = () => {
 
         </div>
 
-        {/* RIGHT ARROW */}
+        {/* RIGHT ARROW (desktop only) */}
         <div 
           onClick={handleNext}
-          className="w-[80px] bg-[#C9050B] flex items-center justify-center cursor-pointer"
+          className="hidden lg:flex w-[80px] bg-[#C9050B] items-center justify-center cursor-pointer"
         >
           <ArrowRight className="text-white" />
+        </div>
+
+        {/* MOBILE + TABLET ARROWS (below) */}
+        <div className="flex lg:hidden justify-center gap-6 mt-4">
+          <button
+            onClick={handlePrev}
+            className="bg-[#C9050B] w-[50px] h-[50px] flex items-center justify-center"
+          >
+            <ArrowLeft className="text-white" />
+          </button>
+
+          <button
+            onClick={handleNext}
+            className="bg-[#C9050B] w-[50px] h-[50px] flex items-center justify-center"
+          >
+            <ArrowRight className="text-white" />
+          </button>
         </div>
 
       </div>
