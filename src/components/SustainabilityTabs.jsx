@@ -30,49 +30,51 @@ const SustainabilityTabs = () => {
     <section className="w-full">
       
       {/* TOP TABS */}
-      <div className="flex flex-col lg:flex-row w-full">
-        {tabs.map((tab, index) => {
-          const isActive = activeTab === tab.id;
+      <div className="bg-[#C9050B]">
+        <div className="max-w-[1400px] mx-auto flex flex-col lg:flex-row w-full">
+          {tabs.map((tab, index) => {
+            const isActive = activeTab === tab.id;
 
-          return (
-            <div
-              key={tab.id}
-              onMouseEnter={() => setActiveTab(tab.id)}
-              className={`w-full lg:flex-1 cursor-pointer px-4 md:px-6 py-5 md:py-7 flex items-center justify-between transition-all duration-300 
-                ${isActive ? "bg-[#FFFFFF] text-[#7D0000]" : "bg-[#C9050B] text-[#FFFFFF]"}
-                ${index !== tabs.length - 1 ? "border-b lg:border-b-0 lg:border-r border-white/20" : ""}
-              `}
-            >
-              
-              {/* LEFT SIDE (line + title) */}
-              <div className="flex items-center gap-3">
+            return (
+              <div
+                key={tab.id}
+                onMouseEnter={() => setActiveTab(tab.id)}
+                className={`w-full lg:flex-1 cursor-pointer px-4 md:px-6 py-5 md:py-7 flex items-center justify-between transition-all duration-300 
+                  ${isActive ? "bg-[#FFFFFF] text-[#7D0000]" : "bg-[#C9050B] text-[#FFFFFF]"}
+                  ${index !== tabs.length - 1 ? "border-b lg:border-b-0 lg:border-r border-white/20" : ""}
+                `}
+              >
                 
-                {/* VERTICAL LINE */}
-                <div
-                  className={`w-[2px] h-[16px] md:h-[18px] ${
-                    isActive ? "bg-[#7D0000]" : "bg-[#FFFFFF]/70"
-                  }`}
-                />
+                {/* LEFT SIDE (line + title) */}
+                <div className="flex items-center gap-3">
+                  
+                  {/* VERTICAL LINE */}
+                  <div
+                    className={`w-[2px] h-[16px] md:h-[18px] ${
+                      isActive ? "bg-[#7D0000]" : "bg-[#FFFFFF]/70"
+                    }`}
+                  />
 
-                {/* TITLE */}
-                <span className="text-[15px] md:text-[18px] font-medium leading-tight">
-                  {tab.title}
+                  {/* TITLE */}
+                  <span className="text-[15px] md:text-[18px] font-medium leading-tight">
+                    {tab.title}
+                  </span>
+                </div>
+
+                {/* NUMBER */}
+                <span className={`text-[15px] md:text-[18px] ml-4 ${
+                  isActive ? "text-[#7D0000]" : "text-[#FFFFFF]"
+                }`}>
+                  {tab.number}
                 </span>
               </div>
-
-              {/* NUMBER */}
-              <span className={`text-[15px] md:text-[18px] ml-4 ${
-                isActive ? "text-[#7D0000]" : "text-[#FFFFFF]"
-              }`}>
-                {tab.number}
-              </span>
-            </div>
-          );
-        })}
+            );
+          })}
+        </div>
       </div>
 
       {/* IMAGE SECTION */}
-      <div className="w-full h-[400px] lg:h-[500px] overflow-hidden">
+      <div className="w-full h-[350px] md:h-[450px] lg:h-auto lg:aspect-[21/9] xl:aspect-[25/9] 2xl:max-h-[800px] overflow-hidden">
         <img
           src={current.img}
           alt=""

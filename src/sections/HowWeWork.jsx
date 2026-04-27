@@ -42,7 +42,7 @@ const HowWeWork = () => {
     <section className="w-full bg-[#f5f5f5] px-6 lg:px-16 py-16">
       
       {/* HEADER */}
-      <div className="mx-auto mb-10">
+      <div className="max-w-[1400px] mx-auto mb-10">
         <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6">
           
           <h2 className="text-[32px] lg:text-[40px] font-semibold text-black">
@@ -57,7 +57,7 @@ const HowWeWork = () => {
 
       <div className="w-full h-[1px] bg-black/10 mb-6"></div>
 
-      <div className="relative">
+      <div className="relative max-w-[1400px] mx-auto">
         
         <div className="mx-auto grid grid-cols-1 lg:grid-cols-[1fr_2.6fr_1.7fr] gap-10">
           
@@ -150,7 +150,7 @@ const HowWeWork = () => {
         </div>
       </div>
 
-      <div className="mx-auto mt-2 text-[15px] tracking-wide text-black/50">
+      <div className="max-w-[1400px] mx-auto mt-2 text-[15px] tracking-wide text-black/50">
         READY TO START YOUR PROJECT WITH A PROVEN PROCESS?
       </div>
     </section>
