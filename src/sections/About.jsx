@@ -1,10 +1,21 @@
-import React from 'react';
-import { motion } from 'framer-motion';
+import React, { useRef } from 'react';
+import { motion, useScroll, useTransform } from 'framer-motion';
 import { ArrowUpRight } from 'lucide-react';
 
 const About = () => {
+  const containerRef = useRef(null);
+  
+  // Parallax setup for the floating image
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start end", "end start"]
+  });
+
+  // Moves from left (-50px) to right (50px) as we scroll through
+  const parallaxX = useTransform(scrollYProgress, [0, 1], [-50, 50]);
+
   return (
-    <section className="relative w-full bg-white overflow-hidden">
+    <section ref={containerRef} className="relative w-full bg-white overflow-hidden">
       
       {/* Root container — centered 1270px width on xl to match content exactly */}
       <div className="max-w-[1440px] xl:max-w-[1270px] mx-auto px-[15px] xl:px-0 py-[70px] lg:py-[125px] relative">
@@ -152,6 +163,7 @@ const About = () => {
                   transition={{ duration: 0.8, ease: "easeOut", delay: 0.4 }}
                   className="absolute bottom-[-40px] left-3 md:bottom-4 md:-left-[69px] xl:bottom-auto xl:top-[331px] xl:-left-[86px] w-[140px] h-[180px] md:w-[220px] md:h-[300px] lg:w-[283px] lg:h-[388px] z-20 cursor-pointer overflow-hidden"
                   style={{
+                    x: parallaxX,
                     WebkitMaskImage: 'url(/images/about/about-mask.svg)',
                     WebkitMaskSize: '100% 100%',
                     WebkitMaskRepeat: 'no-repeat',
