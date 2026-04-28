@@ -56,13 +56,13 @@ const SustainabilityTabs = () => {
                   />
 
                   {/* TITLE */}
-                  <span className="text-[15px] md:text-[18px] font-medium leading-tight">
+                  <span className="text-[15px] md:text-[18px] font-display font-medium leading-tight">
                     {tab.title}
                   </span>
                 </div>
 
                 {/* NUMBER */}
-                <span className={`text-[15px] md:text-[18px] ml-4 ${
+                <span className={`text-[15px] md:text-[18px] ml-4 font-display ${
                   isActive ? "text-[#7D0000]" : "text-[#FFFFFF]"
                 }`}>
                   {tab.number}

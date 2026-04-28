@@ -92,7 +92,7 @@ const Testimonials = () => {
         <div className="w-full md:max-w-[800px] lg:max-w-[1140px] flex items-end gap-16 mx-auto">
           
           {/* HEADING */}
-          <h2 className="text-[36px] md:text-[48px] lg:text-[82px] max-w-[722px] mx-auto md:ml-80 text-center md:text-right lg:text-left lg:ml-100 font-semibold">
+          <h2 className="text-[36px] md:text-[48px] lg:text-[82px] max-w-[722px] mx-auto md:ml-80 text-center md:text-right lg:text-left lg:ml-100 font-display font-semibold">
             Testimonials
           </h2>
 
@@ -125,17 +125,17 @@ const Testimonials = () => {
                 key={i}
                 className="flex-[0_0_100%] md:flex-[0_0_50%] lg:flex-[0_0_33.333%] p-8 border-r border-black/10"
               >
-                <h4 className="text-[16px] text-[#C9050B] font-medium">
+                <h4 className="text-[16px] text-[#C9050B] font-display font-medium">
                   {item.title}
                 </h4>
 
-                <p className="text-[14px] text-black/50 mb-6">
+                <p className="text-[14px] text-black/50 mb-6 font-body">
                   {item.role}
                 </p>
 
                 <div className="h-[1px] bg-black/10 mb-16"></div>
 
-                <p className="text-[16px] text-black/70">
+                <p className="text-[16px] text-black/70 font-body leading-relaxed">
                   {item.text}
                 </p>
               </div>

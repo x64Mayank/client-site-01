@@ -50,7 +50,7 @@ const Leadership = () => {
           </div>
 
           {/* DESCRIPTION */}
-          <p className="text-white text-base lg:text-[16px] leading-[1.8] font-light mb-12 font-display">
+          <p className="text-white text-base lg:text-[16px] leading-[1.8] font-body mb-12 opacity-90">
             For over 40 years, Alfa Facade Systems has been shaped by visionary leadership and a passionate commitment to architectural excellence. Under the guidance of our founder Mr. Zoher Chiniwala, we've grown from a small aluminum workshop into one of India's most trusted names in facade engineering. Our leadership team combines decades of technical expertise with forward-thinking innovation, ensuring every project benefits from strategic insight and operational excellence.
           </p>
 

@@ -80,7 +80,7 @@ const Projects = () => {
         <div className="flex-1 flex flex-row items-center py-4 xl:py-0">
           {/* DESCRIPTION TEXT */}
           <div className="flex-1 px-10 lg:pl-[79px] lg:pr-[72px]">
-            <p className="text-[#0F0F0F] text-base lg:text-[17px] leading-[29.92px] max-w-[800px] font-light text-left font-display">
+            <p className="text-[#0F0F0F] text-base lg:text-[17px] leading-[29.92px] max-w-[800px] font-body text-left opacity-90">
               From bustling IT corridors to serene educational campuses, Alfa Facade Systems has left its mark on India’s most prestigious developments. Explore how we’ve transformed architectural visions into reality.
             </p>
           </div>
@@ -114,7 +114,7 @@ const Projects = () => {
                 <div className={`hidden xl:block w-[2px] h-6 bg-[#C9050B] transition-all duration-300 ${
                   activeCategory === cat ? "opacity-100" : "opacity-0"
                 }`} />
-                <span className={`text-[11px] lg:text-[13px] font-medium tracking-[0.15em] text-center lg:text-left uppercase whitespace-nowrap`}>
+                <span className={`text-[11px] lg:text-[13px] font-display font-medium tracking-[0.15em] text-center lg:text-left uppercase whitespace-nowrap`}>
                   {cat}
                 </span>
               </button>

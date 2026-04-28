@@ -148,7 +148,7 @@ const Footer = () => {
               {['About Us', 'Our Services', 'Our Projects', 'Sustainability', 'Leadership'].map((link) => (
                 <li key={link} className="flex items-center gap-3 group">
                   <div className="w-0 h-0 border-t-[4px] border-t-transparent border-b-[4px] border-b-transparent border-l-[6px] border-l-[#1A1A1A] transition-transform duration-300 group-hover:translate-x-1" />
-                  <a href={`#${link.toLowerCase().replace(' ', '-')}`} className="font-body text-[13px] sm:text-[15px] lg:text-[16px] text-[#1A1A1A] hover:text-[#C9050B] transition-colors font-medium">
+                  <a href={`#${link.toLowerCase().replace(' ', '-')}`} className="font-display text-[13px] sm:text-[15px] lg:text-[16px] text-[#1A1A1A] hover:text-[#C9050B] transition-colors font-medium">
                     {link}
                   </a>
                 </li>

@@ -45,11 +45,11 @@ const HowWeWork = () => {
       <div className="max-w-[1400px] mx-auto mb-10">
         <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6">
           
-          <h2 className="text-[32px] lg:text-[40px] font-semibold text-black">
+          <h2 className="text-[32px] lg:text-[40px] font-display font-semibold text-black">
             How We Work
           </h2>
 
-          <p className="text-[14px] text-black/60 max-w-[500px]">
+          <p className="text-[14px] text-black/60 max-w-[500px] font-body">
             Our proven 4-step framework ensures every facade project meets the highest standards of safety, aesthetics, and structural integrity.
           </p>
         </div>
@@ -90,7 +90,7 @@ const HowWeWork = () => {
                   )}
 
                   <span
-                    className={`font-semibold text-[20px] lg:text-[22px] ${
+                    className={`font-display font-semibold text-[20px] lg:text-[22px] ${
                       isActive ? "text-[#C9050B]" : "text-[#7D0000]"
                     }`}
                   >
@@ -98,7 +98,7 @@ const HowWeWork = () => {
                   </span>
 
                   <p
-                    className={`text-[15px] lg:text-[16px] font-medium ${
+                    className={`text-[15px] lg:text-[16px] font-body font-medium ${
                       isActive ? "text-[#7D0000]" : "text-black/50"
                     }`}
                   >
@@ -117,11 +117,11 @@ const HowWeWork = () => {
                 className="w-[90px] h-[90px] lg:w-[110px] lg:h-[110px] object-contain mb-5"
             />
 
-            <h3 className="text-[35px] font-semibold mb-4">
+            <h3 className="text-[35px] font-display font-semibold mb-4">
               {current.heading}
             </h3>
 
-            <p className="text-[16px] text-black/70 leading-relaxed">
+            <p className="text-[16px] text-black/70 leading-relaxed font-body">
               {current.description}
             </p>
           </div>
@@ -150,7 +150,7 @@ const HowWeWork = () => {
         </div>
       </div>
 
-      <div className="max-w-[1400px] mx-auto mt-2 text-[15px] tracking-wide text-black/50">
+      <div className="max-w-[1400px] mx-auto mt-2 text-[15px] tracking-wide text-black/50 font-display">
         READY TO START YOUR PROJECT WITH A PROVEN PROCESS?
       </div>
     </section>

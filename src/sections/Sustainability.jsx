@@ -12,7 +12,7 @@ const SustainabilitySection = () => {
       <div className="max-w-[1400px] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
         
         {/* LEFT */}
-        <h2 className="text-[#C9050B] text-[32px] lg:text-[48px] font-semibold leading-tight">
+        <h2 className="text-[#C9050B] text-[32px] lg:text-[48px] font-display font-semibold leading-tight">
           We Are Committed To Environmental
           <br />
           And Social Sustainability
@@ -20,7 +20,7 @@ const SustainabilitySection = () => {
 
         {/* RIGHT */}
         <div className="flex flex-col gap-6 w-full">
-          <p className="text-[14px] text-black/70 leading-relaxed">
+          <p className="text-[14px] text-black/70 leading-relaxed font-body">
             At Alfa Facade Systems, sustainability isn’t an afterthought—it’s
             integral to how we engineer, source, and install. We’re committed
             to reducing environmental impact while delivering facades that
@@ -48,7 +48,7 @@ const SustainabilitySection = () => {
                 </div>
 
                 {/* Text */}
-                <span className="relative z-10 text-[11px] md:text-[12px] xl:text-[13px] font-medium uppercase tracking-[0.08em] text-black leading-[44px] md:leading-[50px] xl:leading-[53px] transition-colors duration-500 group-hover:text-white whitespace-nowrap">
+                <span className="relative z-10 text-[11px] md:text-[12px] xl:text-[13px] font-display font-medium uppercase tracking-[0.08em] text-black leading-[44px] md:leading-[50px] xl:leading-[53px] transition-colors duration-500 group-hover:text-white whitespace-nowrap">
                   VIEW PROJECTS
                 </span>
               </div>
