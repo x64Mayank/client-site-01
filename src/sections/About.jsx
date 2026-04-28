@@ -6,15 +6,15 @@ const About = () => {
   return (
     <section className="relative w-full bg-white overflow-hidden">
       
-      {/* Root container — padding:70px <1024, 125px ≥1024 */}
-      <div className="max-w-[1440px] mx-auto px-[15px] py-[70px] lg:py-[125px] relative">
+      {/* Root container — centered 1270px width on xl to match content exactly */}
+      <div className="max-w-[1440px] xl:max-w-[1270px] mx-auto px-[15px] xl:px-0 py-[70px] lg:py-[125px] relative">
         
         {/* 
           Layout strategy:
           - default (390w): flex column, everything stacked
           - md (768w): flex column, but lines/images go row
           - lg (1024w): same as md, wider columns
-          - xl (1440w+): absolute positioning for overlapping layout
+          - xl (1440w+): centered 1270px content area with absolute positioning
         */}
         <div className="flex flex-col xl:block xl:relative xl:min-h-[1060px]">
 
@@ -27,7 +27,7 @@ const About = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, ease: "easeOut" }}
-            className="pl-[15px] xl:pl-0 xl:absolute xl:top-0 xl:left-[15px] xl:w-[1270px] xl:h-[79px] z-10"
+            className="pl-[15px] xl:pl-0 xl:absolute xl:top-0 xl:left-0 xl:w-[1270px] xl:h-[79px] z-10"
           >
             <h2 className="font-display text-[36px] sm:text-[44.8px] md:text-[79.1px] xl:text-[129.2px] leading-[1] md:leading-[48.8px] xl:leading-[79.3px] text-brand-text font-medium">
               Shri Shyam G™
@@ -43,7 +43,7 @@ const About = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, ease: "easeOut", delay: 0.1 }}
-            className="pl-[15px] xl:pl-0 mt-2 md:mt-0 xl:h-[40px] flex items-start xl:absolute xl:top-[94px] xl:left-[15px] xl:w-[1270px] z-10"
+            className="pl-[15px] xl:pl-0 mt-2 md:mt-0 xl:h-[40px] flex items-start xl:absolute xl:top-[94px] xl:left-0 xl:w-[1270px] z-10"
           >
             <h3 className="font-display text-[20px] sm:text-[24px] md:text-[36.3px] leading-[1.2] md:leading-[40px] text-brand-text font-medium">
               Group PVT LTD
@@ -51,30 +51,25 @@ const About = () => {
           </motion.div>
 
           {/* ═══════════════════════════════════════════════════════════ */}
-          {/* BLOCK 3: Lines + RedBox                                    */}
-          {/* 390: column, full-width red box only                       */}
-          {/* 768/1024: row, 50/50, h:180, red box p:30/20              */}
-          {/* 1440: 1270×348 absolute, logo+lines+redbox                 */}
+          {/* BLOCK 3: Lines + RedBox + Logo                             */}
           {/* ═══════════════════════════════════════════════════════════ */}
-          <div className="mt-6 md:mt-0 md:h-[180px] xl:h-auto xl:absolute xl:top-[135px] xl:left-[15px] xl:w-[1270px] xl:h-[348px] z-20 pointer-events-none">
-            
-            <div className="flex flex-col md:flex-row w-full h-full">
-              
-              {/* Left column: Lines + Logo */}
-              {/* 390: hidden | 768/1024: 50% with lines | xl: 737px with logo */}
-              <div className="hidden md:flex md:w-1/2 xl:w-[737px] relative h-full xl:shrink-0 md:items-center xl:items-start">
-                
-                {/* Lines — md/lg: full-width lines within column */}
-                <div className="xl:hidden absolute top-0 left-0 w-full h-full">
-                  <div className="absolute top-0 left-0 w-[200%] h-[1px] bg-black/15" />
-                  <div className="absolute bottom-0 left-0 w-[200%] h-[1px] bg-black/15" />
-                </div>
+          {/* ═══════════════════════════════════════════════════════════ */}
+          {/* BLOCK 3: Lines + RedBox + Logo                             */}
+          {/* ═══════════════════════════════════════════════════════════ */}
+          
+          <div className="mt-6 md:mt-0 relative xl:absolute xl:top-[135px] xl:left-0 xl:w-[1270px] xl:h-[348px] pointer-events-none">
+            {/* Background Lines — z-0 to stay behind images (z-10) */}
+            <div className="absolute inset-0 z-0">
+               <div className="absolute top-0 -left-[1000px] w-[calc(1000px+100%)] md:w-[calc(1000px+50%)] xl:w-[1737px] h-[1px] bg-black/15" />
+               <div className="hidden md:block absolute bottom-0 xl:top-[182px] -left-[1000px] w-[calc(1000px+50%)] xl:w-[1737px] h-[1px] bg-black/15" />
+            </div>
 
-                {/* Lines — xl only */}
-                <div className="hidden xl:block absolute top-0 left-0 w-[737px] h-[183px]">
-                  <div className="absolute top-0 -left-[737px] w-[1473px] h-[1px] bg-black/15" />
-                  <div className="absolute top-[182px] -left-[737px] w-[1473px] h-[1px] bg-black/15" />
-                </div>
+            {/* Content — z-20 to stay on top of everything */}
+            <div className="flex flex-col md:flex-row w-full h-full relative z-20 md:h-[180px] xl:h-full">
+              
+              {/* Left column: Logo */}
+              {/* 390: hidden | 768/1024: 50% | xl: 737px with logo */}
+              <div className="hidden md:flex md:w-1/2 xl:w-[737px] relative h-full xl:shrink-0 md:items-center xl:items-start">
                 
                 {/* Logo+TM — visible md+, scaled per breakpoint */}
                 <motion.div
@@ -96,16 +91,16 @@ const About = () => {
               </div>
 
               {/* Red Box — full-width mobile | 50% md/lg | 533px xl */}
-              <div className="w-full md:w-1/2 xl:w-[533px] xl:h-[292px] xl:shrink-0 pointer-events-auto">
+              <div className="w-full md:w-1/2 md:h-full xl:w-[533px] xl:h-[292px] xl:shrink-0 pointer-events-auto">
                 <div className="w-full h-full flex items-start md:items-center xl:items-start">
                   <motion.div
                     initial={{ opacity: 0, x: 20 }}
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
-                    className="relative w-full xl:w-[523px] xl:h-[269px] overflow-hidden"
+                    className="relative w-full md:h-full xl:h-[269px] xl:w-[523px] overflow-hidden"
                   >
-                    <div className="bg-brand-secondary p-6 md:py-[30px] md:px-[20px] xl:pt-[47px] xl:pr-[36px] xl:pb-[46px] xl:pl-[40px] w-full xl:w-[523px] xl:[clip-path:polygon(0_0,calc(100%-42px)_0,100%_42px,100%_100%,0_100%)]">
+                    <div className="bg-brand-secondary p-6 md:py-0 md:px-[20px] md:h-full md:flex md:items-center xl:block xl:h-auto xl:pt-[47px] xl:pr-[36px] xl:pb-[46px] xl:pl-[40px] w-full xl:w-[523px] xl:[clip-path:polygon(0_0,calc(100%-42px)_0,100%_42px,100%_100%,0_100%)]">
                       <p className="font-body text-[14px] md:text-[16px] xl:text-[18px] leading-[22px] md:leading-[26px] xl:leading-[30px] text-white">
                         As a leading interior exterior glass facade solutions provider, we enable you to tackle complex challenges in the built environment.
                       </p>
@@ -121,7 +116,7 @@ const About = () => {
           {/* 390: h:1047 stacked | 768: h:753 row 337/386              */}
           {/* 1024: h:649 row 457/522 | 1440: row 592/678 absolute      */}
           {/* ═══════════════════════════════════════════════════════════ */}
-          <div className="md:-mt-[90px] xl:mt-0 xl:absolute xl:top-[240px] xl:left-[15px] xl:w-[1270px] xl:h-[756px] z-10">
+          <div className="md:-mt-[90px] xl:mt-0 xl:absolute xl:top-[240px] xl:left-0 xl:w-[1270px] xl:h-[756px] z-10">
             
             {/* row from md+, stretch on md/lg, flex-end on xl */}
             <div className="flex flex-col md:flex-row md:items-stretch xl:items-end w-full">
