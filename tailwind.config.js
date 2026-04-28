@@ -19,8 +19,8 @@ export default {
         }
       },
       fontFamily: {
-        display: ['"Clash Grotesk Variable"', 'sans-serif'],
-        body: ['"Satoshi Variable"', 'sans-serif'],
+        display: ['"Clash Grotesk"', 'sans-serif'],
+        body: ['"Satoshi"', 'sans-serif'],
       },
       fontSize: {
         'display-lg': ['75px', { lineHeight: '1' }],

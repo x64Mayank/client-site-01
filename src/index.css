@@ -1,10 +1,11 @@
+@import url('https://api.fontshare.com/v2/css?f[]=clash-grotesk@200,300,400,500,600,700&f[]=satoshi@300,400,500,700,900&display=swap');
 @import "tailwindcss";
 
 @config "../tailwind.config.js";
 
 @theme {
-  --font-display: "Clash Grotesk Variable", sans-serif;
-  --font-body: "Satoshi Variable", sans-serif;
+  --font-display: "Clash Grotesk", sans-serif;
+  --font-body: "Satoshi", sans-serif;
 
   --color-brand-primary: #E6353A;
   --color-brand-secondary: #C9050B;
@@ -19,5 +20,17 @@
   --radius-brand-xl: 20px;
 
   --shadow-brand: 0 0 2px 2px rgba(219, 219, 219, 0.3);
+}
+
+@layer base {
+  html, body {
+    font-family: var(--font-body);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+  }
 }
 

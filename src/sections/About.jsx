@@ -246,7 +246,7 @@ const About = () => {
                           <div className="absolute inset-0 bg-brand-secondary transform scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-500 ease-[cubic-bezier(0.19,1,0.22,1)]" />
                         </div>
                         {/* Text */}
-                        <span className="relative z-10 font-[Inter] text-[11px] md:text-[12px] xl:text-[13px] font-medium uppercase tracking-[0.077em] text-black leading-[44px] md:leading-[50px] xl:leading-[53px] transition-colors duration-500 group-hover:text-white whitespace-nowrap">
+                        <span className="relative z-10 font-display text-[11px] md:text-[12px] xl:text-[13px] font-medium uppercase tracking-[0.077em] text-black leading-[44px] md:leading-[50px] xl:leading-[53px] transition-colors duration-500 group-hover:text-white whitespace-nowrap">
                           more about us
                         </span>
                       </div>
