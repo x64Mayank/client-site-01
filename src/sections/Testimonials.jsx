@@ -75,10 +75,10 @@ const Testimonials = () => {
   };
 
   return (
-    <section className="w-full h-[600px] bg-[#F5F5F5] relative overflow-hidden">
+    <section className="w-full min-h-[600px] bg-[#F5F5F5] relative overflow-hidden pb-12 lg:pb-0">
       
       {/* TOP AREA */}
-      <div className="h-[160px] md:h-[223px] flex items-center md:items-end justify-center relative px-4 overflow-visible">
+      <div className="min-h-[160px] md:min-h-[223px] flex items-center md:items-end justify-center relative px-4 overflow-visible pt-12 md:pt-0">
         
         {/* SHAPES (FIXED) */}
         <div className="hidden md:flex absolute top-0 left-1/2 -translate-x-1/2 w-full md:max-w-[800px] lg:max-w-[1140px] pointer-events-none">
@@ -100,7 +100,7 @@ const Testimonials = () => {
       </div>
 
       {/* BOTTOM AREA */}
-      <div className="h-[377px] flex flex-col lg:flex-row relative">
+      <div className="min-h-[377px] flex flex-col lg:flex-row relative">
         
         {/* LEFT ARROW (desktop only) */}
         <div 
