@@ -68,7 +68,7 @@ const Projects = () => {
         <div 
           className="bg-[#C9050B] w-full xl:w-[464px] h-[160px] lg:h-[252.5px] relative shrink-0 transition-all duration-300 project-title-box"
         >
-          <div className="absolute inset-0 flex items-center px-10 lg:pl-[83px] lg:pr-[50px]">
+          <div className="absolute inset-0 flex items-center px-10 lg:pl-[43px] lg:pr-[50px]">
             <h2 className="text-white text-4xl lg:text-[52px] font-medium leading-[1.16] font-display">
               Our Projects.
             </h2>
@@ -99,7 +99,7 @@ const Projects = () => {
       {/* CONTENT SECTION - FULL WIDTH */}
       <div className="flex flex-col xl:flex-row relative">
         {/* TABS (LEFT/CENTERED) - WIDTH MATCHES RED BOX (464px) ON DESKTOP */}
-        <div className="w-full xl:w-[464px] flex flex-row xl:flex-col flex-wrap items-center justify-center xl:justify-start py-6 xl:py-16 px-6 xl:pl-[83px] xl:pr-10 shrink-0 gap-x-4 gap-y-2 xl:gap-0">
+        <div className="w-full xl:w-[464px] flex flex-row xl:flex-col flex-wrap items-center xl:items-start justify-center xl:justify-start py-6 xl:py-16 px-6 xl:pl-[43px] xl:pr-10 shrink-0 gap-x-4 gap-y-2 xl:gap-0">
           {CATEGORIES.map((cat, index) => (
             <React.Fragment key={cat}>
               <button
