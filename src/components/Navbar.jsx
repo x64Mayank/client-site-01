@@ -76,7 +76,7 @@ const Navbar = () => {
     <>
       {/* Dynamic Spacer — occupies the space of the fixed navbar */}
       <div 
-        className={`w-full transition-[height] duration-500 ease-in-out pointer-events-none ${
+        className={`w-full pointer-events-none ${
           isSticky ? 'h-[75px]' : 'h-[82px] lg:h-[152px]'
         }`} 
       />
@@ -92,11 +92,11 @@ const Navbar = () => {
         <AnimatePresence>
           {!isSticky && (
             <motion.div 
-              initial={{ height: 0, opacity: 0 }}
-              animate={{ height: 70, opacity: 1 }}
-              exit={{ height: 0, opacity: 0 }}
-              transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-              className="w-full bg-brand-primary border-b border-brand-dark hidden lg:flex items-center justify-center overflow-hidden"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.3 }}
+              className="w-full h-[70px] bg-brand-primary border-b border-brand-dark hidden lg:flex items-center justify-center overflow-hidden"
             >
               <div className="w-full h-full flex items-center px-0 max-w-[1920px] flex-nowrap">
 

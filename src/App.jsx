@@ -22,7 +22,7 @@ import Footer from './sections/Footer';
 function App() {
   return (
     <SmoothScroll>
-      <div className="min-h-screen bg-white overflow-hidden">
+      <div className="min-h-screen bg-white">
         <Navbar />
         <main>
           <Hero />
