@@ -30,7 +30,7 @@ const Hero = () => {
   }, []);
 
   return (
-    <section className="relative min-h-[calc(100vh-82px)] lg:min-h-[calc(100vh-140px)] xl:max-h-[900px] flex items-start md:items-center overflow-hidden bg-brand-dark pt-16 sm:pt-32 pb-20 md:py-28 xl:py-32">
+    <section className="relative min-h-[calc(100vh-82px)] lg:min-h-[calc(100vh-152px)] flex items-start md:items-center overflow-hidden bg-brand-dark pt-16 sm:pt-32 pb-20 md:py-28 xl:py-32">
       {/* Background Slideshow with Parallax & Ken Burns effect */}
       <motion.div 
         style={{ y: y1 }}

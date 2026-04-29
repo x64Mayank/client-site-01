@@ -10,23 +10,6 @@ const Navbar = () => {
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [expandedLinks, setExpandedLinks] = useState({});
 
-  // Dynamic Height Management
-  const navRef = useRef(null);
-  const [navHeight, setNavHeight] = useState(0);
-
-  // Measure navbar height to prevent content overlap
-  useLayoutEffect(() => {
-    const updateHeight = () => {
-      if (navRef.current && !isSticky) {
-        setNavHeight(navRef.current.offsetHeight);
-      }
-    };
-
-    updateHeight();
-    window.addEventListener('resize', updateHeight);
-    return () => window.removeEventListener('resize', updateHeight);
-  }, []); // Only measure on mount/resize
-
   // Smart Sticky Logic
   const { scrollY } = useScroll();
   const [isVisible, setIsVisible] = useState(true);
@@ -46,8 +29,6 @@ const Navbar = () => {
       setIsSticky(true);
     } else {
       setIsSticky(false);
-      // Re-measure height when returning to top to catch any layout changes
-      if (navRef.current) setNavHeight(navRef.current.offsetHeight);
     }
 
     // 2. Visible logic: hide when scrolling down, show when scrolling up
@@ -94,10 +75,13 @@ const Navbar = () => {
   return (
     <>
       {/* Dynamic Spacer — occupies the space of the fixed navbar */}
-      <div style={{ height: navHeight }} className="w-full pointer-events-none transition-[height] duration-500" />
+      <div 
+        className={`w-full transition-[height] duration-500 ease-in-out pointer-events-none ${
+          isSticky ? 'h-[75px]' : 'h-[82px] lg:h-[152px]'
+        }`} 
+      />
       
       <nav 
-        ref={navRef}
         className={`fixed top-0 left-0 w-full z-50 flex flex-col items-center transition-all duration-500 ease-in-out ${
           isVisible ? 'translate-y-0' : '-translate-y-full'
         } ${
