@@ -5,6 +5,7 @@ import StatsSection from '../components/Hero/StatsSection';
 import About from '../sections/About';
 import FeaturesBar from '../sections/Features';
 import Certifications from '../sections/Certifications';
+import TeamGrid from '../sections/TeamGrid';
 
 const AboutPage = () => {
   return (
@@ -15,6 +16,7 @@ const AboutPage = () => {
       <About compact={true} />
       <FeaturesBar />
       <Certifications />
+      <TeamGrid />
     </main>
   );
 };
