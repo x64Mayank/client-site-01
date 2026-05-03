@@ -4,6 +4,7 @@ import Hero from '../sections/Hero';
 import StatsSection from '../components/Hero/StatsSection';
 import About from '../sections/About';
 import FeaturesBar from '../sections/Features';
+import Certifications from '../sections/Certifications';
 
 const AboutPage = () => {
   return (
@@ -13,6 +14,7 @@ const AboutPage = () => {
       <StatsSection />
       <About compact={true} />
       <FeaturesBar />
+      <Certifications />
     </main>
   );
 };
