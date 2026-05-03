@@ -1,4 +1,5 @@
 import React, { useState, useRef, useLayoutEffect, useEffect } from 'react';
+import { Link } from "react-router-dom";
 import { motion, AnimatePresence, useScroll, useMotionValueEvent } from 'framer-motion';
 import Button from './ui/Button';
 import SearchOverlay from './ui/Search';
@@ -40,8 +41,8 @@ const Navbar = () => {
   });
 
   const navLinks = [
-    { name: 'HOME', href: '/' },
-    { name: 'ABOUT US', href: '#about', hasDropdown: true },
+    { name: 'HOME', path: '/' },
+    { name: 'ABOUT US', path: '/about', hasDropdown: true },
     { name: 'SERVICES', href: '#services', hasDropdown: true },
     { name: 'PROJECTS', href: '#projects' },
     { name: 'CONTACT US', href: '#contact' },
@@ -187,12 +188,21 @@ const Navbar = () => {
                 {navLinks.map((link) => (
                   <div key={link.name} className="flex items-center gap-2 xl:gap-3">
                     {link.hasDropdown && <div className="w-[3px] h-[10px] bg-brand-secondary flex-shrink-0" />}
-                    <a
-                      href={link.href}
-                      className="font-display font-medium text-[12px] xl:text-[13px] 2xl:text-[14.6px] leading-[25.92px] tracking-[0.137em] text-white uppercase hover:text-brand-accent transition-colors duration-500 whitespace-nowrap flex-shrink-0"
-                    >
-                      {link.name}
-                    </a>
+                    {link.path ? (
+                      <Link
+                        to={link.path}
+                        className="font-display font-medium text-[12px] xl:text-[13px] 2xl:text-[14.6px] leading-[25.92px] tracking-[0.137em] text-white uppercase hover:text-brand-accent transition-colors duration-500 whitespace-nowrap flex-shrink-0"
+                      >
+                        {link.name}
+                      </Link>
+                    ) : (
+                      <a
+                        href={link.href}
+                        className="font-display font-medium text-[12px] xl:text-[13px] 2xl:text-[14.6px] leading-[25.92px] tracking-[0.137em] text-white uppercase hover:text-brand-accent transition-colors duration-500 whitespace-nowrap flex-shrink-0"
+                      >
+                        {link.name}
+                      </a>
+                    )}
                   </div>
                 ))}
               </div>
@@ -271,13 +281,21 @@ const Navbar = () => {
                 {navLinks.map((link) => (
                   <div key={link.name} className="border-b border-gray-100">
                     <div className="flex items-center justify-between px-5 py-4">
-                      <a
-                        href={link.href}
-                        className="font-display font-semibold text-[13px] tracking-[1px] text-brand-primary uppercase"
-                        onClick={() => !link.hasDropdown && setIsMobileMenuOpen(false)}
-                      >
-                        {link.name}
-                      </a>
+                      {link.path ? (
+                          <Link
+                            to={link.path}
+                            className="font-display font-medium text-[12px] xl:text-[13px] 2xl:text-[14.6px] leading-[25.92px] tracking-[0.137em] text-white uppercase hover:text-brand-accent transition-colors duration-500 whitespace-nowrap flex-shrink-0"
+                          >
+                            {link.name}
+                          </Link>
+                        ) : (
+                          <a
+                            href={link.href}
+                            className="font-display font-medium text-[12px] xl:text-[13px] 2xl:text-[14.6px] leading-[25.92px] tracking-[0.137em] text-white uppercase hover:text-brand-accent transition-colors duration-500 whitespace-nowrap flex-shrink-0"
+                          >
+                            {link.name}
+                          </a>
+                        )}
                       {link.hasDropdown && (
                         <button
                           onClick={() => toggleExpanded(link.name)}

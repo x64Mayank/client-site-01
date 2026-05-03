@@ -3,7 +3,7 @@ import React from "react";
 const Legacy = () => {
   return (
     <section
-      className="w-full mt-[66px] h-auto md:h-[520px] bg-[#E52D2D] flex items-center px-6 md:px-10 lg:px-16 py-10 md:py-0"
+      className="w-full mt-[66px] h-auto md:h-[520px] bg-[#E6353A] flex items-center px-6 md:px-10 lg:px-16 py-10 md:py-0"
       style={{
         clipPath: "polygon(60px 0, 100% 0, 100% 100%, 0 100%, 0 60px)",
       }}
@@ -31,7 +31,7 @@ const Legacy = () => {
           {/* Red Box */}
           <div
             className="
-              bg-[#D60000] text-white p-6 flex flex-col justify-between
+              bg-[#C9050B] text-white p-6 flex flex-col justify-between
               w-full h-[220px]
               min-[500px]:max-[800px]:w-[200px]
               md:w-[220px] md:h-[280px]
