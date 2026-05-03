@@ -2,7 +2,7 @@ import React, { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { ArrowUpRight } from 'lucide-react';
 
-const About = () => {
+const About = ({ compact = false }) => {
   const containerRef = useRef(null);
   
   // Parallax setup for the floating image
@@ -18,7 +18,13 @@ const About = () => {
     <section ref={containerRef} className="relative w-full bg-white overflow-hidden">
       
       {/* Root container — centered 1270px width on xl to match content exactly */}
-      <div className="max-w-[1440px] xl:max-w-[1270px] mx-auto px-[15px] xl:px-0 py-[70px] lg:py-[125px] relative">
+      <div
+        className={`
+          max-w-[1440px] xl:max-w-[1270px] mx-auto px-[15px] xl:px-0
+          ${compact ? "pt-[70px] pb-[20px] lg:pt-[125px] lg:pb-[40px]" : "py-[70px] lg:py-[125px]"}
+          relative
+        `}
+      >
         
         {/* 
           Layout strategy:
