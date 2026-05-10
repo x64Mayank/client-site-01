@@ -6,6 +6,7 @@ import About from '../sections/About';
 import FeaturesBar from '../sections/Features';
 import Certifications from '../sections/Certifications';
 import TeamGrid from '../sections/TeamGrid';
+import WorkWithUs from '../sections/WorkWithUs';
 
 const AboutPage = () => {
   return (
@@ -17,6 +18,7 @@ const AboutPage = () => {
       <FeaturesBar />
       <Certifications />
       <TeamGrid />
+      <WorkWithUs />
     </main>
   );
 };
