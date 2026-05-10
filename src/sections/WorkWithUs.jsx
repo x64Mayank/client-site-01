@@ -36,7 +36,7 @@ const WorkWithUs = () => {
         </div>
 
         {/* MIDDLE INFO */}
-        <div className="bg-[#e9e9e9] px-8 py-12 flex flex-col justify-center">
+        <div className="bg-[#edefed] px-8 py-12 flex flex-col justify-center">
           <h2 className="text-[22px] md:text-[28px] font-medium text-black">
             Alfa Facade Systems Pvt Ltd
           </h2>
@@ -80,7 +80,7 @@ const WorkWithUs = () => {
         </div>
 
         {/* RIGHT FORM */}
-        <div className="bg-[#f2f2f2] md:col-span-2 lg:col-span-1">
+        <div className="bg-[#ffffff] md:col-span-2 lg:col-span-1">
           <div className="px-8 py-8">
 
             <p className="text-[16px] text-[#7D0000] text-center mb-6">
@@ -131,6 +131,8 @@ const WorkWithUs = () => {
         </div>
 
       </div>
+      {/* FULL WIDTH BOTTOM LINE */}
+      <div className="w-full border-t border-black/20" />
     </section>
   );
 };

@@ -7,6 +7,8 @@ import FeaturesBar from '../sections/Features';
 import Certifications from '../sections/Certifications';
 import TeamGrid from '../sections/TeamGrid';
 import WorkWithUs from '../sections/WorkWithUs';
+import Partners from '../sections/Partners';
+import Footer from '../sections/Footer';
 
 const AboutPage = () => {
   return (
@@ -19,6 +21,8 @@ const AboutPage = () => {
       <Certifications />
       <TeamGrid />
       <WorkWithUs />
+      <Partners />
+      <Footer />
     </main>
   );
 };
