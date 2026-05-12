@@ -5,32 +5,39 @@ import Button from '../components/ui/Button';
 const steps = [
   {
     id: 1,
-    title: "Site Assessment & Consultation",
-    heading: "Understanding Your Vision",
+    title: "Proven Track Record",
+    heading: "Proven Track Record of Excellence",
     description:
-      "We begin every project with a comprehensive site visit and stakeholder consultation. Our technical team evaluates structural conditions, wind load requirements, aesthetic goals and budget parameters. This collaborative discovery phase ensures our proposal are tailored precisely to your building's unique needs and your project's timeline.",
+      "Our portfolio showcases a history of successful projects and delighted clients. From iconic skyscrapers to intricate interior facades, our work speaks for itself. We’ve consistently delivered on our promises, meeting deadlines and exceeding expectations. Our clients trust us to bring their visions to life and we take that responsibility seriously.",
     img: "/images/HowWeWork1.png",
   },
   {
     id: 2,
-    title: "Engineering & Design Development",
-    heading: "Precision Planning & Technical Documentation",
-    description: "Our engineering team turns your ideas into detailed drawings, 3D visuals, and precise material specifications. We run thorough structural and thermal analysis, and verify every design against required building standards. All technical details are reviewed and approved before anything goes into production — so there are no surprises once work begins on site.",
+    title: "Collaborative Mindset",
+    heading: "True Collaboration for Extraordinary Results",
+    description: "We believe the best results come from true collaboration. From the earliest design stages to final installation, we work closely with architects, contractors, and clients to ensure every detail is perfect. Our team listens, adapts, and innovates together with you, making sure your vision is realized while also bringing our expertise to the table. We’re not just a vendor; we’re your partner in creating something extraordinary.",
     img: "/images/HowWeWork1.png",
   },
   {
     id: 3,
-    title: "Fabrication & Quality Assurance",
-    heading: "Controlled Manufacturing Excellence",
-    description: "Every component is fabricated in our facility under controlled conditions, delivering a level of consistency that on-site work simply can’t match. Each piece goes through multiple quality checks — covering dimensions, surface finish, hardware function, and seal performance. Materials only leave our facility once they’ve passed every inspection, arriving at your site ready for a smooth installation.",
+    title: "Continuous Improvement",
+    heading: "Relentless Pursuit of Perfection",
+    description: "We never settle for good enough. Every project is an opportunity to learn, grow, and push the boundaries of what’s possible. We analyze every aspect of our work, from design to installation, to identify areas for improvement. This commitment to continuous improvement drives us to innovate and refine our processes, ensuring that we deliver the highest quality results on every project.",
     img: "/images/HowWeWork1.png",
   },
   {
     id: 4,
-    title: "Installation & Post-Completion Support",
-    heading: "Expert Installation & Lasting Commitment",
-    description: "ur certified installation teams carry out the work with care, following strict safety protocols and keeping to your project timeline. Once installation is complete, we run thorough checks — including water tightness testing, alignment verification, and operational inspections. We don’t just finish the job and walk away; we provide maintenance guidance and stay available long after handover, so your facade continues to perform for years to come.",
+    title: "Transparency and Honesty",
+    heading: "Transparency and Honesty at Every Step",
+    description: "We believe in building trust through transparency and honesty. From project timelines to budget discussions, we communicate openly and clearly with our clients. We want you to feel confident and informed throughout the entire process. If challenges arise, we address them head-on with integrity and a commitment to finding solutions that work for everyone.",
     img: "/images/HowWeWork4.png",
+  },
+  {
+    id: 5,
+    title: "Passion for Excellence",
+    heading: "Passion for Excellence in Everything We Do",
+    description: "Our team is driven by a deep passion for excellence. We are committed to delivering outstanding results that exceed expectations and create lasting value for our clients. This passion fuels our innovation and ensures that every project we undertake is a testament to our dedication and expertise.",
+    img: "/images/HowWeWork1.png",
   },
 ];
 
@@ -59,10 +66,10 @@ const HowWeWork = () => {
 
       <div className="relative max-w-[1400px] mx-auto">
         
-        <div className="mx-auto grid grid-cols-1 lg:grid-cols-[1fr_2.6fr_1.7fr] gap-10">
+        <div className="mx-auto grid grid-cols-1 lg:grid-cols-[1fr_2.6fr_1.7fr] gap-10 items-stretch">
           
           {/* LEFT - STEPS */}
-          <div className="flex flex-col">
+          <div className="flex flex-col h-full">
             {steps.map((step) => {
               const isActive = activeStep === step.id;
 
@@ -70,7 +77,7 @@ const HowWeWork = () => {
                 <div
                   key={step.id}
                   onClick={() => setActiveStep(step.id)}
-                  className={`relative flex items-center gap-4 px-5 py-8 lg:py-10 cursor-pointer 
+                  className={`relative flex items-center gap-4 px-5 cursor-pointer flex-1 min-h-[80px]
                     border-r border-black/10
                     ${step.id !== steps.length ? "border-b border-black/10" : ""}
                     ${isActive ? "bg-white" : "opacity-60"}
@@ -110,14 +117,14 @@ const HowWeWork = () => {
           </div>
 
           {/* CENTER */}
-          <div className="flex flex-col justify-start pt-6 lg:pt-13 px-4 lg:px-8">
+          <div className="flex flex-col justify-start pt-6 lg:pt-22 px-4 lg:px-8">
             <img
                 src="/images/ticks.png"
                 alt="icon"
                 className="w-[90px] h-[90px] lg:w-[110px] lg:h-[110px] object-contain mb-5"
             />
 
-            <h3 className="text-[35px] font-display font-semibold mb-4">
+            <h3 className="text-[35px] font-display font-medium mb-4 lg:mt-4">
               {current.heading}
             </h3>
 
