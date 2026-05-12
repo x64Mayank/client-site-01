@@ -4,6 +4,7 @@ import QualityEngineering from '../sections/QualityEngineering';
 import Footer from '../sections/Footer';
 import StatsSection from '../components/Hero/StatsSection';
 import LargeArrowDown from '../components/LargeArrowDown';
+import CoreSpecializations from '../sections/CoreSpecializations';
 
 const ServicesPage = () => {
   return (
@@ -17,6 +18,7 @@ const ServicesPage = () => {
       <QualityEngineering />
       <StatsSection />
       <LargeArrowDown />
+      <CoreSpecializations />
       <Footer />
     </main>
   );

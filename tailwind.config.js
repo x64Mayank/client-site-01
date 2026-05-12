@@ -10,12 +10,15 @@ export default {
         brand: {
           primary: '#E6353A',    // Base Red
           secondary: '#C9050B',  // Dark Red
+          maroon: '#7D0000',     // Deep Maroon
           accent: '#E5F2DF',     // Zanah Light Green
           dark: '#313131',       // Mine Shaft
           text: '#0D0D0D',       // Cod Gray
+          muted: '#666666',      // Dove Gray
           light: '#F2F2F2',      // Concrete
           surface: '#FFFFFF',
           border: '#D9D9D9',     // Alto
+          background: '#F9F9F9', // Light Background
         }
       },
       fontFamily: {

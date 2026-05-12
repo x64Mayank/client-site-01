@@ -2,7 +2,7 @@ import React from 'react';
 
 const LargeArrowDown = () => {
   return (
-    <section className="w-full pt-0 pb-12 lg:pb-20 flex justify-center items-center">
+    <section className="w-full pt-0 pb-8 lg:pb-[50px] flex justify-center items-center">
       <div className="text-brand-secondary hover:translate-y-4 transition-transform duration-500 cursor-pointer">
         <svg 
           className="w-[80px] h-[80px] lg:w-[172px] lg:h-[172px]" 
