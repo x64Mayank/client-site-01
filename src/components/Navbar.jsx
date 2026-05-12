@@ -43,7 +43,7 @@ const Navbar = () => {
   const navLinks = [
     { name: 'HOME', path: '/' },
     { name: 'ABOUT US', path: '/about', hasDropdown: true },
-    { name: 'SERVICES', href: '#services', hasDropdown: true },
+    { name: 'SERVICES', path: '/services', hasDropdown: true },
     { name: 'PROJECTS', href: '#projects' },
     { name: 'CONTACT US', href: '#contact' },
   ];

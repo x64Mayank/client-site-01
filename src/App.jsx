@@ -7,6 +7,7 @@ import Cursor from './components/ui/Cursor';
 
 import Home from './pages/Home';
 import AboutPage from './pages/AboutPage';
+import ServicesPage from './pages/ServicesPage';
 import ScrollToTop from './components/ui/ScrollToTop';
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<AboutPage />} />
+          <Route path="/services" element={<ServicesPage />} />
         </Routes>
 
         <Cursor />
