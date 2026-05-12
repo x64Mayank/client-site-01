@@ -81,7 +81,7 @@ const Projects = () => {
           {/* DESCRIPTION TEXT */}
           <div className="flex-1 px-10 lg:pl-[79px] lg:pr-[72px]">
             <p className="text-[#0F0F0F] text-base lg:text-[17px] leading-[29.92px] max-w-[800px] font-body text-left opacity-90">
-              From bustling IT corridors to serene educational campuses, Alfa Facade Systems has left its mark on India’s most prestigious developments. Explore how we’ve transformed architectural visions into reality.
+              With expertise in Glass Glazing Systems, ACP Facade Cladding, uPVC Windows and Doors, and Aluminum Architectural Systems, we create spaces that are elegant, energy-efficient, and built to last.
             </p>
           </div>
 

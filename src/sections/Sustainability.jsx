@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { ArrowUpRight } from "lucide-react";
 import { motion } from "framer-motion";
 import SustainabilityTabs from "../components/SustainabilityTabs";
@@ -21,10 +22,7 @@ const SustainabilitySection = () => {
         {/* RIGHT */}
         <div className="flex flex-col gap-6 w-full">
           <p className="text-[14px] text-black/70 leading-relaxed font-body">
-            At Alfa Facade Systems, sustainability isn’t an afterthought—it’s
-            integral to how we engineer, source, and install. We’re committed
-            to reducing environmental impact while delivering facades that
-            improve building energy efficiency and occupant comfort.
+            In today's modern architecture, buildings are more than just structures. They are a reflection of style, innovation, and functionality. Our company specializes in delivering premium interior and exterior solutions that combine aesthetics with durability. 
           </p>
 
           {/* BUTTON */}
@@ -35,7 +33,7 @@ const SustainabilitySection = () => {
             transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
             className="flex items-center"
           >
-            <a href="#projects" className="inline-flex flex-row items-center group">
+            <Link to="/projects" className="inline-flex flex-row items-center group">
               
               {/* Text box */}
               <div className="relative flex flex-col items-center justify-center w-[160px] md:w-[180px] xl:w-[193px] px-[28px] md:px-[34px] xl:px-[37px]">
@@ -60,7 +58,7 @@ const SustainabilitySection = () => {
                 </div>
               </div>
 
-            </a>
+            </Link>
           </motion.div>
         </div>
 
