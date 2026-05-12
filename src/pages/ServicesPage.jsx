@@ -1,5 +1,6 @@
 import React from 'react';
 import PageHero from '../components/PageHero';
+import QualityEngineering from '../sections/QualityEngineering';
 import Footer from '../sections/Footer';
 
 const ServicesPage = () => {
@@ -11,7 +12,7 @@ const ServicesPage = () => {
         heading="Shri Shyam G Group"
         breadcrumbLabel="OUR SERVICES"
       />
-      {/* Service sections will be added here */}
+      <QualityEngineering />
       <Footer />
     </main>
   );

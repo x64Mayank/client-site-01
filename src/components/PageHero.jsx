@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const PageHero = ({ backgroundImage, label, heading, breadcrumbLabel }) => {
   return (
-    <section className="relative w-full h-[300px] md:h-[350px] lg:h-[400px] overflow-hidden">
+    <section className="relative w-full h-[300px] md:h-[350px] lg:h-[400px] overflow-hidden mb-[76px]">
 
       {/* BACKGROUND IMAGE */}
       <img
