@@ -6,6 +6,8 @@ import StatsSection from '../components/Hero/StatsSection';
 import LargeArrowDown from '../components/LargeArrowDown';
 import CoreSpecializations from '../sections/CoreSpecializations';
 import ServicesProcess from '../sections/ServicesProcess';
+import WorkWithUs from '../sections/WorkWithUs';
+import Partners from '../sections/Partners';
 import CoreValues from '../sections/CoreValues';
 
 const ServicesPage = () => {
@@ -23,6 +25,8 @@ const ServicesPage = () => {
       <CoreSpecializations />
       <ServicesProcess />
       <CoreValues />
+      <WorkWithUs />
+      <Partners />
       <Footer />
     </main>
   );
