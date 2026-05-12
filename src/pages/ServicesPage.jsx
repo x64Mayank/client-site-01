@@ -2,6 +2,7 @@ import React from 'react';
 import PageHero from '../components/PageHero';
 import QualityEngineering from '../sections/QualityEngineering';
 import Footer from '../sections/Footer';
+import StatsSection from '../components/Hero/StatsSection';
 
 const ServicesPage = () => {
   return (
@@ -13,6 +14,7 @@ const ServicesPage = () => {
         breadcrumbLabel="OUR SERVICES"
       />
       <QualityEngineering />
+      <StatsSection />
       <Footer />
     </main>
   );
