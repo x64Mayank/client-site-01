@@ -79,22 +79,18 @@ const FacadeSection = () => {
       <div className="bg-[#FACE4D] w-full py-16 px-6 lg:px-16 relative">
         <div className="max-w-[1200px] mx-auto flex justify-center relative">
           <div className="max-w-[700px] flex gap-6 mx-auto">
-            <div className="w-[3px] bg-red-500 mt-2" />
+            <div className="w-[3px] bg-[#E6353A] mt-2" />
             <div>
               <h2 className="text-[32px] lg:text-[40px] font-semibold leading-tight text-black">
-                Comprehensive Facade & <br />
-                Architectural Solutions
+                Our Vision
               </h2>
-              <p className="mt-4 text-[14px] text-black/80 leading-relaxed">
-                From concept to completion, Alfa Facade Systems offers end-to-end building envelope solutions. 
-                Whether you're constructing a new landmark or revitalizing an aging structure, our seven specialized 
-                service divisions deliver precision engineering and aesthetic perfection. Every facade challenge has a 
-                solution—and we've likely solved it before.
+              <p className="mt-4 text-[14px] text-black/80 leading-relaxed font-medium">
+                To become a leading architectural facade and interior solution provider, delivering world-class design, engineering excellence, and unmatched customer satisfaction.
               </p>
             </div>
           </div>
           <div className="hidden lg:block absolute right-4 top-[25%] -translate-y-1/2">
-            <ArrowUpRight size={200} className="text-red-600" strokeWidth={3} />
+            <ArrowUpRight size={200} className="text-[#C9050B]" strokeWidth={3} />
           </div>
         </div>
       </div>
@@ -127,7 +123,7 @@ const FacadeSection = () => {
                 />
 
                 <div className="p-4 flex items-center gap-2">
-                  <span className="w-2 h-2 bg-red-600"></span>
+                  <span className="w-2 h-2 bg-[#7D0000]"></span>
                   <h3 className="text-[16px] font-medium text-black">
                     {card.title}
                   </h3>
@@ -141,14 +137,14 @@ const FacadeSection = () => {
         <div className="hidden lg:flex flex-col absolute right-0 top-0 h-full w-[60px] gap-[3px] bg-[#f5f5f5]">
           <button
             onClick={handleNext}
-            className="flex-1 bg-red-600 text-white flex items-center justify-center"
+            className="flex-1 bg-[#C9050B] text-white flex items-center justify-center"
           >
             <ArrowRight size={22} />
           </button>
 
           <button
             onClick={handlePrev}
-            className="flex-1 bg-red-600 text-white flex items-center justify-center"
+            className="flex-1 bg-[#C9050B] text-white flex items-center justify-center"
           >
             <ArrowLeft size={22} />
           </button>
@@ -160,14 +156,14 @@ const FacadeSection = () => {
         <div className="flex lg:hidden justify-center gap-4 mt-6">
           <button
             onClick={handlePrev}
-            className="bg-red-600 text-white p-3 flex items-center justify-center"
+            className="bg-[#C9050B] text-white p-3 flex items-center justify-center"
           >
             <ArrowLeft size={30} />
           </button>
 
           <button
             onClick={handleNext}
-            className="bg-red-600 text-white p-3 flex items-center justify-center"
+            className="bg-[#C9050B] text-white p-3 flex items-center justify-center"
           >
             <ArrowRight size={30} />
           </button>
