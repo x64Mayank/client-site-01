@@ -70,7 +70,7 @@ const TeamGrid = () => {
       </div>
 
       {/* TEAM SECTION */}
-      <div className="pb-16 px-6 lg:px-16">
+      <div id="team-grid" className="pb-16 px-6 lg:px-16">
         
         {/* HEADER */}
         <div className="max-w-[1200px] mx-auto">

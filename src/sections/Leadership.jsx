@@ -1,4 +1,5 @@
 import React, { useRef } from 'react';
+import { HashLink } from "react-router-hash-link";
 import { ArrowUpRight } from 'lucide-react';
 import { motion, useScroll, useTransform, useSpring } from 'framer-motion';
 
@@ -50,12 +51,18 @@ const Leadership = () => {
           </div>
 
           {/* DESCRIPTION */}
+          <p className="text-white text-base lg:text-[16px] leading-[1.8] font-body mb-6 opacity-90">
+            At SSG Group, we are dedicated to building long-term relationships and making a positive impact in the lives of those we serve. I am proud to lead a team of talented professionals who share my commitment to excellence and customer satisfaction.
+          </p>
+
           <p className="text-white text-base lg:text-[16px] leading-[1.8] font-body mb-12 opacity-90">
-            For over 40 years, Alfa Facade Systems has been shaped by visionary leadership and a passionate commitment to architectural excellence. Under the guidance of our founder Mr. Zoher Chiniwala, we've grown from a small aluminum workshop into one of India's most trusted names in facade engineering. Our leadership team combines decades of technical expertise with forward-thinking innovation, ensuring every project benefits from strategic insight and operational excellence.
+            Thank you for entrusting us with your business. We look forward to exceeding your expectations and creating a brighter future together.
           </p>
 
           {/* BRAND BUTTON (Clean version - no fill animation) */}
-          <a href="#leadership" className="inline-flex flex-row items-center group cursor-pointer transition-all duration-300 hover:scale-[1.02]">
+          <HashLink
+            to="/about#team-grid"
+            className="inline-flex flex-row items-center group cursor-pointer transition-all duration-300 hover:scale-[1.02]">
             {/* Text column */}
             <div className="relative flex flex-col items-center justify-center w-[220px] lg:w-[260px] h-[52.5px] bg-white border border-[#D9D9D9] px-4">
               {/* Text */}
@@ -70,7 +77,7 @@ const Leadership = () => {
                 <ArrowUpRight className="text-white w-5 h-5 transition-transform duration-500 ease-[cubic-bezier(0.19,1,0.22,1)] origin-center group-hover:rotate-45" />
               </div>
             </div>
-          </a>
+          </HashLink>
 
         </div>
       </div>
