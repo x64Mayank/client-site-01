@@ -8,6 +8,10 @@ const logos = [
   { id: 4, src: '/images/logos/placeholderpartner4.png', alt: 'Partner 4' },
   { id: 5, src: '/images/logos/placeholderpartner5.png', alt: 'Partner 5' },
   { id: 6, src: '/images/logos/placeholderpartner6.png', alt: 'Partner 6' },
+  { id: 7, src: '/images/logos/placeholderpartner7.png', alt: 'Partner 7' },
+  { id: 8, src: '/images/logos/placeholderpartner8.png', alt: 'Partner 8' },
+  { id: 9, src: '/images/logos/placeholderpartner9.png', alt: 'Partner 9' },
+  { id: 10, src: '/images/logos/placeholderpartner10.png', alt: 'Partner 10' },
 ];
 
 // Duplicate logos for seamless loop
@@ -38,7 +42,11 @@ const Partners = () => {
                 <img
                   src={logo.src}
                   alt={logo.alt}
-                  className="h-[36px] md:h-[48px] lg:h-[54px] w-auto object-contain brightness-100 contrast-100"
+                  className={`w-auto object-contain ${
+                    logo.id >= 7 && logo.id <= 9
+                      ? "h-[44px] md:h-[56px] lg:h-[72px]"
+                      : "h-[36px] md:h-[48px] lg:h-[54px]"
+                  } ${logo.id === 10 ? "invert" : ""}`}
                 />
               </div>
             ))}
