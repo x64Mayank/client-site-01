@@ -45,7 +45,7 @@ const stats = [
 
 const StatsSection = () => {
   return (
-    <section className="w-full border-y border-black/10">
+    <section className="w-full mb-4 border-y border-black/10">
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 max-w-[1920px] mx-auto">
         {stats.map((item, index) => (
           <div

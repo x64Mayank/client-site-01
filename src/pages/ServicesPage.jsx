@@ -3,6 +3,7 @@ import PageHero from '../components/PageHero';
 import QualityEngineering from '../sections/QualityEngineering';
 import Footer from '../sections/Footer';
 import StatsSection from '../components/Hero/StatsSection';
+import LargeArrowDown from '../components/LargeArrowDown';
 
 const ServicesPage = () => {
   return (
@@ -15,6 +16,7 @@ const ServicesPage = () => {
       />
       <QualityEngineering />
       <StatsSection />
+      <LargeArrowDown />
       <Footer />
     </main>
   );
