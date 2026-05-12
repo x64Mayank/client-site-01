@@ -1,5 +1,6 @@
 import React from 'react';
 import PageHero from '../components/PageHero';
+import ProjectsGrid from '../sections/ProjectsGrid';
 import Footer from '../sections/Footer';
 
 const ProjectsPage = () => {
@@ -16,6 +17,7 @@ const ProjectsPage = () => {
         }
         breadcrumbLabel="ALFA FACADE PROJECTS"
       />
+      <ProjectsGrid />
       <Footer />
     </main>
   );
