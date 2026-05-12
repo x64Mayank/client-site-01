@@ -25,8 +25,8 @@ const Navbar = () => {
       return;
     }
 
-    // 1. Sticky logic: past initial hero area (500px)
-    if (latest > 500) {
+    // 1. Sticky logic: Row 1 visible only at actual navbar position (152px = Row1 + Row2)
+    if (latest > 152) {
       setIsSticky(true);
     } else {
       setIsSticky(false);
@@ -77,7 +77,7 @@ const Navbar = () => {
     <>
       {/* Dynamic Spacer — occupies the space of the fixed navbar */}
       <div 
-        className={`w-full pointer-events-none ${
+        className={`w-full pointer-events-none transition-[height] duration-500 ease-in-out ${
           isSticky ? 'h-[75px]' : 'h-[82px] lg:h-[152px]'
         }`} 
       />
@@ -90,15 +90,11 @@ const Navbar = () => {
         }`}
       >
         {/* Row 1: Top Bar (Hide when sticky for a cleaner look) */}
-        <AnimatePresence>
-          {!isSticky && (
-            <motion.div 
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.3 }}
-              className="w-full h-[70px] bg-brand-primary border-b border-brand-dark hidden lg:flex items-center justify-center overflow-hidden"
-            >
+        <div 
+          className={`w-full bg-brand-primary border-brand-dark hidden lg:flex items-center justify-center overflow-hidden transition-all duration-500 ease-in-out ${
+            isSticky ? 'h-0 opacity-0 border-b-0' : 'h-[70px] opacity-100 border-b'
+          }`}
+        >
               <div className="w-full h-full flex items-center px-0 max-w-[1920px] flex-nowrap">
 
                 {/* Rebranded Logo */}
@@ -157,9 +153,7 @@ const Navbar = () => {
                 </div>
 
               </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
+        </div>
 
         <div
           className={`w-full h-[82px] bg-brand-primary transition-all duration-[800ms] ease-in-out flex items-center justify-center border-b border-black/5 lg:border-none ${
