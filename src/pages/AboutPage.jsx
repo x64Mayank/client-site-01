@@ -3,7 +3,6 @@ import Legacy from '../sections/Legacy';
 import StatsSection from '../components/Hero/StatsSection';
 import About from '../sections/About';
 import FeaturesBar from '../sections/Features';
-import Certifications from '../sections/Certifications';
 import TeamGrid from '../sections/TeamGrid';
 import WorkWithUs from '../sections/WorkWithUs';
 import Partners from '../sections/Partners';
@@ -18,7 +17,6 @@ const AboutPage = () => {
       <StatsSection />
       <About compact={true} />
       <FeaturesBar />
-      <Certifications />
       <TeamGrid />
       <WorkWithUs />
       <Partners />
