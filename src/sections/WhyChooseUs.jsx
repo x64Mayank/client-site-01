@@ -148,43 +148,39 @@ const WhyChooseUs = () => {
                       handleSetActive(index);
                     }
                   }}
-                  className={`flex items-center justify-between px-5 py-3 cursor-pointer border-b border-black/10
-                    transition-colors duration-500 ease-in-out
-                    ${
-                      isActive
-                        ? "bg-[#7D0000] text-white"
-                        : "bg-white text-[#7D0000]"
-                    }
-                  `}
+                  className="relative flex items-center justify-between px-5 py-3 cursor-pointer border-b border-black/10 overflow-hidden"
                 >
-                  {/* LEFT DOT */}
-                  <span
-                    className={`text-lg transition-[opacity,transform] duration-500
-                      ${
-                        isActive
-                          ? "opacity-100 translate-x-0"
-                          : "opacity-0 -translate-x-2"
-                      }
-                    `}
-                  >
-                    ▪
-                  </span>
-
-                  {/* TEXT */}
+                  {/* Base layer - maroon text (always visible underneath) */}
+                  <span className="text-lg opacity-0 text-[#7D0000]">▪</span>
                   <span className="flex-1 overflow-hidden flex">
-                    <span
-                      className={`text-[16px] font-medium whitespace-nowrap
-                        transition-[margin] duration-500 ease-in-out
-                        ${
-                          isActive
-                            ? "ml-auto pr-2"
-                            : "ml-3"
-                        }
-                      `}
-                    >
+                    <span className="text-[16px] font-medium whitespace-nowrap ml-3 text-[#7D0000]">
                       {item.title}
                     </span>
                   </span>
+
+                  {/* Animated fill overlay with white text - wipes left to right */}
+                  <div
+                    className={`absolute inset-0 bg-[#7D0000] flex items-center px-5 transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] ${
+                      isActive ? "translate-x-0" : "-translate-x-full"
+                    }`}
+                  >
+                    <span
+                      className={`text-lg text-white transition-[opacity,transform] duration-500 ${
+                        isActive ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-2"
+                      }`}
+                    >
+                      ▪
+                    </span>
+                    <span className="flex-1 overflow-hidden flex">
+                      <span
+                        className={`text-[16px] font-medium whitespace-nowrap text-white transition-[margin] duration-500 ease-in-out ${
+                          isActive ? "ml-auto pr-2" : "ml-3"
+                        }`}
+                      >
+                        {item.title}
+                      </span>
+                    </span>
+                  </div>
                 </div>
               );
             })}
