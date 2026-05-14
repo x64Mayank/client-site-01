@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useCallback } from "react";
 import { ArrowUpRight } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
 
 const points = [
   {
@@ -34,6 +35,17 @@ const points = [
 
 const WhyChooseUs = () => {
   const [active, setActive] = useState(0);
+  const [slideKey, setSlideKey] = useState(0);
+
+  const handleSetActive = useCallback((index) => {
+    setActive(prev => {
+      if (prev !== index) {
+        setSlideKey(k => k + 1);
+        return index;
+      }
+      return prev;
+    });
+  }, []);
 
   const current = points[active];
 
@@ -45,12 +57,29 @@ const WhyChooseUs = () => {
         <div className="relative w-full max-w-full h-[530px] md:max-w-[500px] md:h-[630px]">
 
           {/* IMAGE */}
-          <div className="relative overflow-hidden w-full h-full rounded-none">
-            <img
-              src={current.img}
-              alt="building"
-              className="w-full h-full object-cover transition-all duration-500"
-            />
+          <div className="relative overflow-hidden w-full h-full rounded-none bg-[#E6353A]/10">
+            {/* Preload hidden images to prevent Vercel delay */}
+            <div className="absolute w-0 h-0 opacity-0 pointer-events-none overflow-hidden">
+              {points.map((item, index) => (
+                <img key={`preload-${index}`} src={item.img} alt="" decoding="async" fetchpriority="high" />
+              ))}
+            </div>
+
+            <AnimatePresence initial={false}>
+              <motion.img
+                key={slideKey}
+                src={current.img}
+                alt="building"
+                initial={{ x: "-100%", zIndex: 10, opacity: 1 }}
+                animate={{ x: "0%", zIndex: 10, opacity: 1 }}
+                exit={{ x: "0%", zIndex: 0, opacity: 0.3 }}
+                transition={{ 
+                  duration: 0.8, 
+                  ease: [0.16, 1, 0.3, 1] 
+                }}
+                className="absolute inset-0 w-full h-full object-cover will-change-transform"
+              />
+            </AnimatePresence>
 
             {/* CUT CORNER */}
             <div
@@ -61,7 +90,7 @@ const WhyChooseUs = () => {
 
           {/* RED CARD */}
           <div
-            className="absolute
+            className="absolute z-20
             bottom-[8%]
             left-[30%] md:left-[51%]
 
@@ -111,16 +140,16 @@ const WhyChooseUs = () => {
                   key={index}
                   onMouseEnter={() => {
                     if (window.innerWidth >= 1024) {
-                      setActive(index);
+                      handleSetActive(index);
                     }
                   }}
                   onClick={() => {
                     if (window.innerWidth < 1024) {
-                      setActive(index);
+                      handleSetActive(index);
                     }
                   }}
                   className={`flex items-center justify-between px-5 py-3 cursor-pointer border-b border-black/10
-                    transition-all duration-500 ease-in-out
+                    transition-colors duration-500 ease-in-out
                     ${
                       isActive
                         ? "bg-[#7D0000] text-white"
@@ -130,7 +159,7 @@ const WhyChooseUs = () => {
                 >
                   {/* LEFT DOT */}
                   <span
-                    className={`text-lg transition-all duration-500
+                    className={`text-lg transition-[opacity,transform] duration-500
                       ${
                         isActive
                           ? "opacity-100 translate-x-0"
@@ -145,7 +174,7 @@ const WhyChooseUs = () => {
                   <span className="flex-1 overflow-hidden flex">
                     <span
                       className={`text-[16px] font-medium whitespace-nowrap
-                        transition-all duration-500 ease-in-out
+                        transition-[margin] duration-500 ease-in-out
                         ${
                           isActive
                             ? "ml-auto pr-2"
