@@ -5,11 +5,13 @@ import { ArrowLeft, ArrowRight, X, Download, ChevronLeft, ChevronRight, Grid2x2 
 
 const ProjectModal = ({ project, allProjects, onClose, onNavigate }) => {
   const [currentImgIndex, setCurrentImgIndex] = useState(0);
-  const currentIndex = allProjects.findIndex(p => p.id === project.id);
+  
+  // Safe index calculation
+  const currentIndex = project ? allProjects.findIndex(p => p.id === project.id) : -1;
 
   useEffect(() => {
-    setCurrentImgIndex(0);
-  }, [project.id]);
+    if (project) setCurrentImgIndex(0);
+  }, [project?.id]);
 
   const handleKeyDown = useCallback((e) => {
     if (e.key === 'Escape') onClose();
@@ -32,10 +34,10 @@ const ProjectModal = ({ project, allProjects, onClose, onNavigate }) => {
     };
   }, [handleKeyDown]);
 
-  const prevProject = allProjects[currentIndex > 0 ? currentIndex - 1 : allProjects.length - 1];
-  const nextProject = allProjects[currentIndex < allProjects.length - 1 ? currentIndex + 1 : 0];
+  const prevProject = currentIndex >= 0 ? allProjects[currentIndex > 0 ? currentIndex - 1 : allProjects.length - 1] : null;
+  const nextProject = currentIndex >= 0 ? allProjects[currentIndex < allProjects.length - 1 ? currentIndex + 1 : 0] : null;
 
-  const images = project.images || [project.img];
+  const images = project?.images || (project?.img ? [project.img] : []);
   const handlePrevImage = (e) => {
     e.stopPropagation();
     setCurrentImgIndex(prev => (prev > 0 ? prev - 1 : images.length - 1));
