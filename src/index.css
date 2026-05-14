@@ -39,3 +39,42 @@
 #team-grid {
   scroll-margin-top: 120px;
 }
+
+@layer utilities {
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 5px;
+  }
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background: #7D0000;
+    border-radius: 10px;
+  }
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: #E6353A;
+  }
+  
+  /* Firefox */
+  .custom-scrollbar {
+    scrollbar-width: thin;
+    scrollbar-color: #7D0000 transparent;
+  }
+
+  /* PROJECT MODAL UTILITIES */
+  .clip-corner {
+    clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 0 100%);
+  }
+
+  .clip-corner-lg {
+    clip-path: polygon(0 0, calc(100% - 20px) 0, 100% 20px, 100% 100%, 0 100%);
+  }
+
+  .btn-brand-solid {
+    @apply flex items-center justify-center bg-brand-maroon text-white transition-all duration-300 hover:bg-brand-primary cursor-pointer shadow-md hover:scale-105 active:scale-95;
+  }
+
+  .text-brand-label {
+    @apply font-display text-[10px] sm:text-[11px] tracking-[0.2em] uppercase font-medium;
+  }
+}

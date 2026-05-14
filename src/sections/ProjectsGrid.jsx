@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 import { ArrowRight, ArrowDown, Plus } from 'lucide-react';
 import Button from '../components/ui/Button';
+import ProjectModal from '../components/ProjectModal';
 
 const CATEGORIES = [
   "ALL",
@@ -19,6 +20,10 @@ const PROJECTS = [
     category: "Residential",
     fullCategory: "RESIDENTIAL PROJECTS",
     img: "/images/projects/project-1.png",
+    images: ["/images/projects/project-1.png", "/images/projects/project-2.png", "/images/projects/project-3.png"],
+    location: "Mumbai, Maharashtra",
+    year: "2022",
+    description: "Premium residential facade installation featuring high-performance glazing systems and precision-engineered aluminium cladding across 40+ floors.",
   },
   {
     id: 2,
@@ -26,6 +31,10 @@ const PROJECTS = [
     category: "Commercial",
     fullCategory: "COMMERCIAL COMPLEXES",
     img: "/images/projects/project-2.png",
+    images: ["/images/projects/project-2.png", "/images/projects/project-1.png", "/images/projects/project-4.png"],
+    location: "New Delhi",
+    year: "2021",
+    description: "State-of-the-art facade system for diplomatic facility with blast-resistant glazing and energy-efficient curtain wall technology.",
   },
   {
     id: 3,
@@ -33,6 +42,10 @@ const PROJECTS = [
     category: "Residential",
     fullCategory: "RESIDENTIAL PROJECTS",
     img: "/images/projects/project-3.png",
+    images: ["/images/projects/project-3.png", "/images/projects/project-4.png", "/images/projects/project-2.png"],
+    location: "Mumbai, Maharashtra",
+    year: "2023",
+    description: "Luxury residential tower with unitized curtain wall system and high-performance double-glazed units for optimal thermal comfort.",
   },
   {
     id: 4,
@@ -40,6 +53,10 @@ const PROJECTS = [
     category: "Residential",
     fullCategory: "RESIDENTIAL PROJECTS",
     img: "/images/projects/project-4.png",
+    images: ["/images/projects/project-4.png", "/images/projects/project-1.png", "/images/projects/project-3.png"],
+    location: "Pune, Maharashtra",
+    year: "2020",
+    description: "Modern residential complex featuring composite aluminium panel cladding with integrated ventilation systems.",
   },
   {
     id: 5,
@@ -47,6 +64,10 @@ const PROJECTS = [
     category: "Commercial",
     fullCategory: "COMMERCIAL COMPLEXES",
     img: "/images/projects/project-1.png",
+    images: ["/images/projects/project-1.png", "/images/projects/project-2.png", "/images/projects/project-3.png"],
+    location: "Bengaluru, Karnataka",
+    year: "2023",
+    description: "Large-scale commercial development with spider glazing and structural silicone facade systems.",
   },
   {
     id: 6,
@@ -54,6 +75,10 @@ const PROJECTS = [
     category: "Corporate",
     fullCategory: "CORPORATE OFFICES",
     img: "/images/projects/project-2.png",
+    images: ["/images/projects/project-2.png", "/images/projects/project-1.png", "/images/projects/project-4.png"],
+    location: "Hyderabad, Telangana",
+    year: "2022",
+    description: "IT campus featuring energy-efficient double-skin facade with automated louver systems for solar control.",
   },
   {
     id: 7,
@@ -61,6 +86,10 @@ const PROJECTS = [
     category: "Hospitality",
     fullCategory: "HOTELS & HOSPITALITY",
     img: "/images/projects/project-3.png",
+    images: ["/images/projects/project-3.png", "/images/projects/project-4.png", "/images/projects/project-2.png"],
+    location: "Goa",
+    year: "2021",
+    description: "Five-star hospitality project with decorative stone cladding and frameless glass balustrades.",
   },
   {
     id: 8,
@@ -68,6 +97,10 @@ const PROJECTS = [
     category: "Institution",
     fullCategory: "HOSPITALS & INSTITUTIONS",
     img: "/images/projects/project-4.png",
+    images: ["/images/projects/project-4.png", "/images/projects/project-1.png", "/images/projects/project-3.png"],
+    location: "Chennai, Tamil Nadu",
+    year: "2023",
+    description: "Healthcare facility with anti-bacterial coated panels and high-performance insulated glazing for sterile environments.",
   },
   {
     id: 9,
@@ -75,6 +108,10 @@ const PROJECTS = [
     category: "Retail",
     fullCategory: "RETAIL & SHOPPING CENTERS",
     img: "/images/projects/project-1.png",
+    images: ["/images/projects/project-1.png", "/images/projects/project-2.png", "/images/projects/project-3.png"],
+    location: "Gurugram, Haryana",
+    year: "2022",
+    description: "Premium retail complex with structural glazing, point-fixed glass canopies, and aluminium composite cladding.",
   },
   {
     id: 10,
@@ -82,6 +119,9 @@ const PROJECTS = [
     category: "Residential",
     fullCategory: "RESIDENTIAL PROJECTS",
     img: "/images/projects/project-2.png",
+    location: "Noida, Uttar Pradesh",
+    year: "2024",
+    description: "Twin-tower residential project featuring unitized curtain wall with integrated sun-shading elements.",
   },
   {
     id: 11,
@@ -89,6 +129,9 @@ const PROJECTS = [
     category: "Corporate",
     fullCategory: "CORPORATE OFFICES",
     img: "/images/projects/project-3.png",
+    location: "Mumbai, Maharashtra",
+    year: "2023",
+    description: "Grade-A corporate office with full-height vision glass, spandrel panels, and automated building management integration.",
   },
   {
     id: 12,
@@ -96,18 +139,26 @@ const PROJECTS = [
     category: "Hospitality",
     fullCategory: "HOTELS & HOSPITALITY",
     img: "/images/projects/project-4.png",
+    location: "Udaipur, Rajasthan",
+    year: "2024",
+    description: "Heritage-inspired resort with traditional stone facade and modern glass atrium installations.",
   }
 ];
 
 const ProjectsGrid = () => {
   const [activeCategory, setActiveCategory] = useState("ALL");
   const [visibleCount, setVisibleCount] = useState(6);
+  const [selectedProject, setSelectedProject] = useState(null);
 
   const filteredProjects = activeCategory === "ALL" 
     ? PROJECTS 
     : PROJECTS.filter(p => p.fullCategory === activeCategory);
 
   const displayProjects = filteredProjects.slice(0, visibleCount);
+
+  const handleNavigate = useCallback((project) => {
+    setSelectedProject(project);
+  }, []);
 
   return (
     <section className="w-full bg-brand-background py-[118px]">
@@ -120,7 +171,7 @@ const ProjectsGrid = () => {
               key={cat}
               onClick={() => {
                 setActiveCategory(cat);
-                setVisibleCount(6); // Reset count on category change
+                setVisibleCount(6);
               }}
               className={`font-display font-medium text-[13px] tracking-[0.15em] uppercase transition-colors duration-300 ${
                 activeCategory === cat ? 'text-brand-maroon' : 'text-brand-muted hover:text-brand-text'
@@ -136,6 +187,7 @@ const ProjectsGrid = () => {
           {displayProjects.map((project, idx) => (
             <div 
               key={`${project.id}-${idx}`}
+              onClick={() => setSelectedProject(project)}
               className="relative group w-full h-[468px] overflow-hidden cursor-pointer"
             >
               {/* Image Container with Top-Right Cut */}
@@ -161,7 +213,7 @@ const ProjectsGrid = () => {
 
                 <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100 mt-[15px]">
                   <p className="font-body text-[15px] leading-[26px] text-[#C2C2C2] line-clamp-3 mb-[15px]">
-                    {project.desc || "Outstanding project delivered with precision and excellence."}
+                    {project.description || "Outstanding project delivered with precision and excellence."}
                   </p>
                   
                   <div className="flex justify-end w-full">
@@ -191,8 +243,19 @@ const ProjectsGrid = () => {
         )}
 
       </div>
+
+      {/* Project Modal */}
+      {selectedProject && (
+        <ProjectModal
+          project={selectedProject}
+          allProjects={filteredProjects}
+          onClose={() => setSelectedProject(null)}
+          onNavigate={handleNavigate}
+        />
+      )}
     </section>
   );
 };
 
 export default ProjectsGrid;
+
