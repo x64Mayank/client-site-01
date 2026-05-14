@@ -2,77 +2,10 @@ import React, { useState, useRef } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { ArrowRight, ArrowLeft, ArrowUpRight, Plus } from 'lucide-react';
 import ProjectModal from '../components/ProjectModal';
-
-const CATEGORIES = [
-  "ALL PROJECTS",
-  "RESIDENTIAL PROJECTS",
-  "COMMERCIAL COMPLEXES",
-  "CORPORATE OFFICES",
-  "HOTELS & HOSPITALITY",
-  "HOSPITALS & INSTITUTIONS",
-  "RETAIL & SHOPPING CENTERS"
-];
-
-const PROJECTS = [
-  {
-    id: 1,
-    title: "Lodha Bellisimo",
-    category: "Residential",
-    fullCategory: "RESIDENTIAL PROJECTS",
-    description: "Premium residential facade installation featuring high-performance glazing systems and precision-engineered aluminium cladding across 40+ floors.",
-    img: "/images/projects/project-1.png",
-    images: ["/images/projects/project-1.png", "/images/projects/project-2.png", "/images/projects/project-3.png"],
-    location: "Mumbai, Maharashtra",
-    year: "2022",
-  },
-  {
-    id: 2,
-    title: "American Embassy",
-    category: "Commercial",
-    fullCategory: "COMMERCIAL COMPLEXES",
-    description: "State-of-the-art facade system for diplomatic facility with blast-resistant glazing and energy-efficient curtain wall technology.",
-    img: "/images/projects/project-2.png",
-    images: ["/images/projects/project-2.png", "/images/projects/project-1.png", "/images/projects/project-4.png"],
-    location: "New Delhi",
-    year: "2021",
-  },
-  {
-    id: 3,
-    title: "Avighna House",
-    category: "Residential",
-    fullCategory: "RESIDENTIAL PROJECTS",
-    description: "Luxury residential tower with unitized curtain wall system and high-performance double-glazed units for optimal thermal comfort.",
-    img: "/images/projects/project-3.png",
-    images: ["/images/projects/project-3.png", "/images/projects/project-4.png", "/images/projects/project-2.png"],
-    location: "Mumbai, Maharashtra",
-    year: "2023",
-  },
-  {
-    id: 4,
-    title: "Satguru Residency",
-    category: "Residential",
-    fullCategory: "RESIDENTIAL PROJECTS",
-    description: "Modern residential complex featuring composite aluminium panel cladding with integrated ventilation systems.",
-    img: "/images/projects/project-4.png",
-    images: ["/images/projects/project-4.png", "/images/projects/project-1.png", "/images/projects/project-3.png"],
-    location: "Pune, Maharashtra",
-    year: "2020",
-  },
-  {
-    id: 9,
-    title: "DLF Mall",
-    category: "Retail",
-    fullCategory: "RETAIL & SHOPPING CENTERS",
-    description: "Iconic retail destination with custom-designed skylights and high-visibility storefront glazing systems.",
-    img: "/images/projects/project-1.png",
-    images: ["/images/projects/project-1.png", "/images/projects/project-2.png", "/images/projects/project-3.png"],
-    location: "Noida, Uttar Pradesh",
-    year: "2022",
-  }
-];
+import { PROJECTS, CATEGORIES } from '../data/projectsData';
 
 const Projects = () => {
-  const [activeCategory, setActiveCategory] = useState(CATEGORIES[0]);
+  const [activeCategory, setActiveCategory] = useState("ALL PROJECTS");
   const [selectedProject, setSelectedProject] = useState(null);
   const containerRef = useRef(null);
 
