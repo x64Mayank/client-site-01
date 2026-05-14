@@ -15,7 +15,7 @@ const ProjectsPage = () => {
             We Successfully Implemented
           </>
         }
-        breadcrumbLabel="ALFA FACADE PROJECTS"
+        breadcrumbLabel="SHRI SHYAM G GROUP PROJECTS"
       />
       <ProjectsGrid />
       <Footer />
