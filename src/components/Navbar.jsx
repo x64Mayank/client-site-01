@@ -45,7 +45,7 @@ const Navbar = () => {
     { name: 'ABOUT US', path: '/about', hasDropdown: true },
     { name: 'SERVICES', path: '/services', hasDropdown: true },
     { name: 'PROJECTS', path: '/projects' },
-    { name: 'CONTACT US', href: '#contact' },
+    { name: 'CONTACT US', path: '/contact' },
   ];
 
   const contactInfo = [
