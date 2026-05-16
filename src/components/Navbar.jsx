@@ -3,12 +3,14 @@ import { Link } from "react-router-dom";
 import { motion, AnimatePresence, useScroll, useMotionValueEvent } from 'framer-motion';
 import Button from './ui/Button';
 import SearchOverlay from './ui/Search';
+import ContactForm from '../sections/ContactForm';
 import { PhoneIncoming, Send, MapPin, Search, Menu, X, ChevronDown, Construction } from 'lucide-react';
 import logo from '../assets/logo.svg';
 
 const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
+  const [isQuoteOpen, setIsQuoteOpen] = useState(false);
   const [expandedLinks, setExpandedLinks] = useState({});
 
   // Smart Sticky Logic
@@ -87,12 +89,12 @@ const Navbar = () => {
           <div className="w-full h-full flex items-center px-0 max-w-[1920px] flex-nowrap">
             {/* Rebranded Logo */}
             <div className="flex-shrink-0 lg:w-[240px] xl:w-[300px] h-full flex items-center justify-center px-4 border-r border-brand-dark px1-cursor group relative overflow-hidden">
-              <div className="flex flex-row items-center justify-center gap-[12px] transition-transform duration-700 group-hover:scale-105">
+              <Link to="/" className="flex flex-row items-center justify-center gap-[12px] transition-transform duration-700 group-hover:scale-105">
                 <img src={logo} alt="Shri Shyam G Group Logo" className="w-[42px] h-[42px] object-contain flex-shrink-0" />
                 <span className="text-brand-accent font-display font-bold text-[13px] xl:text-[14.6px] leading-[25.92px] uppercase tracking-[0.137em] text-center whitespace-normal">
                   Shri Shyam G Group
                 </span>
-              </div>
+              </Link>
             </div>
 
             {/* Contact Info */}
@@ -143,12 +145,12 @@ const Navbar = () => {
         <div className="w-full h-[82px] bg-brand-primary flex items-center justify-center border-b border-black/5 lg:border-none">
           <div className="w-full flex items-center h-full px-[0px] max-w-[1920px] flex-nowrap">
             <div className="flex lg:hidden items-center h-full flex-grow px-4 px1-cursor">
-              <div className="flex flex-row items-center gap-[12px]">
+              <Link to="/" className="flex flex-row items-center gap-[12px]">
                 <img src={logo} alt="Shri Shyam G Group Logo" className="w-[40px] h-[40px] object-contain flex-shrink-0" />
                 <span className="text-brand-accent font-display font-bold text-[13px] sm:text-[14.6px] leading-[25.92px] uppercase tracking-[0.137em] whitespace-normal">
                   Shri Shyam G Group
                 </span>
-              </div>
+              </Link>
             </div>
 
             <div className="hidden lg:flex lg:w-[240px] xl:w-[300px] h-full bg-brand-primary items-center justify-center px-4 border-r border-brand-dark flex-shrink-0 px1-cursor">
@@ -177,7 +179,10 @@ const Navbar = () => {
             </div>
 
             <div className="lg:w-[220px] xl:w-[252px] h-full bg-brand-secondary hidden lg:flex items-center justify-center group overflow-hidden relative flex-shrink-0">
-              <button className="relative z-10 w-full h-full font-display font-medium text-[13px] xl:text-[14.5px] tracking-[0.069em] text-white uppercase transition-all duration-700 whitespace-nowrap px-4">
+              <button
+                onClick={() => setIsQuoteOpen(true)}
+                className="relative z-10 w-full h-full font-display font-medium text-[13px] xl:text-[14.5px] tracking-[0.069em] text-white uppercase transition-all duration-700 whitespace-nowrap px-4"
+              >
                 REQUEST A QUOTE
               </button>
               <div className="absolute inset-0 bg-white/10 translate-y-full group-hover:translate-y-0 transition-transform duration-[800ms]" />
@@ -207,21 +212,21 @@ const Navbar = () => {
         }`}>
           <div className="w-full flex items-center h-full px-[0px] max-w-[1920px] flex-nowrap">
             <div className="flex lg:hidden items-center h-full flex-grow px-4 px1-cursor">
-              <div className="flex flex-row items-center gap-[12px]">
+              <Link to="/" className="flex flex-row items-center gap-[12px]">
                 <img src={logo} alt="Shri Shyam G Group Logo" className="w-[40px] h-[40px] object-contain flex-shrink-0" />
                 <span className="text-brand-accent font-display font-bold text-[13px] sm:text-[14.6px] leading-[25.92px] uppercase tracking-[0.137em] whitespace-normal">
                   Shri Shyam G Group
                 </span>
-              </div>
+              </Link>
             </div>
 
             <div className="hidden lg:flex lg:w-[240px] xl:w-[300px] h-full items-center justify-center px-4 border-r border-white/10 flex-shrink-0 px1-cursor">
-              <div className="flex flex-row items-center justify-center gap-[12px] transition-transform duration-700 hover:scale-105">
+              <Link to="/" className="flex flex-row items-center justify-center gap-[12px] transition-transform duration-700 hover:scale-105">
                 <img src={logo} alt="Shri Shyam G Group Logo" className="w-[40px] h-[40px] object-contain flex-shrink-0" />
                 <span className="text-brand-accent font-display font-bold text-[13px] xl:text-[14.6px] leading-[25.92px] uppercase tracking-[0.137em] text-center whitespace-normal">
                   Shri Shyam G Group
                 </span>
-              </div>
+              </Link>
             </div>
 
             <div className="flex-grow h-full hidden lg:flex items-center px-4 xl:px-6 2xl:px-[25px] overflow-hidden">
@@ -244,7 +249,10 @@ const Navbar = () => {
             </div>
 
             <div className="lg:w-[220px] xl:w-[252px] h-full bg-brand-secondary hidden lg:flex items-center justify-center group overflow-hidden relative flex-shrink-0">
-              <button className="relative z-10 w-full h-full font-display font-medium text-[13px] xl:text-[14.5px] tracking-[0.069em] text-white uppercase transition-all duration-700 whitespace-nowrap px-4">
+              <button
+                onClick={() => setIsQuoteOpen(true)}
+                className="relative z-10 w-full h-full font-display font-medium text-[13px] xl:text-[14.5px] tracking-[0.069em] text-white uppercase transition-all duration-700 whitespace-nowrap px-4"
+              >
                 REQUEST A QUOTE
               </button>
               <div className="absolute inset-0 bg-white/10 translate-y-full group-hover:translate-y-0 transition-transform duration-[800ms]" />
@@ -282,12 +290,16 @@ const Navbar = () => {
             >
               {/* Menu Header: Logo + Close */}
               <div className="flex items-center justify-between px-5 py-4 border-b border-gray-200 h-[82px] shrink-0">
-                <div className="flex flex-row items-center gap-[12px] min-w-0">
+                <Link
+                  to="/"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className="flex flex-row items-center gap-[12px] min-w-0"
+                >
                   <img src={logo} alt="Shri Shyam G Group Logo" className="w-[40px] h-[40px] object-contain flex-shrink-0" />
                   <span className="text-brand-primary font-display font-bold text-[14px] sm:text-[16px] leading-[1.2] uppercase tracking-[0.1em] whitespace-nowrap overflow-hidden text-ellipsis">
                     Shri Shyam G Group
                   </span>
-                </div>
+                </Link>
                 <button
                   onClick={() => setIsMobileMenuOpen(false)}
                   className="text-gray-600 hover:text-gray-900 p-2 shrink-0"
@@ -343,6 +355,42 @@ const Navbar = () => {
                   </div>
                 ))}
               </div>
+            </motion.div>
+          </>
+        )}
+      </AnimatePresence>
+
+      {/* Quote Popup */}
+      <AnimatePresence>
+        {isQuoteOpen && (
+          <>
+            {/* Backdrop */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="fixed inset-0 z-[90] bg-black/60"
+              onClick={() => setIsQuoteOpen(false)}
+            />
+
+            {/* Popup */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.3, ease: "easeOut" }}
+              className="fixed inset-0 z-[100] bg-white overflow-y-auto"
+            >
+
+              {/* CLOSE BUTTON */}
+              <button
+                onClick={() => setIsQuoteOpen(false)}
+                className="fixed top-5 right-5 z-[110] w-10 h-10 rounded-full bg-[#7D0000] text-white flex items-center justify-center hover:bg-[#C9050B] transition-colors duration-300"
+              >
+                <X size={22} />
+              </button>
+
+              <ContactForm isPopup />
             </motion.div>
           </>
         )}
