@@ -90,13 +90,13 @@ const ContactUs = () => {
                 {/* Red Square Bullet */}
                 <div className="w-[6px] h-[6px] bg-[#C9050B] shrink-0" />
                 <p className="font-body text-[14px] md:text-[17px] text-white font-light">
-                  Work with the team that's clad 1500+ projects across 25 states.
+                  Work with the team that's clad 150+ projects across countries.
                 </p>
               </div>
 
               {/* CONTACT US BUTTON - Touching the Right Side */}
               <motion.a
-                href="#contact"
+                href="/contact"
                 initial={{ opacity: 0, x: 20 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}

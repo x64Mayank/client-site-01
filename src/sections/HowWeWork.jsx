@@ -146,7 +146,7 @@ const HowWeWork = () => {
                 variant="primary" 
                 icon={ArrowUpRight} 
                 rotateOnHover
-                href="#services"
+                href="/contact"
                 className="w-full"
               >
                 Let's Work Together

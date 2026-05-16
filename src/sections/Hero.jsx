@@ -86,7 +86,7 @@ const Hero = () => {
               variant="primary" 
               icon={ArrowUpRight} 
               rotateOnHover
-              href="#services"
+              href="/services"
               className="w-full sm:w-fit xl:w-[303px]"
             >
               View All Services
@@ -96,7 +96,7 @@ const Hero = () => {
               variant="primary" 
               icon={ArrowUpRight} 
               rotateOnHover
-              href="#projects"
+              href="/projects"
               className="w-full sm:w-fit xl:w-[273px]"
             >
               Our Projects

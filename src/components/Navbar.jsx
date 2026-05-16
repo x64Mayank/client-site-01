@@ -1,5 +1,6 @@
 import React, { useState, useRef, useLayoutEffect, useEffect } from 'react';
 import { Link } from "react-router-dom";
+import { HashLink } from "react-router-hash-link";
 import { motion, AnimatePresence, useScroll, useMotionValueEvent } from 'framer-motion';
 import Button from './ui/Button';
 import SearchOverlay from './ui/Search';
@@ -44,7 +45,14 @@ const Navbar = () => {
 
   const navLinks = [
     { name: 'HOME', path: '/' },
-    { name: 'ABOUT US', path: '/about', hasDropdown: true },
+    {
+      name: 'ABOUT US',
+      path: '/about',
+      hasDropdown: true,
+      dropdownItems: [
+        { name: 'Director Message', path: '/about#director-message', isHashLink: true },
+      ],
+    },
     { name: 'SERVICES', path: '/services', hasDropdown: true },
     { name: 'PROJECTS', path: '/projects' },
     { name: 'CONTACT US', path: '/contact' },
@@ -83,9 +91,9 @@ const Navbar = () => {
       {/* ----------------------------- */}
       {/* MAIN NAVBAR (Normal document flow, Desktop only) */}
       {/* ----------------------------- */}
-      <nav className="hidden lg:flex relative w-full z-40 flex-col items-center">
+      <nav className="hidden lg:flex relative w-full z-[80] flex-col items-center">
         {/* Row 1: Top Bar */}
-        <div className="w-full bg-brand-primary border-brand-dark hidden lg:flex items-center justify-center overflow-hidden h-[70px] border-b">
+        <div className="w-full bg-brand-primary border-brand-dark hidden lg:flex items-center justify-center h-[70px] border-b">
           <div className="w-full h-full flex items-center px-0 max-w-[1920px] flex-nowrap">
             {/* Rebranded Logo */}
             <div className="flex-shrink-0 lg:w-[240px] xl:w-[300px] h-full flex items-center justify-center px-4 border-r border-brand-dark px1-cursor group relative overflow-hidden">
@@ -159,10 +167,10 @@ const Navbar = () => {
               </span>
             </div>
 
-            <div className="flex-grow h-full bg-brand-primary hidden lg:flex items-center px-4 xl:px-6 2xl:px-[25px] overflow-hidden">
+            <div className="flex-grow h-full bg-brand-primary hidden lg:flex items-center px-4 xl:px-6 2xl:px-[25px] overflow-visible">
               <div className="flex items-center flex-nowrap gap-4 xl:gap-6 2xl:gap-[36.7px] px-2 min-w-0">
                 {navLinks.map((link) => (
-                  <div key={link.name} className="flex items-center gap-2 xl:gap-3">
+                  <div key={link.name} className="relative group flex items-center gap-2 xl:gap-3">
                     {link.hasDropdown && <div className="w-[3px] h-[10px] bg-brand-secondary flex-shrink-0" />}
                     {link.path ? (
                       <Link to={link.path} className="font-display font-medium text-[12px] xl:text-[13px] 2xl:text-[14.6px] leading-[25.92px] tracking-[0.137em] text-white uppercase hover:text-brand-accent transition-colors duration-500 whitespace-nowrap flex-shrink-0">
@@ -172,6 +180,33 @@ const Navbar = () => {
                       <a href={link.href} className="font-display font-medium text-[12px] xl:text-[13px] 2xl:text-[14.6px] leading-[25.92px] tracking-[0.137em] text-white uppercase hover:text-brand-accent transition-colors duration-500 whitespace-nowrap flex-shrink-0">
                         {link.name}
                       </a>
+                    )}
+
+                    {link.dropdownItems && (
+                      <div className="absolute top-full left-0 pt-7 opacity-0 invisible translate-y-4 group-hover:translate-y-0 group-hover:opacity-100 group-hover:visible transition-all duration-500 ease-out z-[80]">
+                        <div className="w-[200px] bg-white shadow-lg border border-black/10">
+                          {link.dropdownItems.map((item) => (
+                            item.isHashLink ? (
+                              <HashLink
+                                key={item.name}
+                                smooth
+                                to={item.path}
+                                className="block px-5 py-4 border-b border-black/10 last:border-b-0 font-display font-medium text-[12px] tracking-[0.18em] text-[#C9050B] uppercase hover:bg-black/5 transition-colors duration-300"
+                              >
+                                {item.name}
+                              </HashLink>
+                            ) : (
+                              <Link
+                                key={item.name}
+                                to={item.path}
+                                className="block px-5 py-4 border-b border-black/10 last:border-b-0 font-display font-medium text-[12px] tracking-[0.18em] text-[#C9050B] uppercase hover:bg-black/5 transition-colors duration-300"
+                              >
+                                {item.name}
+                              </Link>
+                            )
+                          ))}
+                        </div>
+                      </div>
                     )}
                   </div>
                 ))}
@@ -199,7 +234,7 @@ const Navbar = () => {
       {/* STICKY NAVBAR (Slides down on reverse scroll, unified for Mobile) */}
       {/* ----------------------------- */}
       <nav 
-        className={`fixed top-0 left-0 w-full z-50 flex flex-col items-center transition-transform duration-[600ms] ease-in-out ${
+        className={`fixed top-0 left-0 w-full z-[90] flex flex-col items-center transition-transform duration-[600ms] ease-in-out ${
           isSticky ? 'shadow-xl' : ''
         } ${
           isVisible ? 'translate-y-0' : '-translate-y-full'
@@ -229,10 +264,10 @@ const Navbar = () => {
               </Link>
             </div>
 
-            <div className="flex-grow h-full hidden lg:flex items-center px-4 xl:px-6 2xl:px-[25px] overflow-hidden">
+            <div className="flex-grow h-full hidden lg:flex items-center px-4 xl:px-6 2xl:px-[25px] overflow-visible">
               <div className="flex items-center flex-nowrap gap-4 xl:gap-6 2xl:gap-[36.7px] px-2 min-w-0">
                 {navLinks.map((link) => (
-                  <div key={link.name} className="flex items-center gap-2 xl:gap-3">
+                  <div key={link.name} className="relative group flex items-center gap-2 xl:gap-3">
                     {link.hasDropdown && <div className="w-[3px] h-[10px] bg-brand-secondary flex-shrink-0" />}
                     {link.path ? (
                       <Link to={link.path} className="font-display font-medium text-[12px] xl:text-[13px] 2xl:text-[14.6px] leading-[25.92px] tracking-[0.137em] text-white uppercase hover:text-brand-accent transition-colors duration-500 whitespace-nowrap flex-shrink-0">
@@ -242,6 +277,33 @@ const Navbar = () => {
                       <a href={link.href} className="font-display font-medium text-[12px] xl:text-[13px] 2xl:text-[14.6px] leading-[25.92px] tracking-[0.137em] text-white uppercase hover:text-brand-accent transition-colors duration-500 whitespace-nowrap flex-shrink-0">
                         {link.name}
                       </a>
+                    )}
+
+                    {link.dropdownItems && (
+                      <div className="absolute top-full left-0 pt-6.5 opacity-0 invisible translate-y-4 group-hover:translate-y-0 group-hover:opacity-100 group-hover:visible transition-all duration-500 ease-out z-[80]">
+                        <div className="w-[200px] bg-white shadow-lg border border-black/10">
+                          {link.dropdownItems.map((item) => (
+                            item.isHashLink ? (
+                              <HashLink
+                                key={item.name}
+                                smooth
+                                to={item.path}
+                                className="block px-5 py-4 border-b border-black/10 last:border-b-0 font-display font-medium text-[12px] tracking-[0.18em] text-[#C9050B] uppercase hover:bg-black/5 transition-colors duration-300"
+                              >
+                                {item.name}
+                              </HashLink>
+                            ) : (
+                              <Link
+                                key={item.name}
+                                to={item.path}
+                                className="block px-5 py-4 border-b border-black/10 last:border-b-0 font-display font-medium text-[12px] tracking-[0.18em] text-[#C9050B] uppercase hover:bg-black/5 transition-colors duration-300"
+                              >
+                                {item.name}
+                              </Link>
+                            )
+                          ))}
+                        </div>
+                      </div>
                     )}
                   </div>
                 ))}

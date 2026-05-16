@@ -250,7 +250,7 @@ const About = ({ compact = false }) => {
                     transition={{ duration: 0.8, ease: "easeOut", delay: 0.3 }}
                     className="mt-8 md:mt-10 xl:mt-0 xl:absolute xl:top-[517px] xl:left-[83px]"
                   >
-                    <a href="#about" className="inline-flex flex-row items-center group cursor-none px1-cursor">
+                    <a href="/about" className="inline-flex flex-row items-center group cursor-none px1-cursor">
                       {/* Text column — w:193.25, padding:0 37px, column center */}
                       <div className="relative flex flex-col items-center justify-center w-[160px] md:w-[180px] xl:w-[193px] px-[28px] md:px-[34px] xl:px-[37px]">
                         {/* Border box (absolute) — white fill, #D9D9D9 stroke */}

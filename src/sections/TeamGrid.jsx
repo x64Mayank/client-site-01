@@ -35,7 +35,7 @@ const TeamGrid = () => {
       <div className="py-14 px-6 lg:px-16">
         <div className="max-w-[1200px] mx-auto">
 
-          <h2 className="text-[32px] md:text-[40px] font-medium text-black">
+          <h2 id="director-message" className="text-[32px] md:text-[40px] font-medium text-black">
             Our Leadership’s Message.
           </h2>
 
