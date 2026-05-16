@@ -36,55 +36,51 @@ const WorkWithUs = () => {
         </div>
 
         {/* MIDDLE INFO */}
-        <div className="bg-[#edefed] px-8 py-12 flex flex-col justify-center">
-          <h2 className="text-[22px] md:text-[28px] font-medium text-black">
-            Alfa Facade Systems Pvt Ltd
-          </h2>
+        <div className="bg-[#edefed] px-8 md:px-8 py-12 flex flex-col justify-center">
+          <div className="max-w-[430px] mx-auto w-full">
+            <div className="relative w-fit mb-5">
+              <img
+                src="/images/about/shri-shyam.svg"
+                alt="Shri Shyam G Group Logo"
+                className="w-[72px] h-[72px] object-contain"
+              />
 
-          {/* 🔥 UPDATED PLUS + SOCIAL */}
-          <div
-            className="relative mt-4 w-fit"
-            onMouseEnter={() => setShowIcons(true)}
-            onMouseLeave={() => setShowIcons(false)}
-            onClick={() => setShowIcons((prev) => !prev)} // mobile/tablet
-          >
-            {/* PLUS */}
-            <div className="w-[36px] h-[36px] bg-[#E6353A] flex items-center justify-center text-white text-xl cursor-pointer">
-              +
+              <span className="absolute -top-1 -right-5 text-[12px] font-semibold text-black leading-none">
+                TM
+              </span>
             </div>
+            
+            <h2 className="text-[22px] md:text-[28px] font-medium text-black mb-5">
+              Shri Shyam G group
+            </h2>
 
-            {/* SOCIAL ICONS */}
-            <div
-              className={`
-                absolute left-full top-1/2 -translate-y-1/2 flex gap-2 ml-2
-                transition-all duration-300
-                ${showIcons ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-2 pointer-events-none"}
-              `}
-            >
-              <div className="w-[36px] h-[36px] bg-[#E6353A] flex items-center justify-center text-white cursor-pointer">
-                <FaFacebookF size={14} />
-              </div>
+            <div className="text-[15px] text-black leading-7 space-y-5">
+              <p>
+                LGF 001, Beside Saroj Institute Arjunganj,Sultanpur
+                Road, Lucknow 226002
+              </p>
 
-              <div className="w-[36px] h-[36px] bg-[#E6353A] flex items-center justify-center text-white cursor-pointer">
-                <FaInstagram size={14} />
-              </div>
+              <p>
+                +91 6306178578 / +91 75458 90012 / +91 98076 90771
+              </p>
+
+              <p>
+                info@shrishyamggroup.com
+              </p>
+
+              <p>
+                Mon – Sat: 7.30am – 6.30pm / Sun: Closed
+              </p>
             </div>
-          </div>
-
-          <div className="mt-6 text-[16px] text-black/70 leading-7">
-            <p>Sr. No. 27/9/1A/2, Burhani Industrial Estate, 411048</p>
-            <p>+91 20 26932918 / 20</p>
-            <p>info@alfafacades.com</p>
-            <p>Mon — Sat: 7.30am — 6.30pm / Sun: Closed</p>
           </div>
         </div>
 
         {/* RIGHT FORM */}
-        <div className="bg-[#ffffff] md:col-span-2 lg:col-span-1">
-          <div className="px-8 py-8">
+        <div className="bg-[#ffffff] md:col-span-2 lg:col-span-1 h-full">
+          <div className="px-8 py-8 lg:py-14 h-full flex flex-col justify-between">
 
-            <p className="text-[16px] text-[#7D0000] text-center mb-6">
-              By contacting us, we will advise and quote you on Alfa Facade Systems best facade... solutions.
+            <p className="text-[16px] text-[#7D0000] text-center mb-6 lg:mb-4">
+              By contacting us, we will advise and quote you on SSG Group's best facade solutions.
             </p>
 
             <div className="space-y-5">
