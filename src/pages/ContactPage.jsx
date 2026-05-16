@@ -1,6 +1,8 @@
 import React from 'react';
 import PageHero from '../components/PageHero';
 import ContactMap from '../sections/ContactMap';
+import ContactForm from '../sections/ContactForm';
+import Footer from '../sections/Footer';
 
 const ContactPage = () => {
   return (
@@ -17,6 +19,8 @@ const ContactPage = () => {
         breadcrumbLabel="CONTACT US"
       />
       <ContactMap />
+      <ContactForm />
+      <Footer />
     </main>
   );
 };

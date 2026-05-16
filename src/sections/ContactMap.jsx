@@ -5,7 +5,7 @@ const ContactMap = () => {
   const [mapInteractive, setMapInteractive] = useState(false);
 
   return (
-    <section className="w-full bg-[#f5f5f5]">
+    <section className="w-full">
 
       {/* MAP */}
       <div
