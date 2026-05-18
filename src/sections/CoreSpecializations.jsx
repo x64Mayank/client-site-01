@@ -98,7 +98,7 @@ const ServiceCard = ({ title, description, image }) => {
 
 const CoreSpecializations = () => {
   return (
-    <section className="w-full pt-10 pb-16 lg:pt-[43px] lg:pb-[136px] bg-brand-background">
+    <section className="w-full pt-10 pb-16 lg:pt-[43px] lg:pb-[60px] bg-brand-background">
       <div className="max-w-[1440px] mx-auto px-6 lg:px-[75px]">
         {/* Header section */}
         <div className="flex flex-col items-center text-center mb-16 lg:mb-24 max-w-4xl mx-auto">

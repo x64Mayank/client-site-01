@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { ChevronRight } from 'lucide-react';
 
 const FacebookIcon = ({ size = 20, ...props }) => (
@@ -145,12 +146,20 @@ const Footer = () => {
           <div className="flex-1 lg:pl-8">
             <h3 className="font-display text-[20px] lg:text-[20.3px] font-semibold text-[#1A1A1A] mb-6 lg:mb-10">Quick Links</h3>
             <ul className="flex flex-col gap-4">
-              {['About Us', 'Our Services', 'Our Projects', 'Sustainability', 'Leadership'].map((link) => (
-                <li key={link} className="flex items-center gap-3 group">
+              {[
+                { name: 'About Us', path: '/about' },
+                { name: 'Our Services', path: '/services' },
+                { name: 'Our Projects', path: '/projects' },
+                { name: 'Leadership', path: '/about#director-message' },
+              ].map((link) => (
+                <li key={link.name} className="flex items-center gap-3 group">
                   <div className="w-0 h-0 border-t-[4px] border-t-transparent border-b-[4px] border-b-transparent border-l-[6px] border-l-[#1A1A1A] transition-transform duration-300 group-hover:translate-x-1" />
-                  <a href={`#${link.toLowerCase().replace(' ', '-')}`} className="font-display text-[13px] sm:text-[15px] lg:text-[16px] text-[#1A1A1A] hover:text-[#C9050B] transition-colors font-medium">
-                    {link}
-                  </a>
+                  <Link
+                    to={link.path}
+                    className="font-display text-[13px] sm:text-[15px] lg:text-[16px] text-[#1A1A1A] hover:text-[#C9050B] transition-colors font-medium"
+                  >
+                    {link.name}
+                  </Link>
                 </li>
               ))}
             </ul>

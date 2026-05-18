@@ -26,8 +26,8 @@ const valuesData = [
 
 const CoreValues = () => {
   return (
-    <section className="w-full pb-[50px] bg-white">
-      <div className="max-w-[1440px] mx-auto px-6 lg:px-[75px]">
+    <section className="w-full pb-[20px] bg-white">
+      <div className="max-w-[1440px] mx-auto">
         
         <div className="border border-brand-border flex flex-col lg:flex-row w-full">
           {valuesData.map((value, index) => {

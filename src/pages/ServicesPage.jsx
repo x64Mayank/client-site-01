@@ -24,7 +24,6 @@ const ServicesPage = () => {
       <StatsSection />
       <LargeArrowDown />
       <CoreSpecializations />
-      <ServicesProcess />
       <CoreValues />
       <HowWeWork heading="Why Choose Us?" showCTA={false} />
       <WorkWithUs />
