@@ -41,23 +41,23 @@ const steps = [
   },
 ];
 
-const HowWeWork = () => {
+const HowWeWork = ({ heading = "How We Work", showCTA = true }) => {
   const [activeStep, setActiveStep] = useState(1);
   const current = steps.find((s) => s.id === activeStep);
 
   return (
-    <section className="w-full bg-[#f5f5f5] px-6 lg:px-16 py-16">
+    <section className="w-full px-6 lg:px-16 py-16">
       
       {/* HEADER */}
       <div className="max-w-[1400px] mx-auto mb-10">
         <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6">
           
           <h2 className="text-[32px] lg:text-[40px] font-display font-semibold text-black">
-            How We Work
+            {heading}
           </h2>
 
           <p className="text-[14px] text-black/60 max-w-[500px] font-body">
-            Our proven 4-step framework ensures every facade project meets the highest standards of safety, aesthetics, and structural integrity.
+            Our proven 5-step framework ensures every facade project meets the highest standards of safety, aesthetics, and structural integrity.
           </p>
         </div>
       </div>
@@ -66,7 +66,7 @@ const HowWeWork = () => {
 
       <div className="relative max-w-[1400px] mx-auto">
         
-        <div className="mx-auto grid grid-cols-1 lg:grid-cols-[1fr_2.6fr_1.7fr] gap-10 items-stretch">
+        <div className={`mx-auto grid grid-cols-1 lg:grid-cols-[1fr_2.6fr_1.7fr] gap-10 items-stretch ${!showCTA ? "lg:min-h-[610px]" : ""}`}>
           
           {/* LEFT - STEPS */}
           <div className="flex flex-col h-full">
@@ -139,27 +139,35 @@ const HowWeWork = () => {
               <img
                 src={current.img}
                 alt=""
-                className="w-full h-[500px] object-cover"
+                className={`w-full object-cover ${
+                  showCTA
+                    ? "h-[500px]"
+                    : "h-[500px] lg:h-[580px]"
+                }`}
               />
 
-              <Button 
-                variant="primary" 
-                icon={ArrowUpRight} 
-                rotateOnHover
-                href="/contact"
-                className="w-full"
-              >
-                Let's Work Together
-              </Button>
+              {showCTA && (
+                <Button 
+                  variant="primary" 
+                  icon={ArrowUpRight} 
+                  rotateOnHover
+                  href="/contact"
+                  className="w-full"
+                >
+                  Let's Work Together
+                </Button>
+              )}
             </div>
           </div>
 
         </div>
       </div>
 
-      <div className="max-w-[1400px] mx-auto mt-2 text-[15px] tracking-wide text-black/50 font-display">
-        READY TO START YOUR PROJECT WITH A PROVEN PROCESS?
-      </div>
+      {showCTA && (
+        <div className="max-w-[1400px] mx-auto mt-2 text-[15px] tracking-wide text-black/50 font-display">
+          READY TO START YOUR PROJECT WITH A PROVEN PROCESS?
+        </div>
+      )}
     </section>
   );
 };

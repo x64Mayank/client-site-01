@@ -9,7 +9,7 @@ import ServicesProcess from '../sections/ServicesProcess';
 import WorkWithUs from '../sections/WorkWithUs';
 import Partners from '../sections/Partners';
 import CoreValues from '../sections/CoreValues';
-import WhyChooseUs from '../sections/WhyChooseUs';
+import HowWeWork from '../sections/HowWeWork';
 
 const ServicesPage = () => {
   return (
@@ -26,7 +26,7 @@ const ServicesPage = () => {
       <CoreSpecializations />
       <ServicesProcess />
       <CoreValues />
-      <WhyChooseUs />
+      <HowWeWork heading="Why Choose Us?" showCTA={false} />
       <WorkWithUs />
       <Partners />
       <Footer />
