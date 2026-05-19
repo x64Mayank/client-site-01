@@ -5,36 +5,40 @@ import StatsSection from "./StatsSection";
 const FacadeSection = () => {
   const cards = [
     {
-      title: "Value Engineering",
-      img: "/images/facade1.png",
+      title: "Spider Glazing System",
+      img: "/images/services/service1.png",
     },
     {
-      title: "Design",
-      img: "/images/facade1.png",
+      title: "Glass Glazing Systems",
+      img: "/images/services/service2.png",
     },
     {
-      title: "Glazing & Facade",
-      img: "/images/facade1.png",
+      title: "ACP Facade Cladding",
+      img: "/images/services/service3.png",
     },
     {
-      title: "Steel & Glass Railing",
-      img: "/images/facade1.png",
+      title: "uPVC Windows & Doors",
+      img: "/images/services/service4.png",
     },
     {
-      title: "System Aluminium & Doors & Windows",
-      img: "/images/facade1.png",
+      title: "Aluminum Windows, Doors & roof",
+      img: "/images/services/service5.png",
     },
     {
-      title: "Rainscreen Cladding",
-      img: "/images/facade1.png",
+      title: "Interior Design Solutions",
+      img: "/images/services/service6.png",
     },
     {
-      title: "UPVC Window & Door",
-      img: "/images/facade1.png",
+      title: "GRC/FRC/WPC Work",
+      img: "/images/services/service7.png",
     },
     {
-      title: "Installation",
-      img: "/images/facade1.png",
+      title: "Aluminum/Steel/MS/Glass Railing",
+      img: "/images/services/service8.png",
+    },
+    {
+      title: "Aluminum/Steel/MS/Glass Railing",
+      img: "/images/services/service9.png",
     },
   ];
 

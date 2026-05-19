@@ -50,6 +50,7 @@ const Navbar = () => {
       path: '/about',
       hasDropdown: true,
       dropdownItems: [
+        { name: 'About SSG Groups', path: '/about#about-us', isHashLink: true },
         { name: 'Director Message', path: '/about#director-message', isHashLink: true },
       ],
     },

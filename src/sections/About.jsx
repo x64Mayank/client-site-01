@@ -33,7 +33,7 @@ const About = ({ compact = false }) => {
           - lg (1024w): same as md, wider columns
           - xl (1440w+): centered 1270px content area with absolute positioning
         */}
-        <div className="flex flex-col xl:block xl:relative xl:min-h-[1060px]">
+        <div id="about-us" className="flex flex-col xl:block xl:relative xl:min-h-[1060px]">
 
           {/* ═══════════════════════════════════════════════════════════ */}
           {/* BLOCK 1: "Shri Shyam G™" (2003:5478)                      */}

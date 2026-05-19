@@ -5,47 +5,47 @@ const servicesData = [
   {
     title: "Spider Glazing System",
     description: "Modern architecture embraces transparency and minimalism with spider glazing systems. Our solutions deliver seamless structural integrity, stunning aesthetics, and superior safety.",
-    image: "/hero-1.webp"
+    image: "/images/services/service1.png"
   },
   {
     title: "Glass Glazing Systems",
     description: "Modern architecture heavily relies on glass to create open, bright, and sophisticated environments. Our glazing solutions provide beauty along with safety and performance.",
-    image: "/hero-1.webp"
+    image: "/images/services/service2.png"
   },
   {
     title: "ACP Facade Cladding",
     description: "Modern architecture heavily relies on glass to create open, bright, and sophisticated environments. Our glazing solutions provide beauty along with safety and performance.",
-    image: "/hero-1.webp"
+    image: "/images/services/service3.png"
   },
   {
     title: "uPVC Windows & Doors",
     description: "Modern architecture strives on sleek functionality with aluminium windows, doors, and glass roofs. Our offerings ensure energy efficiency, robust security, and expansive natural light.",
-    image: "/hero-1.webp"
+    image: "/images/services/service4.png"
   },
   {
     title: "Aluminum Windows, Doors & roof",
     description: "Modern architecture thrives on sleek functionality with aluminium windows, doors, and glass roofs. Our offerings ensure energy efficiency, robust security, and expansive natural light.",
-    image: "/hero-1.webp"
+    image: "/images/services/service5.png"
   },
   {
     title: "Interior Design Solutions",
     description: "Interior design is the art of creating spaces that are both functional and visually inspiring.",
-    image: "/hero-1.webp"
+    image: "/images/services/service6.png"
   },
   {
     title: "GRC/FRC/WPC Work",
     description: "Modern architecture innovates with GRC, FRC, and WPC for versatile and durable facades. Our custom solutions deliver unique aesthetics, structural strength, and long-lasting performance.",
-    image: "/hero-1.webp"
+    image: "/images/services/service7.png"
   },
   {
     title: "Aluminum/Steel/MS/Glass Railing",
     description: "Railing is the art of creating spaces that are both functional and visually inspiring.",
-    image: "/hero-1.webp"
+    image: "/images/services/service8.png"
   },
   {
     title: "False Ceiling Work",
     description: "Modern architecture elevates interiors with custom false ceilings. Our solutions integrate lighting, acoustic control, and seamless aesthetics.",
-    image: "/hero-1.webp"
+    image: "/images/services/service9.png"
   }
 ];
 
