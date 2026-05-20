@@ -29,10 +29,31 @@
     font-family: var(--font-body);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
   }
 
   h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-display);
+  }
+
+  /* Mobile scroll optimization */
+  @media (max-width: 768px) {
+    html, body {
+      -webkit-touch-callout: none;
+      -webkit-user-select: none;
+      user-select: none;
+      position: relative;
+    }
+    
+    body * {
+      -webkit-user-select: none;
+      user-select: none;
+    }
+    
+    button, a, input, textarea, [role="button"] {
+      -webkit-user-select: auto;
+      user-select: auto;
+    }
   }
 }
 
@@ -76,5 +97,15 @@
 
   .text-brand-label {
     @apply font-display text-[10px] sm:text-[11px] tracking-[0.2em] uppercase font-medium;
+  }
+
+  /* Carousel touch optimization */
+  .carousel-scroll {
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior: contain;
+  }
+
+  .carousel-scroll > * {
+    flex-shrink: 0;
   }
 }

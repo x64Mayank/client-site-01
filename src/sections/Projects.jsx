@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { ArrowRight, ArrowLeft, ArrowUpRight, Plus } from 'lucide-react';
 import ProjectModal from '../components/ProjectModal';
@@ -8,6 +8,8 @@ const Projects = () => {
   const [activeCategory, setActiveCategory] = useState("ALL PROJECTS");
   const [selectedProject, setSelectedProject] = useState(null);
   const containerRef = useRef(null);
+  const [touchStart, setTouchStart] = useState(null);
+  const [isDragging, setIsDragging] = useState(false);
 
   const filteredProjects = activeCategory === "ALL PROJECTS" 
     ? PROJECTS 
@@ -15,6 +17,32 @@ const Projects = () => {
 
   const handleProjectNavigate = (project) => {
     setSelectedProject(project);
+  };
+
+  // Track touch for mobile scrolling vs clicking
+  const handleTouchStart = (e) => {
+    setTouchStart({ x: e.touches[0].clientX, y: e.touches[0].clientY });
+    setIsDragging(false);
+  };
+
+  const handleTouchMove = (e) => {
+    if (!touchStart) return;
+    const dx = Math.abs(e.touches[0].clientX - touchStart.x);
+    const dy = Math.abs(e.touches[0].clientY - touchStart.y);
+    
+    // If vertical movement > horizontal movement, it's a scroll not a drag
+    if (dy > dx && dy > 10) {
+      setIsDragging(false);
+    } else if (dx > 10) {
+      setIsDragging(true);
+    }
+  };
+
+  const handleProjectClick = (project) => {
+    // Only open modal on desktop or if not dragging on mobile
+    if (!isDragging) {
+      setSelectedProject(project);
+    }
   };
 
   return (
@@ -86,11 +114,13 @@ const Projects = () => {
         </div>
 
         {/* IMAGES + NAV GROUP */}
-        <div className="w-full xl:flex-1 flex flex-row overflow-hidden h-[450px] md:h-[500px] lg:h-[600px]">
+        <div className="w-full xl:flex-1 flex flex-row overflow-hidden h-[450px] md:h-[500px] lg:h-[600px]" style={{ touchAction: 'pan-y', overscrollBehavior: 'contain' }}>
           <div 
             ref={containerRef}
-            className="flex-1 flex overflow-x-auto no-scrollbar scroll-smooth snap-x snap-mandatory"
-            style={{ msOverflowStyle: 'none', scrollbarWidth: 'none' }}
+            className="flex-1 flex overflow-x-auto no-scrollbar scroll-smooth snap-x snap-mandatory carousel-scroll"
+            style={{ msOverflowStyle: 'none', scrollbarWidth: 'none', touchAction: 'pan-y', overscrollBehavior: 'contain' }}
+            onTouchStart={handleTouchStart}
+            onTouchMove={handleTouchMove}
           >
             <AnimatePresence mode="popLayout">
               {filteredProjects.map((project, idx) => (
@@ -100,7 +130,7 @@ const Projects = () => {
                   initial="initial"
                   whileHover="hover"
                   className="w-full sm:w-1/2 lg:w-1/3 h-full relative group overflow-hidden shrink-0 snap-start cursor-pointer border-r border-white/5"
-                  onClick={() => setSelectedProject(project)}
+                  onClick={() => handleProjectClick(project)}
                 >
                   {/* Base Image */}
                   <motion.img 
