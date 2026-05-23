@@ -43,42 +43,36 @@ const ProjectsGrid = () => {
         </div>
 
         {/* Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[30px] mb-[74px]">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[30px] auto-rows-max mb-[74px]">
           {displayProjects.map((project, idx) => (
             <div 
               key={`${project.id}-${idx}`}
               onClick={() => setSelectedProject(project)}
-              className="relative group w-full h-[468px] overflow-hidden cursor-pointer"
+              className="relative group w-full overflow-hidden cursor-pointer aspect-square"
             >
               {/* Image Container with Top-Right Cut */}
               <div className="w-full h-full relative overflow-hidden [clip-path:polygon(0_0,calc(100%-40px)_0,100%_40px,100%_100%,0_100%)]">
                 <img 
                   src={project.img} 
                   alt={project.title}
-                  className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
+                  className="w-full h-full object-cover object-center transition-transform duration-1000 group-hover:scale-110"
                 />
                 {/* Overlay */}
                 <div className="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-colors duration-500 z-10" />
               </div>
 
               {/* Text Box with Top-Right Cut */}
-              <div className="absolute -bottom-[100px] group-hover:bottom-0 left-0 bg-brand-maroon px-[30px] pt-[40px] pb-[35px] w-[85%] transition-all duration-500 z-20 flex flex-col [clip-path:polygon(0_0,calc(100%-40px)_0,100%_40px,100%_100%,0_100%)]">
+              <div className="absolute -bottom-[55px] group-hover:bottom-0 left-0 bg-brand-maroon px-[30px] pt-[28px] pb-[24px] w-[85%] h-[165px] transition-all duration-500 z-20 flex flex-col [clip-path:polygon(0_0,calc(100%-40px)_0,100%_40px,100%_100%,0_100%)]">
                 <span className="font-display font-medium text-[11px] tracking-[0.1em] text-white/60 uppercase block mb-[10px]">
                   {project.category}
                 </span>
                 
-                <h3 className="font-display font-medium text-[22px] lg:text-[24px] leading-[1.2] text-white uppercase mb-5 relative after:content-[''] after:absolute after:-bottom-4 after:left-0 after:w-[86px] after:h-[2px] after:bg-white/20">
+                <h3 className="font-display font-medium text-[12px] lg:text-[14px] leading-[1.2] text-white uppercase mb-5 relative after:content-[''] after:absolute after:-bottom-4 after:left-0 after:w-[86px] after:h-[2px] after:bg-white/20">
                   {project.title}
                 </h3>
 
-                <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100 mt-[15px]">
-                  <p className="font-body text-[15px] leading-[26px] text-[#C2C2C2] line-clamp-3 mb-[15px]">
-                    {project.description || "Outstanding project delivered with precision and excellence."}
-                  </p>
-                  
-                  <div className="flex justify-end w-full">
-                    <ArrowRight size={24} className="text-white" />
-                  </div>
+                <div className="absolute bottom-[24px] right-[30px]">
+                  <ArrowRight size={24} className="text-white" />
                 </div>
               </div>
             </div>
@@ -118,4 +112,3 @@ const ProjectsGrid = () => {
 };
 
 export default ProjectsGrid;
-
