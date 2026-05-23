@@ -3,14 +3,12 @@ import { Link } from "react-router-dom";
 import { HashLink } from "react-router-hash-link";
 import { motion, AnimatePresence, useScroll, useMotionValueEvent } from 'framer-motion';
 import Button from './ui/Button';
-import SearchOverlay from './ui/Search';
 import ContactForm from '../sections/ContactForm';
-import { PhoneIncoming, Send, MapPin, Search, Menu, X, ChevronDown, Construction } from 'lucide-react';
+import { PhoneIncoming, Send, MapPin, Menu, X, ChevronDown, Construction } from 'lucide-react';
 import logo from '../assets/logo.svg';
 
 const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [isQuoteOpen, setIsQuoteOpen] = useState(false);
   const [expandedLinks, setExpandedLinks] = useState({});
 
@@ -135,17 +133,6 @@ const Navbar = () => {
                   </div>
                 </div>
               ))}
-
-              {/* Search */}
-              <div className="flex-shrink-0 flex items-center px-4 xl:px-10 h-full px1-cursor">
-                <button 
-                  onClick={() => setIsSearchOpen(true)} 
-                  className="p-3 text-white hover:scale-110 transition-transform duration-700 hover:text-white group relative"
-                >
-                  <Search size={26} strokeWidth={1.5} />
-                  <div className="absolute inset-0 bg-white/5 scale-0 group-hover:scale-100 transition-transform duration-500 rounded-full" />
-                </button>
-              </div>
             </div>
           </div>
         </div>
@@ -328,8 +315,6 @@ const Navbar = () => {
         </div>
       </nav>
 
-      <SearchOverlay isOpen={isSearchOpen} onClose={() => setIsSearchOpen(false)} />
-
       {/* Mobile Menu */}
       <AnimatePresence>
         {isMobileMenuOpen && (
@@ -369,18 +354,6 @@ const Navbar = () => {
                 >
                   <X size={28} />
                 </button>
-              </div>
-
-              {/* Search Bar */}
-              <div className="px-5 py-4 border-b border-gray-200 shrink-0">
-                <div className="flex items-center border border-gray-300 rounded px-3 py-2">
-                  <input
-                    type="text"
-                    placeholder="Search here..."
-                    className="flex-grow text-sm text-gray-600 outline-none bg-transparent"
-                  />
-                  <Search size={18} className="text-gray-400 flex-shrink-0" />
-                </div>
               </div>
 
               {/* Nav Links */}
