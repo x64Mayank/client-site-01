@@ -151,7 +151,7 @@ const Navbar = () => {
 
             <div className="hidden lg:flex lg:w-[240px] xl:w-[300px] h-full bg-brand-primary items-center justify-center px-4 border-r border-brand-dark flex-shrink-0 px1-cursor">
               <span className="text-brand-accent font-display font-medium text-[12px] xl:text-[14px] 2xl:text-[15px] leading-[25.92px] tracking-[0.1133em] uppercase text-center whitespace-nowrap">
-                YOUR DELIGHT,OUR VICTORY.
+                YOUR DELIGHT, OUR VICTORY.
               </span>
             </div>
 

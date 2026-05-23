@@ -89,17 +89,27 @@ const Footer = () => {
           </div>
         </div>
 
-        {/* MIDDLE SECTION: Info Grid - 2 columns on mobile/tablet, 4 columns on desktop */}
-        <div className="grid grid-cols-2 lg:flex lg:flex-row lg:items-stretch lg:justify-between mb-16 lg:mb-24 gap-x-6 gap-y-12 lg:gap-0">
+        {/* MIDDLE SECTION: Info Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-[1fr_auto_1fr_auto_1fr] mb-16 lg:mb-24 gap-x-10 gap-y-12 lg:gap-x-12">
           
-          {/* Call Us */}
-          <div className="flex-1 lg:pr-8">
-            <h3 className="font-display text-[20px] lg:text-[20.3px] font-semibold text-[#1A1A1A] mb-6 lg:mb-10">Call Us</h3>
-            <ul className="flex flex-col gap-4">
+          {/* Column 1: Call Us + Mail Us */}
+          <div>
+            <h3 className="font-display text-[20px] lg:text-[20.3px] font-semibold text-[#1A1A1A] mb-6">Call Us</h3>
+            <ul className="flex flex-col gap-4 mb-10">
               {['+91 6306178578', '+91 75458 90012', '+91 98076 90771'].map((num) => (
                 <li key={num} className="flex items-center gap-3 font-body text-[13px] sm:text-[15px] lg:text-[16px] text-[#1A1A1A]">
                   <div className="w-[4px] h-[4px] bg-[#1A1A1A] shrink-0" />
                   <a href={`tel:${num.replace(/\s/g, '')}`} className="hover:text-[#C9050B] transition-colors">{num}</a>
+                </li>
+              ))}
+            </ul>
+
+            <h3 className="font-display text-[20px] lg:text-[20.3px] font-semibold text-[#1A1A1A] mb-6">Mail Us</h3>
+            <ul className="flex flex-col gap-4">
+              {['info@shrishyamggroup.com', 'sales@shrishyamggroup.com'].map((email) => (
+                <li key={email} className="flex items-center gap-3 font-body text-[13px] sm:text-[15px] lg:text-[16px] text-[#1A1A1A]">
+                  <div className="w-[4px] h-[4px] bg-[#1A1A1A] shrink-0" />
+                  <a href={`mailto:${email}`} className="hover:text-[#C9050B] transition-colors break-all">{email}</a>
                 </li>
               ))}
             </ul>
@@ -108,44 +118,10 @@ const Footer = () => {
           {/* Separator 1 (Desktop only) */}
           <div className="hidden lg:block w-[1.5px] bg-[#1A1A1A]/20 my-2" />
 
-          {/* Mail Us */}
-          <div className="flex-1 lg:px-8">
-            <h3 className="font-display text-[20px] lg:text-[20.3px] font-semibold text-[#1A1A1A] mb-6 lg:mb-10">Mail Us</h3>
-            <ul className="flex flex-col gap-4">
-              {['info@shrishyamggroup.com', 'sales@shrishyamggroup.com'].map((email) => (
-                <li key={email} className="flex items-center gap-3 font-body text-[13px] sm:text-[15px] lg:text-[16px] text-[#1A1A1A]">
-                  <div className="w-[4px] h-[4px] bg-[#1A1A1A] shrink-0" />
-                  <a href={`mailto:${email}`} className="hover:text-[#C9050B] transition-colors break-all lg:whitespace-nowrap">{email}</a>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Separator 2 (Desktop only) */}
-          <div className="hidden lg:block w-[1.5px] bg-[#1A1A1A]/20 my-2" />
-
-          {/* Meet Us */}
-          <div className="flex-1 lg:px-8">
-            <h3 className="font-display text-[20px] lg:text-[20.3px] font-semibold text-[#1A1A1A] mb-6 lg:mb-10">Meet Us</h3>
-            <ul className="flex flex-col gap-6">
-              <li className="flex items-start gap-3 font-body text-[13px] sm:text-[15px] lg:text-[16px] text-[#1A1A1A] leading-[1.6]">
-                <div className="w-[4px] h-[4px] bg-[#1A1A1A] shrink-0 mt-2.5" />
-                <span>LGF 001, Beside Saroj Institute <br /> Arjunganj, Sultanpur Road, <br /> Lucknow 226002</span>
-              </li>
-              <li className="flex items-center gap-3 font-body text-[13px] sm:text-[15px] lg:text-[16px] text-[#1A1A1A]">
-                <div className="w-[4px] h-[4px] bg-[#1A1A1A] shrink-0" />
-                <span>Mon - Sat: 7.30am - 6.30pm</span>
-              </li>
-            </ul>
-          </div>
-
-          {/* Separator 3 (Desktop only) */}
-          <div className="hidden lg:block w-[1.5px] bg-[#1A1A1A]/20 my-2" />
-
-          {/* Quick Links */}
-          <div className="flex-1 lg:pl-8">
-            <h3 className="font-display text-[20px] lg:text-[20.3px] font-semibold text-[#1A1A1A] mb-6 lg:mb-10">Quick Links</h3>
-            <ul className="flex flex-col gap-4">
+          {/* Column 2: Quick Links + Meet Us */}
+          <div>
+            <h3 className="font-display text-[20px] lg:text-[20.3px] font-semibold text-[#1A1A1A] mb-6">Quick Links</h3>
+            <ul className="flex flex-col gap-4 mb-10">
               {[
                 { name: 'About Us', path: '/about' },
                 { name: 'Our Services', path: '/services' },
@@ -160,6 +136,46 @@ const Footer = () => {
                   >
                     {link.name}
                   </Link>
+                </li>
+              ))}
+            </ul>
+
+            <h3 className="font-display text-[20px] lg:text-[20.3px] font-semibold text-[#1A1A1A] mb-6">Meet Us</h3>
+            <ul className="flex flex-col gap-6">
+              <li className="flex items-start gap-3 font-body text-[13px] sm:text-[15px] lg:text-[16px] text-[#1A1A1A] leading-[1.6]">
+                <div className="w-[4px] h-[4px] bg-[#1A1A1A] shrink-0 mt-2.5" />
+                <span>LGF 001, Beside Saroj Institute <br /> Arjunganj, Sultanpur Road, <br /> Lucknow 226002</span>
+              </li>
+              <li className="flex items-center gap-3 font-body text-[13px] sm:text-[15px] lg:text-[16px] text-[#1A1A1A]">
+                <div className="w-[4px] h-[4px] bg-[#1A1A1A] shrink-0" />
+                <span>Mon - Sat: 7.30am - 6.30pm</span>
+              </li>
+            </ul>
+          </div>
+
+          {/* Separator 2 (Desktop only) */}
+          <div className="hidden lg:block w-[1.5px] bg-[#1A1A1A]/20 my-2" />
+
+          {/* Column 3: Our Services */}
+          <div>
+            <h3 className="font-display text-[20px] lg:text-[20.3px] font-semibold text-[#1A1A1A] mb-6">Our Services</h3>
+            <ul className="flex flex-col gap-4">
+              {[
+                'Spider Glazing Systems',
+                'Glass Glazing Systems',
+                'ACP Facade Cladding',
+                'uPVC Windows and Doors',
+                'Aluminum Windows, Doors & roof',
+                'Interior Design Solutions',
+                'GRC/FRC/WPC Work',
+                'Aluminum/Steel/MS/Glass Railing',
+                'False Ceiling Work',
+              ].map((service) => (
+                <li key={service} className="flex items-center gap-3 group">
+                  <div className="w-0 h-0 border-t-[4px] border-t-transparent border-b-[4px] border-b-transparent border-l-[6px] border-l-[#1A1A1A] transition-transform duration-300 group-hover:translate-x-1" />
+                  <span className="font-display text-[13px] sm:text-[15px] lg:text-[16px] text-[#1A1A1A]">
+                    {service}
+                  </span>
                 </li>
               ))}
             </ul>
