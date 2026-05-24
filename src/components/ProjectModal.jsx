@@ -9,6 +9,34 @@ const ProjectModal = ({ project, allProjects, onClose, onNavigate }) => {
   // Safe index calculation
   const currentIndex = project ? allProjects.findIndex(p => p.id === project.id) : -1;
 
+  const images = project?.images || (project?.img ? [project.img] : []);
+
+  // Preload current, previous, and next project images
+  useEffect(() => {
+    if (!project || currentIndex < 0 || !allProjects?.length) return;
+    
+    const prevProj = allProjects[currentIndex > 0 ? currentIndex - 1 : allProjects.length - 1];
+    const nextProj = allProjects[currentIndex < allProjects.length - 1 ? currentIndex + 1 : 0];
+    
+    const urlsToPreload = new Set();
+    
+    // Current project
+    images.forEach(src => urlsToPreload.add(src));
+    
+    // Prev project
+    if (prevProj?.images) prevProj.images.forEach(src => urlsToPreload.add(src));
+    else if (prevProj?.img) urlsToPreload.add(prevProj.img);
+    
+    // Next project
+    if (nextProj?.images) nextProj.images.forEach(src => urlsToPreload.add(src));
+    else if (nextProj?.img) urlsToPreload.add(nextProj.img);
+    
+    urlsToPreload.forEach(src => {
+      const img = new Image();
+      img.src = src;
+    });
+  }, [project?.id, currentIndex, allProjects, images]);
+
   useEffect(() => {
     if (project) setCurrentImgIndex(0);
   }, [project?.id]);
@@ -37,7 +65,7 @@ const ProjectModal = ({ project, allProjects, onClose, onNavigate }) => {
   const prevProject = currentIndex >= 0 ? allProjects[currentIndex > 0 ? currentIndex - 1 : allProjects.length - 1] : null;
   const nextProject = currentIndex >= 0 ? allProjects[currentIndex < allProjects.length - 1 ? currentIndex + 1 : 0] : null;
 
-  const images = project?.images || (project?.img ? [project.img] : []);
+
   const handlePrevImage = (e) => {
     e.stopPropagation();
     setCurrentImgIndex(prev => (prev > 0 ? prev - 1 : images.length - 1));
@@ -90,17 +118,17 @@ const ProjectModal = ({ project, allProjects, onClose, onNavigate }) => {
                       <div className="w-[60px] lg:w-[80px] h-[3px] bg-brand-maroon mt-4" />
                     </div>
 
-                    <div className="relative w-full min-h-[250px] sm:min-h-[300px] max-h-[50vh] sm:max-h-[55vh] lg:max-h-[60vh] bg-[#f5f5f5] overflow-hidden group mb-6 lg:mb-8 shadow-sm flex items-center justify-center">
-                      <AnimatePresence mode="wait">
+                    <div className="relative w-full min-h-[250px] sm:min-h-[300px] max-h-[50vh] sm:max-h-[55vh] lg:max-h-[60vh] bg-[#f5f5f5] overflow-hidden group mb-6 lg:mb-8 shadow-sm grid items-center justify-center">
+                      <AnimatePresence initial={false}>
                         <motion.img
                           key={`${project.id}-${currentImgIndex}`}
                           src={images[currentImgIndex]}
                           alt={project.title}
-                          initial={{ opacity: 0, x: 20 }}
-                          animate={{ opacity: 1, x: 0 }}
-                          exit={{ opacity: 0, x: -20 }}
-                          transition={{ duration: 0.4 }}
-                          className="w-full h-full object-contain max-h-[50vh] sm:max-h-[55vh] lg:max-h-[60vh]"
+                          initial={{ opacity: 0, scale: 0.98 }}
+                          animate={{ opacity: 1, scale: 1 }}
+                          exit={{ opacity: 0, scale: 1.02 }}
+                          transition={{ duration: 0.4, ease: "easeOut" }}
+                          className="col-start-1 row-start-1 w-full h-full object-contain max-h-[50vh] sm:max-h-[55vh] lg:max-h-[60vh]"
                         />
                       </AnimatePresence>
 
