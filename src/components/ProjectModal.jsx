@@ -125,10 +125,6 @@ const ProjectModal = ({ project, allProjects, onClose, onNavigate }) => {
                     </div>
 
                     <div className="shrink-0">
-                      {project.description && (
-                        <p className="font-body text-[15px] lg:text-[17px] leading-[28px] text-black/70 max-w-[850px] mb-8">{project.description}</p>
-                      )}
-
                       <div className="flex flex-wrap items-center gap-x-12 gap-y-4 pt-6 border-t border-black/10">
                         {[
                           { label: 'Location', value: project.location },
