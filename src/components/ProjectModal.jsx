@@ -58,6 +58,7 @@ const ProjectModal = ({ project, allProjects, onClose, onNavigate }) => {
             transition={{ duration: 0.3 }}
             className="fixed inset-0 bg-black/80 backdrop-blur-sm z-[9998]"
             onClick={onClose}
+            onWheel={(e) => e.stopPropagation()}
           />
 
           <motion.div
@@ -67,6 +68,7 @@ const ProjectModal = ({ project, allProjects, onClose, onNavigate }) => {
             transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
             className="fixed inset-0 z-[9999] flex items-center justify-center p-2 sm:p-4 lg:p-8"
             onClick={onClose}
+            onWheel={(e) => e.stopPropagation()}
           >
             <div
               className="bg-white w-full max-w-[1300px] h-full sm:h-[94vh] lg:h-[90vh] flex flex-col relative overflow-hidden shadow-2xl"
@@ -77,7 +79,7 @@ const ProjectModal = ({ project, allProjects, onClose, onNavigate }) => {
                 <X size={20} />
               </button>
 
-              <div className="flex-1 overflow-y-auto custom-scrollbar">
+              <div className="flex-1 overflow-y-auto custom-scrollbar overscroll-contain">
                 <div className="flex flex-col md:flex-row min-h-full">
                   
                   {/* PROJECT CONTENT */}
@@ -88,7 +90,7 @@ const ProjectModal = ({ project, allProjects, onClose, onNavigate }) => {
                       <div className="w-[60px] lg:w-[80px] h-[3px] bg-brand-maroon mt-4" />
                     </div>
 
-                    <div className="relative w-full aspect-video md:aspect-auto md:flex-1 min-h-[220px] bg-[#f0f0f0] overflow-hidden group mb-6 lg:mb-8 shadow-sm">
+                    <div className="relative w-full min-h-[250px] sm:min-h-[300px] max-h-[50vh] sm:max-h-[55vh] lg:max-h-[60vh] bg-[#f5f5f5] overflow-hidden group mb-6 lg:mb-8 shadow-sm flex items-center justify-center">
                       <AnimatePresence mode="wait">
                         <motion.img
                           key={`${project.id}-${currentImgIndex}`}
@@ -98,7 +100,7 @@ const ProjectModal = ({ project, allProjects, onClose, onNavigate }) => {
                           animate={{ opacity: 1, x: 0 }}
                           exit={{ opacity: 0, x: -20 }}
                           transition={{ duration: 0.4 }}
-                          className="absolute inset-0 w-full h-full object-cover"
+                          className="w-full h-full object-contain max-h-[50vh] sm:max-h-[55vh] lg:max-h-[60vh]"
                         />
                       </AnimatePresence>
 
@@ -125,10 +127,6 @@ const ProjectModal = ({ project, allProjects, onClose, onNavigate }) => {
                     </div>
 
                     <div className="shrink-0">
-                      {project.description && (
-                        <p className="font-body text-[15px] lg:text-[17px] leading-[28px] text-black/70 max-w-[850px] mb-8">{project.description}</p>
-                      )}
-
                       <div className="flex flex-wrap items-center gap-x-12 gap-y-4 pt-6 border-t border-black/10">
                         {[
                           { label: 'Location', value: project.location },
