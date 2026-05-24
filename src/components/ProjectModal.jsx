@@ -88,7 +88,7 @@ const ProjectModal = ({ project, allProjects, onClose, onNavigate }) => {
                       <div className="w-[60px] lg:w-[80px] h-[3px] bg-brand-maroon mt-4" />
                     </div>
 
-                    <div className="relative w-full aspect-video md:aspect-auto md:flex-1 min-h-[220px] bg-[#f0f0f0] overflow-hidden group mb-6 lg:mb-8 shadow-sm">
+                    <div className="relative w-full min-h-[250px] sm:min-h-[300px] max-h-[50vh] sm:max-h-[55vh] lg:max-h-[60vh] bg-[#f5f5f5] overflow-hidden group mb-6 lg:mb-8 shadow-sm flex items-center justify-center">
                       <AnimatePresence mode="wait">
                         <motion.img
                           key={`${project.id}-${currentImgIndex}`}
@@ -98,7 +98,7 @@ const ProjectModal = ({ project, allProjects, onClose, onNavigate }) => {
                           animate={{ opacity: 1, x: 0 }}
                           exit={{ opacity: 0, x: -20 }}
                           transition={{ duration: 0.4 }}
-                          className="absolute inset-0 w-full h-full object-cover"
+                          className="w-full h-full object-contain max-h-[50vh] sm:max-h-[55vh] lg:max-h-[60vh]"
                         />
                       </AnimatePresence>
 
