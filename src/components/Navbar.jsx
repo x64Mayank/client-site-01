@@ -1,5 +1,5 @@
 import React, { useState, useRef, useLayoutEffect, useEffect } from 'react';
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { HashLink } from "react-router-hash-link";
 import { motion, AnimatePresence, useScroll, useMotionValueEvent } from 'framer-motion';
 import Button from './ui/Button';
@@ -8,6 +8,8 @@ import { PhoneIncoming, Send, MapPin, Menu, X, ChevronDown, Construction } from 
 import logo from '../assets/logo.svg';
 
 const Navbar = () => {
+  const navigate = useNavigate();
+
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isQuoteOpen, setIsQuoteOpen] = useState(false);
   const [expandedLinks, setExpandedLinks] = useState({});
@@ -41,6 +43,33 @@ const Navbar = () => {
     }
   });
 
+  const handleServiceClick = (index) => {
+    const width = window.innerWidth;
+
+    let columns = 1;
+
+    if (width >= 1024) {
+      columns = 3;
+    } else if (width >= 768) {
+      columns = 2;
+    }
+
+    const rowStartIndex = Math.floor(index / columns) * columns;
+
+    navigate("/services");
+    setIsMobileMenuOpen(false);
+
+    setTimeout(() => {
+      const target = document.getElementById(`service-${rowStartIndex}`);
+      if (target) {
+        target.scrollIntoView({
+          behavior: "smooth",
+          block: "start",
+        });
+      }
+    }, 100);
+  };
+
   const navLinks = [
     { name: 'HOME', path: '/' },
     {
@@ -52,7 +81,19 @@ const Navbar = () => {
         { name: 'Director Message', path: '/about#director-message', isHashLink: true },
       ],
     },
-    { name: 'SERVICES', path: '/services', hasDropdown: true },
+    { name: 'SERVICES', path: '/services', hasDropdown: true,
+        dropdownItems: [
+        { name: 'Spider Glazing System', isHashLink: true },
+        { name: 'Glass Glazing Systems', isHashLink: true },
+        { name: 'ACP Facade Cladding', isHashLink: true },
+        { name: 'uPVC Windows & Doors', isHashLink: true },
+        { name: 'Aluminum Windows, Doors & roof', isHashLink: true },
+        { name: 'Interior Design Solutions', isHashLink: true },
+        { name: 'GRC/FRC/WPC Work', isHashLink: true },
+        { name: 'Aluminum/Steel/MS/Glass Railing', isHashLink: true },
+        { name: 'False Ceiling Work', isHashLink: true },
+      ],
+    },
     { name: 'PROJECTS', path: '/projects' },
     { name: 'CONTACT US', path: '/contact' },
   ];
@@ -80,6 +121,40 @@ const Navbar = () => {
 
   const toggleExpanded = (name) => {
     setExpandedLinks((prev) => ({ ...prev, [name]: !prev[name] }));
+  };
+
+  const renderDropdownItem = (link, item, index) => {
+    if (link.name === 'SERVICES') {
+      return (
+        <button
+          key={item.name}
+          type="button"
+          onClick={() => handleServiceClick(index)}
+          className="block w-full text-left px-5 py-3 border-b border-black/10 last:border-b-0 font-display font-medium text-[12px] tracking-[0.18em] text-[#C9050B] uppercase hover:bg-black/5 transition-colors duration-300"
+        >
+          {item.name}
+        </button>
+      );
+    }
+
+    return item.isHashLink ? (
+      <HashLink
+        key={item.name}
+        smooth
+        to={item.path}
+        className="block px-5 py-3 border-b border-black/10 last:border-b-0 font-display font-medium text-[12px] tracking-[0.18em] text-[#C9050B] uppercase hover:bg-black/5 transition-colors duration-300"
+      >
+        {item.name}
+      </HashLink>
+    ) : (
+      <Link
+        key={item.name}
+        to={item.path}
+        className="block px-5 py-3 border-b border-black/10 last:border-b-0 font-display font-medium text-[12px] tracking-[0.18em] text-[#C9050B] uppercase hover:bg-black/5 transition-colors duration-300"
+      >
+        {item.name}
+      </Link>
+    );
   };
 
   return (
@@ -172,27 +247,8 @@ const Navbar = () => {
 
                     {link.dropdownItems && (
                       <div className="absolute top-full left-0 pt-7 opacity-0 invisible translate-y-4 group-hover:translate-y-0 group-hover:opacity-100 group-hover:visible transition-all duration-500 ease-out z-[80]">
-                        <div className="w-[200px] bg-white shadow-lg border border-black/10">
-                          {link.dropdownItems.map((item) => (
-                            item.isHashLink ? (
-                              <HashLink
-                                key={item.name}
-                                smooth
-                                to={item.path}
-                                className="block px-5 py-4 border-b border-black/10 last:border-b-0 font-display font-medium text-[12px] tracking-[0.18em] text-[#C9050B] uppercase hover:bg-black/5 transition-colors duration-300"
-                              >
-                                {item.name}
-                              </HashLink>
-                            ) : (
-                              <Link
-                                key={item.name}
-                                to={item.path}
-                                className="block px-5 py-4 border-b border-black/10 last:border-b-0 font-display font-medium text-[12px] tracking-[0.18em] text-[#C9050B] uppercase hover:bg-black/5 transition-colors duration-300"
-                              >
-                                {item.name}
-                              </Link>
-                            )
-                          ))}
+                        <div className={`${link.name === 'SERVICES' ? 'w-[280px]' : 'w-[200px]'} bg-white shadow-lg border border-black/10`}>
+                          {link.dropdownItems.map((item, index) => renderDropdownItem(link, item, index))}
                         </div>
                       </div>
                     )}
@@ -269,27 +325,8 @@ const Navbar = () => {
 
                     {link.dropdownItems && (
                       <div className="absolute top-full left-0 pt-6.5 opacity-0 invisible translate-y-4 group-hover:translate-y-0 group-hover:opacity-100 group-hover:visible transition-all duration-500 ease-out z-[80]">
-                        <div className="w-[200px] bg-white shadow-lg border border-black/10">
-                          {link.dropdownItems.map((item) => (
-                            item.isHashLink ? (
-                              <HashLink
-                                key={item.name}
-                                smooth
-                                to={item.path}
-                                className="block px-5 py-4 border-b border-black/10 last:border-b-0 font-display font-medium text-[12px] tracking-[0.18em] text-[#C9050B] uppercase hover:bg-black/5 transition-colors duration-300"
-                              >
-                                {item.name}
-                              </HashLink>
-                            ) : (
-                              <Link
-                                key={item.name}
-                                to={item.path}
-                                className="block px-5 py-4 border-b border-black/10 last:border-b-0 font-display font-medium text-[12px] tracking-[0.18em] text-[#C9050B] uppercase hover:bg-black/5 transition-colors duration-300"
-                              >
-                                {item.name}
-                              </Link>
-                            )
-                          ))}
+                        <div className={`${link.name === 'SERVICES' ? 'w-[280px]' : 'w-[200px]'} bg-white shadow-lg border border-black/10`}>
+                          {link.dropdownItems.map((item, index) => renderDropdownItem(link, item, index))}
                         </div>
                       </div>
                     )}
@@ -364,14 +401,15 @@ const Navbar = () => {
                       {link.path ? (
                           <Link
                             to={link.path}
-                            className="font-display font-medium text-[12px] xl:text-[13px] 2xl:text-[14.6px] leading-[25.92px] tracking-[0.137em] text-white uppercase hover:text-brand-accent transition-colors duration-500 whitespace-nowrap flex-shrink-0"
+                            onClick={() => setIsMobileMenuOpen(false)}
+                            className="font-display font-medium text-[12px] xl:text-[13px] 2xl:text-[14.6px] leading-[25.92px] tracking-[0.137em] text-brand-primary uppercase hover:text-brand-accent transition-colors duration-500 whitespace-nowrap flex-shrink-0"
                           >
                             {link.name}
                           </Link>
                         ) : (
                           <a
                             href={link.href}
-                            className="font-display font-medium text-[12px] xl:text-[13px] 2xl:text-[14.6px] leading-[25.92px] tracking-[0.137em] text-white uppercase hover:text-brand-accent transition-colors duration-500 whitespace-nowrap flex-shrink-0"
+                            className="font-display font-medium text-[12px] xl:text-[13px] 2xl:text-[14.6px] leading-[25.92px] tracking-[0.137em] text-brand-primary uppercase hover:text-brand-accent transition-colors duration-500 whitespace-nowrap flex-shrink-0"
                           >
                             {link.name}
                           </a>
@@ -388,6 +426,33 @@ const Navbar = () => {
                         </button>
                       )}
                     </div>
+
+                    {link.dropdownItems && expandedLinks[link.name] && (
+                      <div className="flex flex-col bg-gray-50">
+                        {link.dropdownItems.map((item, index) => (
+                          link.name === 'SERVICES' ? (
+                            <button
+                              key={item.name}
+                              type="button"
+                              onClick={() => handleServiceClick(index)}
+                              className="block w-full text-left px-8 py-3 border-t border-gray-100 font-display font-medium text-[12px] tracking-[0.12em] text-[#C9050B] uppercase"
+                            >
+                              {item.name}
+                            </button>
+                          ) : (
+                            <HashLink
+                              key={item.name}
+                              smooth
+                              to={item.path}
+                              onClick={() => setIsMobileMenuOpen(false)}
+                              className="block px-8 py-3 border-t border-gray-100 font-display font-medium text-[12px] tracking-[0.12em] text-[#C9050B] uppercase"
+                            >
+                              {item.name}
+                            </HashLink>
+                          )
+                        ))}
+                      </div>
+                    )}
                   </div>
                 ))}
               </div>
