@@ -58,6 +58,7 @@ const ProjectModal = ({ project, allProjects, onClose, onNavigate }) => {
             transition={{ duration: 0.3 }}
             className="fixed inset-0 bg-black/80 backdrop-blur-sm z-[9998]"
             onClick={onClose}
+            onWheel={(e) => e.stopPropagation()}
           />
 
           <motion.div
@@ -67,6 +68,7 @@ const ProjectModal = ({ project, allProjects, onClose, onNavigate }) => {
             transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
             className="fixed inset-0 z-[9999] flex items-center justify-center p-2 sm:p-4 lg:p-8"
             onClick={onClose}
+            onWheel={(e) => e.stopPropagation()}
           >
             <div
               className="bg-white w-full max-w-[1300px] h-full sm:h-[94vh] lg:h-[90vh] flex flex-col relative overflow-hidden shadow-2xl"
@@ -77,7 +79,7 @@ const ProjectModal = ({ project, allProjects, onClose, onNavigate }) => {
                 <X size={20} />
               </button>
 
-              <div className="flex-1 overflow-y-auto custom-scrollbar">
+              <div className="flex-1 overflow-y-auto custom-scrollbar overscroll-contain">
                 <div className="flex flex-col md:flex-row min-h-full">
                   
                   {/* PROJECT CONTENT */}
