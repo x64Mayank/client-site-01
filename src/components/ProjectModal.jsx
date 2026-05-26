@@ -159,11 +159,21 @@ const ProjectModal = ({ project, allProjects, onClose, onNavigate }) => {
                         {[
                           { label: 'Location', value: project.location },
                           { label: 'Completion Year', value: project.year },
-                          { label: 'Project Category', value: project.category }
+                          { label: 'Project Category', value: project.category },
+                          { label: 'Status', value: project.status || 'Completed' }
                         ].map((spec, i) => spec.value && (
                           <div key={i} className="flex flex-col gap-1.5">
                             <span className="text-brand-label text-black/40">{spec.label}</span>
-                            <span className="font-display text-[14px] lg:text-[15px] font-semibold text-brand-dark">{spec.value}</span>
+                            {spec.label === 'Status' ? (
+                              <span className="font-display text-[14px] lg:text-[15px] font-semibold text-brand-dark flex items-center gap-1.5">
+                                <span className={`w-1.5 h-1.5 rounded-full ${
+                                  spec.value.toUpperCase() === 'COMPLETED' ? 'bg-emerald-500' : 'bg-amber-500'
+                                }`} />
+                                {spec.value}
+                              </span>
+                            ) : (
+                              <span className="font-display text-[14px] lg:text-[15px] font-semibold text-brand-dark">{spec.value}</span>
+                            )}
                           </div>
                         ))}
                       </div>

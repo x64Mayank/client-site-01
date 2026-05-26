@@ -2,9 +2,10 @@ import React, { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { ArrowRight, ArrowLeft, ArrowUpRight, Plus } from 'lucide-react';
 import ProjectModal from '../components/ProjectModal';
-import { PROJECTS, CATEGORIES } from '../data/projectsData';
+import { useProjects } from '../context/ProjectContext';
 
 const Projects = () => {
+  const { projects: PROJECTS, categories: CATEGORIES } = useProjects();
   const [activeCategory, setActiveCategory] = useState("ALL PROJECTS");
   const [selectedProject, setSelectedProject] = useState(null);
   const containerRef = useRef(null);
@@ -144,6 +145,14 @@ const Projects = () => {
                     className="absolute inset-0 w-full h-full object-cover"
                   />
                   
+                  {/* Status Badge */}
+                  <div className="absolute top-4 left-4 z-20 flex items-center gap-1.5 bg-black/55 backdrop-blur-md px-3 py-1 font-display font-medium text-[9px] tracking-[0.1em] text-white uppercase [clip-path:polygon(0_0,calc(100%-10px)_0,100%_10px,100%_100%,0_100%)] border border-white/5">
+                    <span className={`w-1.5 h-1.5 rounded-full ${
+                      (project.status || 'Completed').toUpperCase() === 'COMPLETED' ? 'bg-emerald-400' : 'bg-amber-400'
+                    }`} />
+                    {project.status || 'Completed'}
+                  </div>
+                  
                   {/* Dark Overlay */}
                   <motion.div 
                     variants={{
@@ -160,7 +169,7 @@ const Projects = () => {
                       hover: { y: 0 }
                     }}
                     transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-                    className="absolute bottom-0 left-0 right-0 h-[85%] md:h-[80%] bg-brand-maroon p-6 sm:p-8 lg:p-10 flex flex-col shadow-2xl z-20 pointer-events-none"
+                    className="absolute bottom-0 left-0 right-0 h-[50%] md:h-[45%] bg-brand-maroon p-6 sm:p-8 lg:p-10 flex flex-col shadow-2xl z-20 pointer-events-none"
                     style={{ clipPath: 'polygon(0 0, calc(100% - 40px) 0, 100% 40px, 100% 100%, 0 100%)' }}
                   >
                     <span className="text-[10px] lg:text-[11px] tracking-[0.2em] uppercase font-display text-white/60 mb-3 lg:mb-4 font-medium">
@@ -169,10 +178,6 @@ const Projects = () => {
                     <h3 className="font-display text-[18px] sm:text-[20px] lg:text-[24px] xl:text-[26px] font-bold text-white leading-tight mb-3 lg:mb-4 uppercase tracking-wider">
                       {project.title}
                     </h3>
-                    <div className="w-[50px] lg:w-[60px] h-[1px] bg-white/20 mb-4 lg:mb-6" />
-                    <p className="font-body text-[13px] lg:text-[14px] xl:text-[15px] leading-relaxed text-white/80 mb-6 lg:mb-8 line-clamp-3 sm:line-clamp-4">
-                      {project.description}
-                    </p>
                     {/* Bottom Arrow */}
                     <div className="mt-auto flex justify-end pb-1 sm:pb-2">
                       <ArrowRight size={24} className="xl:hidden text-white opacity-80" />

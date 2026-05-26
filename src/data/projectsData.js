@@ -18,7 +18,6 @@ export const PROJECTS = [
     images: ["/images/projects/project-1/project-image-1.webp", "/images/projects/project-1/project-image-2.webp", "/images/projects/project-1/project-image-3.webp"],
     location: "NepalGunj, Nepal",
     year: "2022",
-    description: "Premium residential facade installation featuring high-performance glazing systems and precision-engineered aluminium cladding across 40+ floors.",
   },
   {
     id: 2,
@@ -29,7 +28,6 @@ export const PROJECTS = [
     images: ["/images/projects/project-2/project-image-1.webp", "/images/projects/project-2/project-image-2.webp", "/images/projects/project-2/project-image-4.webp", "/images/projects/project-2/project-image-5.webp", "/images/projects/project-2/project-image-7.webp"],
     location: "CPWD, Lucknow, Uttar Pradesh",
     year: "2021",
-    description: "State-of-the-art facade system for diplomatic facility with blast-resistant glazing and energy-efficient curtain wall technology.",
   },
   {
     id: 3,
@@ -40,7 +38,6 @@ export const PROJECTS = [
     images: ["/images/projects/project-3/project-image-1.webp", "/images/projects/project-3/project-image-3.webp", "/images/projects/project-3/project-image-4.webp"],
     location: "ADMIN BLOCK, Barabanki, uttar pradesh",
     year: "2023",
-    description: "Luxury residential tower with unitized curtain wall system and high-performance double-glazed units for optimal thermal comfort.",
   },
   {
     id: 4,
@@ -51,7 +48,6 @@ export const PROJECTS = [
     images: ["/images/projects/project-4/project-image-1.webp"],
     location: "Chowk, Lucknow, UP.",
     year: "2020",
-    description: "Modern residential complex featuring composite aluminium panel cladding with integrated ventilation systems.",
   },
   {
     id: 5,
@@ -62,7 +58,6 @@ export const PROJECTS = [
     images: ["/images/projects/project-5/project-image-1.webp", "/images/projects/project-5/project-image-2.webp", "/images/projects/project-5/project-image-3.webp"],
     location: "ADMIN BLOCK, Barabanki, Uttar Pradesh",
     year: "2023",
-    description: "Large-scale commercial development with spider glazing and structural silicone facade systems.",
   },
   {
     id: 6,
@@ -73,7 +68,6 @@ export const PROJECTS = [
     images: ["/images/projects/project-6/project-image-1.webp", "/images/projects/project-6/project-image-2.webp", "/images/projects/project-6/project-image-4.webp"],
     location: "Shahjahanpur, Uttar Pradesh",
     year: "2022",
-    description: "IT campus featuring energy-efficient double-skin facade with automated louver systems for solar control.",
   },
   {
     id: 7,
@@ -84,7 +78,6 @@ export const PROJECTS = [
     images: ["/images/projects/project-7/project-image-1.webp"],
     location: "Ayodhya, Uttar Pradesh",
     year: "2021",
-    description: "Five-star hospitality project with decorative stone cladding and frameless glass balustrades.",
   },
   {
     id: 8,
@@ -95,7 +88,6 @@ export const PROJECTS = [
     images: ["/images/projects/project-8/project-image-1.webp"],
     location: "Nalanda, Bihar",
     year: "2023",
-    description: "Healthcare facility with anti-bacterial coated panels and high-performance insulated glazing for sterile environments.",
   },
   {
     id: 9,
@@ -106,7 +98,6 @@ export const PROJECTS = [
     images: ["/images/projects/project-9/project-image-1.webp"],
     location: "Lucknow, Uttar Pradesh",
     year: "2022",
-    description: "Premium retail complex with structural glazing, point-fixed glass canopies, and aluminium composite cladding.",
   },
   {
     id: 10,
@@ -117,7 +108,6 @@ export const PROJECTS = [
     images: ["/images/projects/project-10/project-image-1.webp"],
     location: "Lucknow, UTTAR PRADESH",
     year: "2024",
-    description: "Twin-tower residential project featuring unitized curtain wall with integrated sun-shading elements.",
   },
   {
     id: 11,
@@ -128,7 +118,6 @@ export const PROJECTS = [
     images: ["/images/projects/project-11/project-image-1.webp"],
     location: "orakhpur, UTTAR PRADESH",
     year: "2023",
-    description: "Grade-A corporate office with full-height vision glass, spandrel panels, and automated building management integration.",
   },
   {
     id: 12,
@@ -139,6 +128,5 @@ export const PROJECTS = [
     images: ["/images/projects/project-12/project-image-1.webp"],
     location: "Lucknow, Uttar pradesh",
     year: "2024",
-    description: "Heritage-inspired resort with traditional stone facade and modern glass atrium installations.",
   }
 ];

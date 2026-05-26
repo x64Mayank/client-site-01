@@ -3,20 +3,20 @@ import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion'
 import { ArrowUpRight, ArrowRight } from 'lucide-react';
 import Button from '../components/ui/Button';
 
-const HERO_IMAGES = [
-  "/hero-1.webp",
-  "/hero-2.webp",
-  "/hero-3.webp"
-];
-
 const Hero = () => {
+  const heroImages = [
+    "/hero-1.webp",
+    "/hero-2.webp",
+    "/hero-3.webp"
+  ];
+
   const [currentIndex, setCurrentIndex] = useState(0);
   const { scrollYProgress } = useScroll();
   const y1 = useTransform(scrollYProgress, [0, 1], [0, -200]);
 
   // Preload subsequent images to avoid transition flicker
   useEffect(() => {
-    HERO_IMAGES.forEach((src) => {
+    heroImages.forEach((src) => {
       const img = new Image();
       img.src = src;
     });
@@ -24,7 +24,7 @@ const Hero = () => {
 
   useEffect(() => {
     const timer = setInterval(() => {
-      setCurrentIndex((prev) => (prev + 1) % HERO_IMAGES.length);
+      setCurrentIndex((prev) => (prev + 1) % heroImages.length);
     }, 7000);
     return () => clearInterval(timer);
   }, []);
@@ -52,8 +52,9 @@ const Hero = () => {
               transition={{ duration: 8, ease: "linear" }}
               className="w-full h-full"
             >
-              <img 
-                src={HERO_IMAGES[currentIndex]} 
+              <motion.img 
+                key={currentIndex}
+                src={heroImages[currentIndex]} 
                 alt="Alfa Facade - Premium Architecture" 
                 className="w-full h-full object-cover"
                 fetchPriority={currentIndex === 0 ? "high" : "auto"}

@@ -3,16 +3,22 @@ import { ArrowRight, ArrowDown, Plus } from 'lucide-react';
 import Button from '../components/ui/Button';
 import ProjectModal from '../components/ProjectModal';
 
-import { PROJECTS, CATEGORIES } from '../data/projectsData';
+import { useProjects } from '../context/ProjectContext';
 
 const ProjectsGrid = () => {
-  const [activeCategory, setActiveCategory] = useState("ALL PROJECTS");
+  const { projects: PROJECTS } = useProjects();
+  const STATUS_FILTERS = ["ALL PROJECTS", "COMPLETED", "ON-GOING"];
+  const [activeStatus, setActiveStatus] = useState("ALL PROJECTS");
   const [visibleCount, setVisibleCount] = useState(6);
   const [selectedProject, setSelectedProject] = useState(null);
 
-  const filteredProjects = activeCategory === "ALL PROJECTS" 
+  const filteredProjects = activeStatus === "ALL PROJECTS" 
     ? PROJECTS 
-    : PROJECTS.filter(p => p.fullCategory === activeCategory);
+    : PROJECTS.filter(p => {
+        const status = p.status || "Completed";
+        // Normalize "On-Going" to "ON-GOING" and "Completed" to "COMPLETED"
+        return status.replace('-', '').toUpperCase() === activeStatus.replace('-', '').toUpperCase();
+      });
 
   const displayProjects = filteredProjects.slice(0, visibleCount);
 
@@ -24,20 +30,20 @@ const ProjectsGrid = () => {
     <section className="w-full bg-brand-background py-[118px]">
       <div className="max-w-[1440px] mx-auto px-6 lg:px-[60px]">
         
-        {/* Category Filters */}
+        {/* Status Filters */}
         <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-4 mb-[60px]">
-          {CATEGORIES.map((cat) => (
+          {STATUS_FILTERS.map((status) => (
             <button
-              key={cat}
+              key={status}
               onClick={() => {
-                setActiveCategory(cat);
+                setActiveStatus(status);
                 setVisibleCount(6);
               }}
               className={`font-display font-medium text-[13px] tracking-[0.15em] uppercase transition-colors duration-300 ${
-                activeCategory === cat ? 'text-brand-maroon' : 'text-brand-muted hover:text-brand-text'
+                activeStatus === status ? 'text-brand-maroon' : 'text-brand-muted hover:text-brand-text'
               }`}
             >
-              {cat}
+              {status}
             </button>
           ))}
         </div>
@@ -52,6 +58,13 @@ const ProjectsGrid = () => {
             >
               {/* Image Container with Top-Right Cut */}
               <div className="w-full h-full relative overflow-hidden [clip-path:polygon(0_0,calc(100%-40px)_0,100%_40px,100%_100%,0_100%)]">
+                {/* Status Badge */}
+                <div className="absolute top-4 left-4 z-20 flex items-center gap-1.5 bg-black/55 backdrop-blur-md px-3 py-1 font-display font-medium text-[9px] tracking-[0.1em] text-white uppercase [clip-path:polygon(0_0,calc(100%-10px)_0,100%_10px,100%_100%,0_100%)] border border-white/5">
+                  <span className={`w-1.5 h-1.5 rounded-full ${
+                    (project.status || 'Completed').toUpperCase() === 'COMPLETED' ? 'bg-emerald-400' : 'bg-amber-400'
+                  }`} />
+                  {project.status || 'Completed'}
+                </div>
                 <img 
                   src={project.img} 
                   alt={project.title}
