@@ -1,7 +1,12 @@
-import React, { useState, useEffect } from 'react';
-import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion';
-import { ArrowUpRight, ArrowRight } from 'lucide-react';
-import Button from '../components/ui/Button';
+import React, { useState, useEffect } from "react";
+import {
+  motion,
+  useScroll,
+  useTransform,
+  AnimatePresence,
+} from "framer-motion";
+import { ArrowUpRight, ArrowRight } from "lucide-react";
+import Button from "../components/ui/Button";
 
 const Hero = () => {
   const heroImages = [
@@ -10,7 +15,7 @@ const Hero = () => {
     "/images/projects/project-4/project-image-1.webp",
     "/images/projects/project-8/project-image-1.webp",
     "/images/projects/project-9/project-image-1.webp",
-    "/images/projects/project-10/project-image-1.webp"
+    "/images/projects/project-10/project-image-1.webp",
   ];
 
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -35,17 +40,14 @@ const Hero = () => {
   return (
     <section className="relative min-h-[calc(100vh-82px)] lg:min-h-[calc(100vh-152px)] flex items-start md:items-center overflow-hidden bg-brand-dark pt-16 sm:pt-32 pb-20 md:py-28 xl:py-32">
       {/* Background Slideshow with Parallax & Ken Burns effect */}
-      <motion.div 
-        style={{ y: y1 }}
-        className="absolute inset-0 z-0"
-      >
+      <motion.div style={{ y: y1 }} className="absolute inset-0 z-0">
         <div className="absolute inset-0 bg-brand-dark/45 z-10 pointer-events-none" />
         <AnimatePresence mode="popLayout">
           <motion.div
             key={currentIndex}
-            initial={{ x: '100%' }}
+            initial={{ x: "100%" }}
             animate={{ x: 0 }}
-            exit={{ x: '-100%' }}
+            exit={{ x: "-100%" }}
             transition={{ duration: 1.6, ease: [0.76, 0, 0.24, 1] }}
             className="absolute inset-0 w-full h-full overflow-hidden"
           >
@@ -53,11 +55,14 @@ const Hero = () => {
               initial={{ scale: 1.08 }}
               animate={{ scale: 1 }}
               transition={{ duration: 7, ease: "easeOut" }}
+              initial={{ scale: 1.08 }}
+              animate={{ scale: 1 }}
+              transition={{ duration: 7, ease: "easeOut" }}
               className="w-full h-full"
             >
-              <img 
-                src={heroImages[currentIndex]} 
-                alt="Alfa Facade - Premium Architecture" 
+              <img
+                src={heroImages[currentIndex]}
+                alt="Shri Shyam G Group - Premium Architecture"
                 className="w-full h-full object-cover"
                 fetchPriority={currentIndex === 0 ? "high" : "auto"}
                 loading="eager"
@@ -79,15 +84,17 @@ const Hero = () => {
           <h1 className="text-white text-4xl sm:text-5xl md:text-7xl xl:text-7xl font-display font-medium leading-[1.1] mb-6 md:mb-8 tracking-tight px1-cursor">
             Welcome to the world of Shri Shyam G Group.
           </h1>
-          
+
           <p className="text-white/85 text-base md:text-lg lg:text-xl font-body max-w-xl md:max-w-2xl mb-8 md:mb-12 leading-relaxed tracking-wide px1-cursor">
-            For over a decade since 2012, our passion and dedication have allowed us to transform the face of residential and commercial projects across Uttar Pradesh, Bihar, and Nepal.
+            For over a decade since 2012, our passion and dedication have
+            allowed us to transform the face of residential and commercial
+            projects across Uttar Pradesh, Bihar, and Nepal.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 md:gap-5">
-            <Button 
-              variant="primary" 
-              icon={ArrowUpRight} 
+            <Button
+              variant="primary"
+              icon={ArrowUpRight}
               rotateOnHover
               href="/services"
               className="w-full sm:w-fit xl:w-[303px]"
@@ -95,9 +102,9 @@ const Hero = () => {
               View All Services
             </Button>
 
-            <Button 
-              variant="primary" 
-              icon={ArrowUpRight} 
+            <Button
+              variant="primary"
+              icon={ArrowUpRight}
               rotateOnHover
               href="/projects"
               className="w-full sm:w-fit xl:w-[273px]"
@@ -109,13 +116,15 @@ const Hero = () => {
       </div>
 
       {/* Scroll Indicator - Adjusted for better visibility */}
-      <motion.div 
+      <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 2.5, duration: 1.5 }}
         className="absolute bottom-6 md:bottom-12 left-6 md:left-12 flex flex-col items-start gap-3 md:gap-4 px1-cursor"
       >
-        <span className="text-white/40 text-[9px] md:text-xs uppercase tracking-[0.4em] font-display">Scroll To Discover</span>
+        <span className="text-white/40 text-[9px] md:text-xs uppercase tracking-[0.4em] font-display">
+          Scroll To Discover
+        </span>
         <div className="w-[80px] md:w-[120px] h-[1px] bg-gradient-to-r from-brand-primary to-transparent" />
       </motion.div>
     </section>
