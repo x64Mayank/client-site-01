@@ -38,6 +38,25 @@ const InstagramIcon = ({ size = 20, ...props }) => (
   </svg>
 );
 
+const LinkedInIcon = ({ size = 20, ...props }) => (
+  <svg 
+    xmlns="http://www.w3.org/2000/svg" 
+    width={size} 
+    height={size} 
+    viewBox="0 0 24 24" 
+    fill="none" 
+    stroke="currentColor" 
+    strokeWidth="2" 
+    strokeLinecap="round" 
+    strokeLinejoin="round" 
+    {...props}
+  >
+    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z" />
+    <rect width="4" height="12" x="2" y="9" />
+    <circle cx="4" cy="4" r="2" />
+  </svg>
+);
+
 const Footer = () => {
   const currentYear = new Date().getFullYear();
 
@@ -46,10 +65,10 @@ const Footer = () => {
       <div className="max-w-[1440px] mx-auto px-6 lg:px-[83px]">
         
         {/* TOP SECTION: Logo, Brand, Description, Socials */}
-        <div className="flex flex-col lg:flex-row items-center lg:items-start justify-between gap-10 lg:gap-[48px] mb-16 lg:mb-24 text-center lg:text-left">
+        <div className="flex flex-col lg:flex-row items-start lg:items-start justify-between gap-10 lg:gap-[48px] mb-16 lg:mb-24 text-left">
           
           {/* Logo & Brand Name Group - Centered Row on mobile, Left Aligned on desktop */}
-          <div className="flex flex-row items-center justify-center lg:justify-start gap-4 sm:gap-[28px] shrink-0 lg:h-[128px]">
+          <div className="flex flex-row items-center justify-start lg:justify-start gap-4 sm:gap-[28px] shrink-0 lg:h-[128px]">
             <div className="w-[85px] h-[85px] sm:w-[100px] sm:h-[100px] lg:w-[128px] lg:h-[128px] rounded-full overflow-hidden flex items-center justify-center bg-white shadow-sm shrink-0">
               <img 
                 src="/images/logos/brand-logo.png" 
@@ -63,27 +82,33 @@ const Footer = () => {
           </div>
 
           {/* Description & Socials Group - Centered on mobile, Left Aligned on desktop */}
-          <div className="flex flex-col items-center lg:items-end justify-between gap-6 w-full lg:flex-1 lg:min-h-[128px]">
-            <p className="font-body text-[15px] lg:text-[18.3px] text-[#121315] leading-relaxed lg:leading-[32.4px] font-normal m-0 p-0 lg:max-w-[640px] text-center lg:text-left">
-              From aluminium window installers in the 1970s to India's premier facade specialists, 
-              Alfa Facade Systems delivers world-class ACP cladding, structural glazing, and architectural solutions.
+          <div className="flex flex-col items-start lg:items-end justify-between gap-6 w-full lg:flex-1 lg:min-h-[128px]">
+            <p className="font-body text-[15px] lg:text-[18.3px] text-[#121315] leading-relaxed lg:leading-[32.4px] font-normal m-0 p-0 lg:max-w-[640px] text-left">
+              For over a decade since 2012, our passion and dedication have allowed us to transform the face of residential and commercial projects across Uttar Pradesh, Bihar, and Nepal
             </p>
 
             {/* Social Icons Container */}
-            <div className="flex flex-row justify-center lg:justify-end items-center gap-[10px]">
+            <div className="flex flex-row justify-start lg:justify-end items-center gap-[10px]">
               <a 
-                href="#" 
+                href="https://www.facebook.com/people/ssggroupindia/61572663420977/?ref=NONE_xav_ig_profile_page_web" 
                 className="w-[45px] h-[45px] lg:w-[50px] lg:h-[50px] bg-[#E31E24] text-white flex items-center justify-center hover:bg-[#C9050B] transition-colors duration-300 rounded-[2px]"
                 aria-label="Facebook"
               >
                 <FacebookIcon size={18} fill="currentColor" strokeWidth={0} />
               </a>
               <a 
-                href="#" 
+                href="https://www.instagram.com/ssggroupindia/" 
                 className="w-[45px] h-[45px] lg:w-[50px] lg:h-[50px] bg-[#E31E24] text-white flex items-center justify-center hover:bg-[#C9050B] transition-colors duration-300 rounded-[2px]"
                 aria-label="Instagram"
               >
                 <InstagramIcon size={18} />
+              </a>
+              <a 
+                href="https://www.linkedin.com/in/shri-shyam-g-group-518652409/" 
+                className="w-[45px] h-[45px] lg:w-[50px] lg:h-[50px] bg-[#E31E24] text-white flex items-center justify-center hover:bg-[#C9050B] transition-colors duration-300 rounded-[2px]"
+                aria-label="LinkedIn"
+              >
+                <LinkedInIcon size={18} />
               </a>
             </div>
           </div>
