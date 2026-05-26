@@ -43,20 +43,19 @@ const Hero = () => {
         <AnimatePresence mode="popLayout">
           <motion.div
             key={currentIndex}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 2.5, ease: "easeInOut" }}
-            className="absolute inset-0"
+            initial={{ x: '100%' }}
+            animate={{ x: 0 }}
+            exit={{ x: '-100%' }}
+            transition={{ duration: 1.6, ease: [0.76, 0, 0.24, 1] }}
+            className="absolute inset-0 w-full h-full overflow-hidden"
           >
             <motion.div
-              initial={{ scale: 1 }}
-              animate={{ scale: 1.15 }}
-              transition={{ duration: 8, ease: "linear" }}
+              initial={{ scale: 1.08 }}
+              animate={{ scale: 1 }}
+              transition={{ duration: 7, ease: "easeOut" }}
               className="w-full h-full"
             >
-              <motion.img 
-                key={currentIndex}
+              <img 
                 src={heroImages[currentIndex]} 
                 alt="Alfa Facade - Premium Architecture" 
                 className="w-full h-full object-cover"
