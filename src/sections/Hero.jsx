@@ -5,9 +5,12 @@ import Button from '../components/ui/Button';
 
 const Hero = () => {
   const heroImages = [
-    "/hero-1.webp",
-    "/hero-2.webp",
-    "/hero-3.webp"
+    "/images/projects/project-3/project-image-4.webp",
+    "/images/projects/project-1/project-image-2.webp",
+    "/images/projects/project-4/project-image-1.webp",
+    "/images/projects/project-8/project-image-1.webp",
+    "/images/projects/project-9/project-image-1.webp",
+    "/images/projects/project-10/project-image-1.webp"
   ];
 
   const [currentIndex, setCurrentIndex] = useState(0);
