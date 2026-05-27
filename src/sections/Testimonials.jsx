@@ -10,17 +10,17 @@ const testimonialsData = [
   {
     title: "Samudra Institute of Maritime Studies",
     role: "Engineering Team",
-    text: "The glazing and cladding solutions provided by Team Alfa for our maritime institute have withstood extreme weather conditions beautifully. Their engineering expertise is truly world-class.",
+    text: "The glazing and cladding solutions provided by Team Shri Shyam G Groupfor our maritime institute have withstood extreme weather conditions beautifully. Their engineering expertise is truly world-class.",
   },
   {
     title: "Mahamana Hospital Administration",
     role: "Operations Team",
-    text: "As a healthcare facility, safety and hygiene were paramount. Alfa understood our unique requirements and delivered facade solutions that support our healing environment perfectly.",
+    text: "As a healthcare facility, safety and hygiene were paramount. Shri Shyam G Groupunderstood our unique requirements and delivered facade solutions that support our healing environment perfectly.",
   },
   {
     title: "ABC Infra Ltd",
     role: "Project Team",
-    text: "Outstanding execution and timely delivery made Alfa a trusted partner...",
+    text: "Outstanding execution and timely delivery made Shri Shyam G Groupa trusted partner...",
   },
   {
     title: "XYZ Developers",
