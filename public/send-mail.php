@@ -13,6 +13,7 @@ $name = htmlspecialchars(trim($_POST["name"] ?? ""));
 $email = filter_var(trim($_POST["email"] ?? ""), FILTER_SANITIZE_EMAIL);
 $phone = htmlspecialchars(trim($_POST["phone"] ?? ""));
 $service = htmlspecialchars(trim($_POST["service"] ?? ""));
+$userMessage = htmlspecialchars(trim($_POST["message"] ?? ""));
 
 if (empty($name) || empty($email) || empty($phone) || empty($service)) {
     echo json_encode([
@@ -41,6 +42,13 @@ Email: $email
 Phone: $phone
 Selected Service: $service
 ";
+
+if (!empty($userMessage)) {
+    $message .= "
+Message:
+$userMessage
+";
+}
 
 $headers = "From: info@shrishyamggroup.com\r\n";
 $headers .= "Reply-To: $email\r\n";
