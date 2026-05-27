@@ -3,6 +3,59 @@ import { FaFacebookF, FaInstagram } from "react-icons/fa";
 
 const WorkWithUs = () => {
   const [showIcons, setShowIcons] = useState(false);
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    service: "",
+  });
+  const [submitStatus, setSubmitStatus] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const handleChange = (e) => {
+    setFormData((prev) => ({
+      ...prev,
+      [e.target.name]: e.target.value,
+    }));
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    setIsSubmitting(true);
+    setSubmitStatus("");
+
+    const data = new FormData();
+    data.append("name", formData.name);
+    data.append("email", formData.email);
+    data.append("phone", formData.phone);
+    data.append("service", formData.service);
+
+    try {
+      const response = await fetch("/send-mail.php", {
+        method: "POST",
+        body: data,
+      });
+
+      const result = await response.json();
+
+      if (result.success) {
+        setSubmitStatus("Message sent successfully!");
+        setFormData({
+          name: "",
+          email: "",
+          phone: "",
+          service: "",
+        });
+      } else {
+        setSubmitStatus(result.message || "Failed to send message.");
+      }
+    } catch (error) {
+      setSubmitStatus("Something went wrong. Please try again.");
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
 
   return (
     <section className="w-full">
@@ -77,7 +130,7 @@ const WorkWithUs = () => {
 
         {/* RIGHT FORM */}
         <div className="bg-[#ffffff] md:col-span-2 lg:col-span-1 h-full">
-          <div className="px-8 py-8 lg:py-14 h-full flex flex-col justify-between">
+          <form onSubmit={handleSubmit} className="px-8 py-8 lg:py-14 h-full flex flex-col justify-between">
 
             <p className="text-[16px] text-[#7D0000] text-center mb-6 lg:mb-4">
               By contacting us, we will advise and quote you on SSG Group's best facade solutions.
@@ -86,44 +139,73 @@ const WorkWithUs = () => {
             <div className="space-y-5">
               <input
                 type="text"
+                name="name"
+                value={formData.name}
+                onChange={handleChange}
                 placeholder="Your Name*"
+                required
                 className="w-full border-b border-black/20 bg-transparent outline-none py-2 text-[14px] placeholder:text-black/80"
               />
 
               <input
                 type="email"
+                name="email"
+                value={formData.email}
+                onChange={handleChange}
                 placeholder="Email Address*"
+                required
                 className="w-full border-b border-black/20 bg-transparent outline-none py-2 text-[14px] placeholder:text-black/80"
               />
 
               <input
                 type="text"
+                name="phone"
+                value={formData.phone}
+                onChange={handleChange}
                 placeholder="Phone Number*"
+                required
                 className="w-full border-b border-black/20 bg-transparent outline-none py-2 text-[14px] placeholder:text-black/80"
               />
 
               <select
-                defaultValue=""
+                name="service"
+                value={formData.service}
+                onChange={handleChange}
+                required
                 className="w-full border-b border-black/20 bg-transparent outline-none py-2 text-[14px] text-black/60 focus:text-black"
               >
                 <option value="" disabled hidden>
                   Select Your Facade Service Need
                 </option>
 
-                <option>ACP Cladding & Wall Facades</option>
-                <option>Glass Facade Systems</option>
-                <option>Structural Glazing</option>
-                <option>Aluminium Doors & Windows</option>
-                <option>Railing Systems</option>
+                <option>Spider Glazing System</option>
+                <option>Glass Glazing Systems</option>
+                <option>ACP Facade Cladding</option>
+                <option>uPVC Windows & Doors</option>
+                <option>Aluminum Windows, Doors & roof</option>
+                <option>Interior Design Solutions</option>
+                <option>GRC/FRC/WPC Work</option>
+                <option>Aluminum/Steel/MS/Glass Railing</option>
+                <option>False Ceiling Work</option>
               </select>
             </div>
 
+            {submitStatus && (
+              <p className="mt-5 text-center text-[14px] text-[#7D0000]">
+                {submitStatus}
+              </p>
+            )}
+
             <div className="mt-8 text-center">
-              <button className="text-[15px] tracking-widest border-b border-black pb-1 hover:text-[#E6353A] transition">
-                SUBMIT REQUEST
+              <button
+                type="submit"
+                disabled={isSubmitting}
+                className="text-[15px] tracking-widest border-b border-black pb-1 hover:text-[#E6353A] transition disabled:opacity-60 disabled:cursor-not-allowed"
+              >
+                {isSubmitting ? "SENDING..." : "SUBMIT REQUEST"}
               </button>
             </div>
-          </div>
+          </form>
         </div>
 
       </div>
