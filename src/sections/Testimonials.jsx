@@ -5,22 +5,22 @@ const testimonialsData = [
   {
     title: "Candor TechSpace",
     role: "Development Team",
-    text: "Alfa Facade Systems delivered exceptional quality on our Candor Tech Park project. Their attention to detail and adherence to timelines made them an invaluable partner in creating Noida's landmark IT destination.",
+    text: "Shri Shyam G Group Systems delivered exceptional quality on our Candor Tech Park project. Their attention to detail and adherence to timelines made them an invaluable partner in creating Noida's landmark IT destination.",
   },
   {
     title: "Samudra Institute of Maritime Studies",
     role: "Engineering Team",
-    text: "The glazing and cladding solutions provided by Team Alfa for our maritime institute have withstood extreme weather conditions beautifully. Their engineering expertise is truly world-class.",
+    text: "The glazing and cladding solutions provided by Team Shri Shyam G Group for our maritime institute have withstood extreme weather conditions beautifully. Their engineering expertise is truly world-class.",
   },
   {
     title: "Mahamana Hospital Administration",
     role: "Operations Team",
-    text: "As a healthcare facility, safety and hygiene were paramount. Alfa understood our unique requirements and delivered facade solutions that support our healing environment perfectly.",
+    text: "As a healthcare facility, safety and hygiene were paramount. Shri Shyam G Group understood our unique requirements and delivered facade solutions that support our healing environment perfectly.",
   },
   {
     title: "ABC Infra Ltd",
     role: "Project Team",
-    text: "Outstanding execution and timely delivery made Alfa a trusted partner...",
+    text: "Outstanding execution and timely delivery made Shri Shyam G Group a trusted partner...",
   },
   {
     title: "XYZ Developers",
@@ -76,10 +76,8 @@ const Testimonials = () => {
 
   return (
     <section className="w-full min-h-[600px] bg-[#F5F5F5] relative overflow-hidden pb-12 lg:pb-0">
-      
       {/* TOP AREA */}
       <div className="min-h-[160px] md:min-h-[223px] flex items-center md:items-end justify-center relative px-4 overflow-visible pt-12 md:pt-0">
-        
         {/* SHAPES (FIXED) */}
         <div className="hidden md:flex absolute top-0 left-1/2 -translate-x-1/2 w-full md:max-w-[800px] lg:max-w-[1140px] pointer-events-none">
           <div className="flex gap-4">
@@ -90,20 +88,17 @@ const Testimonials = () => {
 
         {/* CENTERED CONTAINER */}
         <div className="w-full md:max-w-[800px] lg:max-w-[1140px] flex items-end gap-16 mx-auto">
-          
           {/* HEADING */}
           <h2 className="text-[36px] md:text-[48px] lg:text-[82px] max-w-[722px] mx-auto md:ml-80 text-center md:text-right lg:text-left lg:ml-100 font-display font-semibold">
             Testimonials
           </h2>
-
         </div>
       </div>
 
       {/* BOTTOM AREA */}
       <div className="min-h-[377px] flex flex-col lg:flex-row relative">
-        
         {/* LEFT ARROW (desktop only) */}
-        <div 
+        <div
           onClick={handlePrev}
           className="hidden lg:flex w-[80px] bg-[#C9050B] items-center justify-center cursor-pointer"
         >
@@ -112,7 +107,6 @@ const Testimonials = () => {
 
         {/* SLIDER */}
         <div className="flex-1 overflow-hidden">
-          
           <div
             ref={sliderRef}
             className={`flex h-full ${transition ? "transition-transform duration-500 ease-in-out" : ""}`}
@@ -141,11 +135,10 @@ const Testimonials = () => {
               </div>
             ))}
           </div>
-
         </div>
 
         {/* RIGHT ARROW (desktop only) */}
-        <div 
+        <div
           onClick={handleNext}
           className="hidden lg:flex w-[80px] bg-[#C9050B] items-center justify-center cursor-pointer"
         >
@@ -168,7 +161,6 @@ const Testimonials = () => {
             <ArrowRight className="text-white" />
           </button>
         </div>
-
       </div>
     </section>
   );

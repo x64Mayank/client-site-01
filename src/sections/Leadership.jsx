@@ -1,42 +1,41 @@
-import React, { useRef } from 'react';
+import React, { useRef } from "react";
 import { HashLink } from "react-router-hash-link";
-import { ArrowUpRight } from 'lucide-react';
-import { motion, useScroll, useTransform, useSpring } from 'framer-motion';
+import { ArrowUpRight } from "lucide-react";
+import { motion, useScroll, useTransform, useSpring } from "framer-motion";
 
 const Leadership = () => {
   const sectionRef = useRef(null);
   const { scrollYProgress } = useScroll({
     target: sectionRef,
-    offset: ["start end", "end start"]
+    offset: ["start end", "end start"],
   });
 
   // Map scroll progress to horizontal movement (e.g., -5% to 5%)
   const xRaw = useTransform(scrollYProgress, [0, 1], ["-5%", "5%"]);
-  
+
   // Add physics-based smoothing (Spring) for buttery performance
   const xTransform = useSpring(xRaw, {
     stiffness: 100,
     damping: 30,
-    restDelta: 0.001
+    restDelta: 0.001,
   });
 
   return (
-    <section 
-      id="leadership" 
+    <section
+      id="leadership"
       ref={sectionRef}
       className="w-full mt-5 lg:mt-10 relative flex flex-col lg:flex-row lg:items-stretch lg:justify-end overflow-hidden"
     >
       {/* BACKGROUND IMAGE / TOP IMAGE ON MOBILE - With Smooth Parallax */}
       <div className="relative lg:absolute lg:inset-0 z-0 h-[400px] lg:h-auto w-full overflow-hidden">
-        <motion.img 
-          src="/images/leadership/leadership-bg.png" 
-          alt="Alfa Facade Leadership" 
+        <motion.img
+          src="/images/leadership/leadership-bg.png"
+          alt="Shri Shyam G Group Leadership"
           style={{ x: xTransform, willChange: "transform" }}
           className="w-full h-full object-cover scale-110"
         />
         <div className="absolute inset-0 bg-black/10 lg:bg-black/20" />
       </div>
-
 
       {/* CONTENT BOX (RED) - Stacks on mobile, Overlays on desktop */}
       <div className="relative z-10 w-full lg:w-[45%] bg-[#C9050B] flex items-center justify-center px-8 lg:px-20 py-16 lg:py-0 leadership-box min-h-[500px] lg:min-h-[700px]">
@@ -52,17 +51,22 @@ const Leadership = () => {
 
           {/* DESCRIPTION */}
           <p className="text-white text-base lg:text-[16px] leading-[1.8] font-body mb-6 opacity-90">
-            At SSG Group, we are dedicated to building long-term relationships and making a positive impact in the lives of those we serve. I am proud to lead a team of talented professionals who share my commitment to excellence and customer satisfaction.
+            At SSG Group, we are dedicated to building long-term relationships
+            and making a positive impact in the lives of those we serve. I am
+            proud to lead a team of talented professionals who share my
+            commitment to excellence and customer satisfaction.
           </p>
 
           <p className="text-white text-base lg:text-[16px] leading-[1.8] font-body mb-12 opacity-90">
-            Thank you for entrusting us with your business. We look forward to exceeding your expectations and creating a brighter future together.
+            Thank you for entrusting us with your business. We look forward to
+            exceeding your expectations and creating a brighter future together.
           </p>
 
           {/* BRAND BUTTON (Clean version - no fill animation) */}
           <HashLink
             to="/about#team-grid"
-            className="inline-flex flex-row items-center group cursor-pointer transition-all duration-300 hover:scale-[1.02]">
+            className="inline-flex flex-row items-center group cursor-pointer transition-all duration-300 hover:scale-[1.02]"
+          >
             {/* Text column */}
             <div className="relative flex flex-col items-center justify-center w-[220px] lg:w-[260px] h-[52.5px] bg-white border border-[#D9D9D9] px-4">
               {/* Text */}
@@ -78,7 +82,6 @@ const Leadership = () => {
               </div>
             </div>
           </HashLink>
-
         </div>
       </div>
 
@@ -93,7 +96,6 @@ const Leadership = () => {
         }
       `}</style>
     </section>
-
   );
 };
 
