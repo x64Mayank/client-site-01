@@ -9,6 +9,7 @@ import { ArrowUpRight, ArrowRight } from "lucide-react";
 import Button from "../components/ui/Button";
 import { useProjects } from "../context/ProjectContext";
 import ProjectModal from "../components/ProjectModal";
+import { PROJECTS as fallbackProjects } from "../data/projectsData";
 
 const Hero = () => {
   const heroSlides = [
@@ -40,6 +41,7 @@ const Hero = () => {
 
   const fallbackSlidesData = {
     3: {
+      id: "3",
       title: "Dr. KNS Memorial Institute of Medical Sciences",
       category: "Residential",
       location: "Barabanki, Uttar Pradesh",
@@ -47,6 +49,7 @@ const Hero = () => {
       img: "/images/projects/project-3/project-image-4.webp"
     },
     1: {
+      id: "1",
       title: "Cine Royale Multiplex",
       category: "Residential",
       location: "NepalGunj, Nepal",
@@ -54,6 +57,7 @@ const Hero = () => {
       img: "/images/projects/project-1/project-image-2.webp"
     },
     4: {
+      id: "4",
       title: "King George's Medical University (KGMU)",
       category: "Residential",
       location: "Chowk, Lucknow, UP",
@@ -61,13 +65,15 @@ const Hero = () => {
       img: "/images/projects/project-4/project-image-1.webp"
     },
     8: {
-      title: "Nalanda University Library",
+      id: "8",
+      title: "Nalanda University (Library)",
       category: "Institution",
       location: "Nalanda, Bihar",
       status: "Completed",
       img: "/images/projects/project-8/project-image-1.webp"
     },
     9: {
+      id: "9",
       title: "Motorola Office",
       category: "Retail",
       location: "Lucknow, Uttar Pradesh",
@@ -75,6 +81,7 @@ const Hero = () => {
       img: "/images/projects/project-9/project-image-1.webp"
     },
     10: {
+      id: "10",
       title: "BCC Greens & Heights",
       category: "Residential",
       location: "Lucknow, Uttar Pradesh",
@@ -104,9 +111,20 @@ const Hero = () => {
     return () => clearInterval(timer);
   }, []);
 
+  const isTitleMatch = (t1, t2) => {
+    if (!t1 || !t2) return false;
+    const clean = (t) => t.replace(/[()]/g, "").replace(/\s+/g, " ").trim().toLowerCase();
+    return clean(t1) === clean(t2);
+  };
+
   const currentSlide = heroSlides[currentIndex];
-  const dynamicProject = projects?.find((p) => String(p.id) === String(currentSlide.projectId));
-  const currentProject = dynamicProject || fallbackSlidesData[currentSlide.projectId];
+  const fallbackProject = fallbackSlidesData[currentSlide.projectId];
+  const dynamicProject = projects?.find(
+    (p) =>
+      String(p.id) === String(currentSlide.projectId) ||
+      isTitleMatch(p.title, fallbackProject?.title)
+  );
+  const currentProject = dynamicProject || fallbackProject;
 
   return (
     <section className="relative min-h-[calc(100vh-82px)] lg:min-h-[calc(100vh-152px)] flex items-start md:items-center overflow-hidden bg-brand-dark pt-16 sm:pt-32 pb-24 md:py-28 xl:py-32">
@@ -251,14 +269,21 @@ const Hero = () => {
         <div className="w-[80px] md:w-[120px] h-[1px] bg-gradient-to-r from-brand-primary to-transparent" />
       </motion.div>
       {/* Project Modal */}
-      {selectedProject && (
-        <ProjectModal
-          project={selectedProject}
-          allProjects={projects && projects.length > 0 ? projects : Object.values(fallbackSlidesData)}
-          onClose={() => setSelectedProject(null)}
-          onNavigate={(proj) => setSelectedProject(proj)}
-        />
-      )}
+      {selectedProject && (() => {
+        const hasProjectInSanity = projects?.some(
+          (p) =>
+            String(p.id) === String(selectedProject?.id) ||
+            isTitleMatch(p.title, selectedProject?.title)
+        );
+        return (
+          <ProjectModal
+            project={selectedProject}
+            allProjects={hasProjectInSanity ? projects : fallbackProjects}
+            onClose={() => setSelectedProject(null)}
+            onNavigate={(proj) => setSelectedProject(proj)}
+          />
+        );
+      })()}
     </section>
   );
 };

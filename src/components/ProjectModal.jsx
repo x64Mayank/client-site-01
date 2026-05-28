@@ -4,12 +4,12 @@ import { createPortal } from 'react-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowLeft, ArrowRight, X, Download, ChevronLeft, ChevronRight, Grid2x2 } from 'lucide-react';
 
-const ProjectModal = ({ project, allProjects, onClose, onNavigate }) => {
+const ProjectModal = ({ project, allProjects, onClose, onNavigate, hideNextPrev = false }) => {
   const navigate = useNavigate();
   const [currentImgIndex, setCurrentImgIndex] = useState(0);
   
   // Safe index calculation
-  const currentIndex = project ? allProjects.findIndex(p => p.id === project.id) : -1;
+  const currentIndex = project ? allProjects.findIndex(p => String(p.id) === String(project.id)) : -1;
 
   const images = project?.images || (project?.img ? [project.img] : []);
 
@@ -230,23 +230,31 @@ const ProjectModal = ({ project, allProjects, onClose, onNavigate }) => {
 
               {/* STICKY BOTTOM NAV */}
               <div className="shrink-0 border-t border-black/10 px-6 sm:px-8 lg:px-12 py-4 lg:py-5 flex items-center justify-between bg-white z-[110]">
-                <button onClick={() => onNavigate(prevProject)} className="flex items-center gap-4 group cursor-pointer">
-                  <div className="w-10 h-10 btn-brand-solid clip-corner">
-                    <ArrowLeft size={20} />
-                  </div>
-                  <span className="text-brand-label text-brand-dark group-hover:text-brand-primary transition-colors hidden sm:block whitespace-nowrap">Previous Project</span>
-                </button>
+                {!hideNextPrev ? (
+                  <button onClick={() => onNavigate(prevProject)} className="flex items-center gap-4 group cursor-pointer">
+                    <div className="w-10 h-10 btn-brand-solid clip-corner">
+                      <ArrowLeft size={20} />
+                    </div>
+                    <span className="text-brand-label text-brand-dark group-hover:text-brand-primary transition-colors hidden sm:block whitespace-nowrap">Previous Project</span>
+                  </button>
+                ) : (
+                  <div className="w-10 sm:w-32" />
+                )}
 
                 <button onClick={onClose} className="cursor-pointer hover:scale-110 active:scale-90 transition-all p-2 bg-[#F8F8F8] hover:bg-brand-maroon/5 rounded-full text-brand-maroon">
                   <Grid2x2 size={24} />
                 </button>
 
-                <button onClick={() => onNavigate(nextProject)} className="flex items-center gap-4 group cursor-pointer">
-                  <span className="text-brand-label text-brand-dark group-hover:text-brand-primary transition-colors hidden sm:block whitespace-nowrap">Next Project</span>
-                  <div className="w-10 h-10 btn-brand-solid clip-corner">
-                    <ArrowRight size={20} />
-                  </div>
-                </button>
+                {!hideNextPrev ? (
+                  <button onClick={() => onNavigate(nextProject)} className="flex items-center gap-4 group cursor-pointer">
+                    <span className="text-brand-label text-brand-dark group-hover:text-brand-primary transition-colors hidden sm:block whitespace-nowrap">Next Project</span>
+                    <div className="w-10 h-10 btn-brand-solid clip-corner">
+                      <ArrowRight size={20} />
+                    </div>
+                  </button>
+                ) : (
+                  <div className="w-10 sm:w-32" />
+                )}
               </div>
 
             </div>
