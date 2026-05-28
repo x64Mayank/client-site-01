@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { ArrowLeft, ArrowRight } from "lucide-react";
-import { client } from "../lib/sanity";
+import { client, urlFor } from "../lib/sanity";
 
 const testimonialsData = [
   {
@@ -144,13 +144,33 @@ const Testimonials = () => {
                 “
               </div>
               
-              <h4 className="text-[17px] text-[#C9050B] font-display font-semibold uppercase tracking-wide mb-1">
-                {item.title}
-              </h4>
-
-              <p className="text-[12px] text-black/40 mb-6 font-body uppercase tracking-[0.05em]">
-                {item.role}
-              </p>
+              <div className="flex items-center gap-4 mb-5">
+                {item.logo ? (
+                  <div className="w-14 h-14 shrink-0 bg-[#C9050B]/20 p-[1px] [clip-path:polygon(0_0,calc(100%-10px)_0,100%_10px,100%_100%,0_100%)]">
+                    <div className="w-full h-full bg-white [clip-path:polygon(0_0,calc(100%-10px)_0,100%_10px,100%_100%,0_100%)] overflow-hidden flex items-center justify-center">
+                      <img
+                        src={urlFor(item.logo).url()}
+                        alt={item.title}
+                        className="w-full h-full object-cover shrink-0"
+                      />
+                    </div>
+                  </div>
+                ) : (
+                  <div className="w-14 h-14 shrink-0 bg-[#C9050B]/20 p-[1px] [clip-path:polygon(0_0,calc(100%-10px)_0,100%_10px,100%_100%,0_100%)]">
+                    <div className="w-full h-full bg-[#C9050B]/10 text-[#C9050B] flex items-center justify-center font-display font-bold text-lg [clip-path:polygon(0_0,calc(100%-10px)_0,100%_10px,100%_100%,0_100%)]">
+                      {item.title.charAt(0).toUpperCase()}
+                    </div>
+                  </div>
+                )}
+                <div className="flex flex-col justify-center">
+                  <h4 className="text-[17px] text-[#C9050B] font-display font-semibold uppercase tracking-wide leading-tight">
+                    {item.title}
+                  </h4>
+                  <p className="text-[11px] text-black/45 font-body uppercase tracking-[0.05em] mt-1.5">
+                    {item.role}
+                  </p>
+                </div>
+              </div>
 
               <div className="h-[1px] bg-black/5 mb-8"></div>
 
@@ -209,13 +229,33 @@ const Testimonials = () => {
                 key={i}
                 className="flex-[0_0_100%] md:flex-[0_0_50%] lg:flex-[0_0_33.333%] p-8 border-r border-black/10"
               >
-                <h4 className="text-[16px] text-[#C9050B] font-display font-medium">
-                  {item.title}
-                </h4>
-
-                <p className="text-[14px] text-black/50 mb-6 font-body">
-                  {item.role}
-                </p>
+                <div className="flex items-center gap-4 mb-6">
+                  {item.logo ? (
+                    <div className="w-14 h-14 shrink-0 bg-[#C9050B]/20 p-[1px] [clip-path:polygon(0_0,calc(100%-10px)_0,100%_10px,100%_100%,0_100%)]">
+                      <div className="w-full h-full bg-white [clip-path:polygon(0_0,calc(100%-10px)_0,100%_10px,100%_100%,0_100%)] overflow-hidden flex items-center justify-center">
+                        <img
+                          src={urlFor(item.logo).url()}
+                          alt={item.title}
+                          className="w-full h-full object-cover shrink-0"
+                        />
+                      </div>
+                    </div>
+                  ) : (
+                    <div className="w-14 h-14 shrink-0 bg-[#C9050B]/20 p-[1px] [clip-path:polygon(0_0,calc(100%-10px)_0,100%_10px,100%_100%,0_100%)]">
+                      <div className="w-full h-full bg-[#C9050B]/10 text-[#C9050B] flex items-center justify-center font-display font-bold text-lg [clip-path:polygon(0_0,calc(100%-10px)_0,100%_10px,100%_100%,0_100%)]">
+                        {item.title.charAt(0).toUpperCase()}
+                      </div>
+                    </div>
+                  )}
+                  <div className="flex flex-col justify-center">
+                    <h4 className="text-[15px] text-[#C9050B] font-display font-semibold uppercase tracking-wide leading-tight">
+                      {item.title}
+                    </h4>
+                    <p className="text-[12px] text-black/45 font-body mt-1">
+                      {item.role}
+                    </p>
+                  </div>
+                </div>
 
                 <div className="h-[1px] bg-black/10 mb-16"></div>
 
