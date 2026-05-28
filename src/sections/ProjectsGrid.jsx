@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, useEffect } from 'react';
 import { ArrowRight, ArrowDown, Plus } from 'lucide-react';
 import Button from '../components/ui/Button';
 import ProjectModal from '../components/ProjectModal';
@@ -11,6 +11,19 @@ const ProjectsGrid = () => {
   const [activeStatus, setActiveStatus] = useState("ALL PROJECTS");
   const [visibleCount, setVisibleCount] = useState(6);
   const [selectedProject, setSelectedProject] = useState(null);
+
+  useEffect(() => {
+    if (PROJECTS && PROJECTS.length > 0) {
+      const params = new URLSearchParams(window.location.search);
+      const projectId = params.get('project');
+      if (projectId) {
+        const proj = PROJECTS.find(p => String(p.id) === String(projectId));
+        if (proj) {
+          setSelectedProject(proj);
+        }
+      }
+    }
+  }, [PROJECTS]);
 
   const filteredProjects = activeStatus === "ALL PROJECTS" 
     ? PROJECTS 

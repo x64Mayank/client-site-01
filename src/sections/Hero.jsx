@@ -7,38 +7,107 @@ import {
 } from "framer-motion";
 import { ArrowUpRight, ArrowRight } from "lucide-react";
 import Button from "../components/ui/Button";
+import { useProjects } from "../context/ProjectContext";
 
 const Hero = () => {
-  const heroImages = [
-    "/images/projects/project-3/project-image-4.webp",
-    "/images/projects/project-1/project-image-2.webp",
-    "/images/projects/project-4/project-image-1.webp",
-    "/images/projects/project-8/project-image-1.webp",
-    "/images/projects/project-9/project-image-1.webp",
-    "/images/projects/project-10/project-image-1.webp",
+  const heroSlides = [
+    {
+      img: "/images/projects/project-3/project-image-4.webp",
+      projectId: 3,
+    },
+    {
+      img: "/images/projects/project-1/project-image-2.webp",
+      projectId: 1,
+    },
+    {
+      img: "/images/projects/project-4/project-image-1.webp",
+      projectId: 4,
+    },
+    {
+      img: "/images/projects/project-8/project-image-1.webp",
+      projectId: 8,
+    },
+    {
+      img: "/images/projects/project-9/project-image-1.webp",
+      projectId: 9,
+    },
+    {
+      img: "/images/projects/project-10/project-image-1.webp",
+      projectId: 10,
+    },
   ];
 
+  const fallbackSlidesData = {
+    3: {
+      title: "Dr. KNS Memorial Institute of Medical Sciences",
+      category: "Residential",
+      location: "Barabanki, Uttar Pradesh",
+      status: "Completed",
+      img: "/images/projects/project-3/project-image-4.webp"
+    },
+    1: {
+      title: "Cine Royale Multiplex",
+      category: "Residential",
+      location: "NepalGunj, Nepal",
+      status: "Completed",
+      img: "/images/projects/project-1/project-image-2.webp"
+    },
+    4: {
+      title: "King George's Medical University (KGMU)",
+      category: "Residential",
+      location: "Chowk, Lucknow, UP",
+      status: "Completed",
+      img: "/images/projects/project-4/project-image-1.webp"
+    },
+    8: {
+      title: "Nalanda University Library",
+      category: "Institution",
+      location: "Nalanda, Bihar",
+      status: "Completed",
+      img: "/images/projects/project-8/project-image-1.webp"
+    },
+    9: {
+      title: "Motorola Office",
+      category: "Retail",
+      location: "Lucknow, Uttar Pradesh",
+      status: "Completed",
+      img: "/images/projects/project-9/project-image-1.webp"
+    },
+    10: {
+      title: "BCC Greens & Heights",
+      category: "Residential",
+      location: "Lucknow, Uttar Pradesh",
+      status: "Completed",
+      img: "/images/projects/project-10/project-image-1.webp"
+    }
+  };
+
+  const { projects } = useProjects();
   const [currentIndex, setCurrentIndex] = useState(0);
   const { scrollYProgress } = useScroll();
   const y1 = useTransform(scrollYProgress, [0, 1], [0, -200]);
 
   // Preload subsequent images to avoid transition flicker
   useEffect(() => {
-    heroImages.forEach((src) => {
+    heroSlides.forEach((slide) => {
       const img = new Image();
-      img.src = src;
+      img.src = slide.img;
     });
   }, []);
 
   useEffect(() => {
     const timer = setInterval(() => {
-      setCurrentIndex((prev) => (prev + 1) % heroImages.length);
+      setCurrentIndex((prev) => (prev + 1) % heroSlides.length);
     }, 7000);
     return () => clearInterval(timer);
   }, []);
 
+  const currentSlide = heroSlides[currentIndex];
+  const dynamicProject = projects?.find((p) => String(p.id) === String(currentSlide.projectId));
+  const currentProject = dynamicProject || fallbackSlidesData[currentSlide.projectId];
+
   return (
-    <section className="relative min-h-[calc(100vh-82px)] lg:min-h-[calc(100vh-152px)] flex items-start md:items-center overflow-hidden bg-brand-dark pt-16 sm:pt-32 pb-20 md:py-28 xl:py-32">
+    <section className="relative min-h-[calc(100vh-82px)] lg:min-h-[calc(100vh-152px)] flex items-start md:items-center overflow-hidden bg-brand-dark pt-16 sm:pt-32 pb-24 md:py-28 xl:py-32">
       {/* Background Slideshow with Parallax & Ken Burns effect */}
       <motion.div style={{ y: y1 }} className="absolute inset-0 z-0">
         <div className="absolute inset-0 bg-brand-dark/45 z-10 pointer-events-none" />
@@ -55,13 +124,10 @@ const Hero = () => {
               initial={{ scale: 1.08 }}
               animate={{ scale: 1 }}
               transition={{ duration: 7, ease: "easeOut" }}
-              initial={{ scale: 1.08 }}
-              animate={{ scale: 1 }}
-              transition={{ duration: 7, ease: "easeOut" }}
               className="w-full h-full"
             >
               <img
-                src={heroImages[currentIndex]}
+                src={currentSlide.img}
                 alt="Shri Shyam G Group - Premium Architecture"
                 className="w-full h-full object-cover"
                 fetchPriority={currentIndex === 0 ? "high" : "auto"}
@@ -115,6 +181,61 @@ const Hero = () => {
         </motion.div>
       </div>
 
+      {/* Dynamic Featured Project Floating Card */}
+      <AnimatePresence mode="wait">
+        <motion.div
+          key={currentIndex}
+          initial={{ opacity: 0, y: 30, scale: 0.95 }}
+          animate={{ opacity: 1, y: 0, scale: 1 }}
+          exit={{ opacity: 0, y: -20, scale: 0.95 }}
+          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+          className="absolute bottom-24 left-6 right-6 md:bottom-12 md:right-12 md:left-auto z-30 max-w-[calc(100%-48px)] md:max-w-md w-auto md:w-[420px] bg-white/95 backdrop-blur-md p-4 md:p-5 rounded-2xl shadow-[0_20px_50px_rgba(0,0,0,0.15)] border border-white/20 flex gap-4 cursor-pointer hover:scale-[1.02] hover:-translate-y-1 transition-all duration-300 group"
+          onClick={() => {
+            window.location.href = `/projects?project=${currentProject.id}`;
+          }}
+        >
+          {/* Left: Project Image Thumbnail */}
+          <div className="w-20 h-20 md:w-24 md:h-24 shrink-0 rounded-xl overflow-hidden border border-black/5 bg-gray-100">
+            <img
+              src={currentProject.img || currentSlide.img}
+              alt={currentProject.title}
+              className="w-full h-full object-cover"
+              loading="eager"
+            />
+          </div>
+
+          {/* Right: Project Info */}
+          <div className="flex-1 flex flex-col justify-between overflow-hidden">
+            <div>
+              {/* Category & Status Badges */}
+              <div className="flex items-center gap-2 mb-1.5 flex-wrap">
+                <span className="text-[10px] uppercase font-display tracking-widest text-[#C9050B] font-bold bg-[#C9050B]/10 px-2 py-0.5 rounded">
+                  {currentProject.category}
+                </span>
+                <span className="text-[10px] uppercase font-display tracking-widest text-black/60 bg-black/5 px-2 py-0.5 rounded font-medium">
+                  {currentProject.status || "Completed"}
+                </span>
+              </div>
+
+              {/* Project Title */}
+              <h3 className="text-sm md:text-base font-display font-bold text-brand-dark line-clamp-2 leading-tight">
+                {currentProject.title}
+              </h3>
+            </div>
+
+            {/* Location & Navigation Shortcut */}
+            <div className="flex items-center justify-between border-t border-black/5 pt-2 mt-2">
+              <span className="text-[11px] text-black/50 font-body flex items-center gap-1 truncate max-w-[70%]">
+                📍 {currentProject.location}
+              </span>
+              <span className="text-[10px] font-display font-semibold text-[#C9050B] uppercase tracking-wide flex items-center gap-0.5">
+                Details <ArrowRight className="w-3 h-3 group-hover:translate-x-0.5 transition-transform" />
+              </span>
+            </div>
+          </div>
+        </motion.div>
+      </AnimatePresence>
+
       {/* Scroll Indicator - Adjusted for better visibility */}
       <motion.div
         initial={{ opacity: 0 }}
@@ -132,3 +253,4 @@ const Hero = () => {
 };
 
 export default Hero;
+
