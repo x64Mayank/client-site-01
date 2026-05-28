@@ -75,7 +75,7 @@ const ContactForm = ({ isPopup = false }) => {
         <div className="grid grid-cols-1 lg:grid-cols-[0.9fr_1.1fr]">
 
           {/* LEFT IMAGE */}
-          <div className="w-full h-[350px] md:h-[500px] lg:h-full">
+          <div className="w-full h-[350px] md:h-[500px] lg:h-[650px]">
             <img
               src="/images/ContactForm.png"
               alt="Facade Building"

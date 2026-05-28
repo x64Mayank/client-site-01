@@ -172,7 +172,7 @@ const Navbar = () => {
             {/* Rebranded Logo */}
             <div className="flex-shrink-0 lg:w-[240px] xl:w-[300px] h-full flex items-center justify-center px-4 border-r border-brand-dark px1-cursor group relative overflow-hidden">
               <Link to="/" className="flex flex-row items-center justify-center gap-[12px] transition-transform duration-700 group-hover:scale-105">
-                <img src={logo} alt="Shri Shyam G Group Logo" className="w-[42px] h-[42px] object-contain flex-shrink-0" />
+                <img src={logo} alt="Shri Shyam G Group Logo" className="w-[58px] h-[58px] object-contain flex-shrink-0" />
                 <span className="text-brand-accent font-display font-bold text-[13px] xl:text-[14.6px] leading-[25.92px] uppercase tracking-[0.137em] text-center whitespace-normal">
                   Shri Shyam G Group
                 </span>
@@ -217,7 +217,7 @@ const Navbar = () => {
           <div className="w-full flex items-center h-full px-[0px] max-w-[1920px] flex-nowrap">
             <div className="flex lg:hidden items-center h-full flex-grow px-4 px1-cursor">
               <Link to="/" className="flex flex-row items-center gap-[12px]">
-                <img src={logo} alt="Shri Shyam G Group Logo" className="w-[40px] h-[40px] object-contain flex-shrink-0" />
+                <img src={logo} alt="Shri Shyam G Group Logo" className="w-[58px] h-[58px] object-contain flex-shrink-0" />
                 <span className="text-brand-accent font-display font-bold text-[13px] sm:text-[14.6px] leading-[25.92px] uppercase tracking-[0.137em] whitespace-normal">
                   Shri Shyam G Group
                 </span>
@@ -292,7 +292,7 @@ const Navbar = () => {
           <div className="w-full flex items-center h-full px-[0px] max-w-[1920px] flex-nowrap">
             <div className="flex lg:hidden items-center h-full flex-grow px-4 px1-cursor">
               <Link to="/" className="flex flex-row items-center gap-[12px]">
-                <img src={logo} alt="Shri Shyam G Group Logo" className="w-[40px] h-[40px] object-contain flex-shrink-0" />
+                <img src={logo} alt="Shri Shyam G Group Logo" className="w-[58px] h-[58px] object-contain flex-shrink-0" />
                 <span className="text-brand-accent font-display font-bold text-[13px] sm:text-[14.6px] leading-[25.92px] uppercase tracking-[0.137em] whitespace-normal">
                   Shri Shyam G Group
                 </span>
@@ -301,7 +301,7 @@ const Navbar = () => {
 
             <div className="hidden lg:flex lg:w-[240px] xl:w-[300px] h-full items-center justify-center px-4 border-r border-white/10 flex-shrink-0 px1-cursor">
               <Link to="/" className="flex flex-row items-center justify-center gap-[12px] transition-transform duration-700 hover:scale-105">
-                <img src={logo} alt="Shri Shyam G Group Logo" className="w-[40px] h-[40px] object-contain flex-shrink-0" />
+                <img src={logo} alt="Shri Shyam G Group Logo" className="w-[58px] h-[58px] object-contain flex-shrink-0" />
                 <span className="text-brand-accent font-display font-bold text-[13px] xl:text-[14.6px] leading-[25.92px] uppercase tracking-[0.137em] text-center whitespace-normal">
                   Shri Shyam G Group
                 </span>
@@ -380,7 +380,7 @@ const Navbar = () => {
                   onClick={() => setIsMobileMenuOpen(false)}
                   className="flex flex-row items-center gap-[12px] min-w-0"
                 >
-                  <img src={logo} alt="Shri Shyam G Group Logo" className="w-[40px] h-[40px] object-contain flex-shrink-0" />
+                  <img src={logo} alt="Shri Shyam G Group Logo" className="w-[58px] h-[58px] object-contain flex-shrink-0" />
                   <span className="text-brand-primary font-display font-bold text-[14px] sm:text-[16px] leading-[1.2] uppercase tracking-[0.1em] whitespace-nowrap overflow-hidden text-ellipsis">
                     Shri Shyam G Group
                   </span>

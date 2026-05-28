@@ -1,9 +1,11 @@
 import React, { useEffect, useCallback, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { createPortal } from 'react-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowLeft, ArrowRight, X, Download, ChevronLeft, ChevronRight, Grid2x2 } from 'lucide-react';
 
 const ProjectModal = ({ project, allProjects, onClose, onNavigate }) => {
+  const navigate = useNavigate();
   const [currentImgIndex, setCurrentImgIndex] = useState(0);
   
   // Safe index calculation
@@ -186,14 +188,18 @@ const ProjectModal = ({ project, allProjects, onClose, onNavigate }) => {
                       
                       <div className="bg-white border border-black/10 overflow-hidden clip-corner-lg shadow-sm">
                         <div className="bg-brand-maroon px-5 py-4 clip-corner-lg">
-                          <h4 className="font-display text-[15px] font-medium text-white tracking-wide">Company Profile</h4>
+                          <h4 className="font-display text-[15px] font-medium text-white tracking-wide">Digital Catalogue</h4>
                         </div>
                         <div className="px-5 py-4">
-                          <p className="font-body text-[12px] text-black/60 mb-4 leading-relaxed">Download our profile to see how we work.</p>
-                          <button className="w-full btn-brand-solid py-3 text-[11px] tracking-[0.15em] uppercase flex items-center justify-between group px-4">
-                            <span>PROFILE.PDF</span>
+                          <p className="font-body text-[12px] text-black/60 mb-4 leading-relaxed">Download our digital catalogue to explore our facade solutions and services.</p>
+                          <a
+                            href="/SSG Group Digital Catalogue.pdf"
+                            download
+                            className="w-full btn-brand-solid py-3 text-[11px] tracking-[0.15em] uppercase flex items-center justify-between group px-4"
+                          >
+                            <span>CATALOGUE.PDF</span>
                             <Download size={14} className="group-hover:translate-y-0.5 transition-transform" />
-                          </button>
+                          </a>
                         </div>
                       </div>
 
@@ -207,7 +213,12 @@ const ProjectModal = ({ project, allProjects, onClose, onNavigate }) => {
                             <p>info@shrishyamggroup.com</p>
                           </div>
                         </div>
-                        <button className="w-full bg-white/5 border-t border-white/20 text-white px-5 py-4 text-brand-label hover:bg-brand-primary transition-colors duration-300 active:scale-[0.98]">
+                        <button
+                          onClick={() => {
+                            onClose();
+                            navigate("/contact");
+                          }}
+                          className="w-full bg-white/5 border-t border-white/20 text-white px-5 py-4 text-brand-label hover:bg-brand-primary transition-colors duration-300 active:scale-[0.98] cursor-pointer">
                           GET YOUR QUOTE
                         </button>
                       </div>

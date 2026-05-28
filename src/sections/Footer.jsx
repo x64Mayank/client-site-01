@@ -152,6 +152,7 @@ const Footer = () => {
                 { name: 'Our Services', path: '/services' },
                 { name: 'Our Projects', path: '/projects' },
                 { name: 'Leadership', path: '/about#director-message' },
+                { name: 'Contact Us', path: '/contact' },
               ].map((link) => (
                 <li key={link.name} className="flex items-center gap-3 group">
                   <div className="w-0 h-0 border-t-[4px] border-t-transparent border-b-[4px] border-b-transparent border-l-[6px] border-l-[#1A1A1A] transition-transform duration-300 group-hover:translate-x-1" />

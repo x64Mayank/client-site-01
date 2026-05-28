@@ -9,35 +9,35 @@ const steps = [
     heading: "Proven Track Record of Excellence",
     description:
       "Our portfolio showcases a history of successful projects and delighted clients. From iconic skyscrapers to intricate interior facades, our work speaks for itself. We’ve consistently delivered on our promises, meeting deadlines and exceeding expectations. Our clients trust us to bring their visions to life and we take that responsibility seriously.",
-    img: "/images/HowWeWork1.png",
+    img: "/images/HowWeWork/HowWeWork1.png",
   },
   {
     id: 2,
     title: "Collaborative Mindset",
     heading: "True Collaboration for Extraordinary Results",
     description: "We believe the best results come from true collaboration. From the earliest design stages to final installation, we work closely with architects, contractors, and clients to ensure every detail is perfect. Our team listens, adapts, and innovates together with you, making sure your vision is realized while also bringing our expertise to the table. We’re not just a vendor; we’re your partner in creating something extraordinary.",
-    img: "/images/HowWeWork1.png",
+    img: "/images/HowWeWork/HowWeWork2.png",
   },
   {
     id: 3,
     title: "Continuous Improvement",
     heading: "Relentless Pursuit of Perfection",
     description: "We never settle for good enough. Every project is an opportunity to learn, grow, and push the boundaries of what’s possible. We analyze every aspect of our work, from design to installation, to identify areas for improvement. This commitment to continuous improvement drives us to innovate and refine our processes, ensuring that we deliver the highest quality results on every project.",
-    img: "/images/HowWeWork1.png",
+    img: "/images/HowWeWork/HowWeWork3.png",
   },
   {
     id: 4,
     title: "Transparency and Honesty",
     heading: "Transparency and Honesty at Every Step",
     description: "We believe in building trust through transparency and honesty. From project timelines to budget discussions, we communicate openly and clearly with our clients. We want you to feel confident and informed throughout the entire process. If challenges arise, we address them head-on with integrity and a commitment to finding solutions that work for everyone.",
-    img: "/images/HowWeWork4.png",
+    img: "/images/HowWeWork/HowWeWork4.png",
   },
   {
     id: 5,
     title: "Passion for Excellence",
     heading: "Passion for Excellence in Everything We Do",
     description: "Our team is driven by a deep passion for excellence. We are committed to delivering outstanding results that exceed expectations and create lasting value for our clients. This passion fuels our innovation and ensures that every project we undertake is a testament to our dedication and expertise.",
-    img: "/images/HowWeWork1.png",
+    img: "/images/HowWeWork/HowWeWork5.png",
   },
 ];
 
