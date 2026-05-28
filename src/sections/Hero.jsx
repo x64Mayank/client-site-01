@@ -8,6 +8,7 @@ import {
 import { ArrowUpRight, ArrowRight } from "lucide-react";
 import Button from "../components/ui/Button";
 import { useProjects } from "../context/ProjectContext";
+import ProjectModal from "../components/ProjectModal";
 
 const Hero = () => {
   const heroSlides = [
@@ -84,6 +85,7 @@ const Hero = () => {
 
   const { projects } = useProjects();
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [selectedProject, setSelectedProject] = useState(null);
   const { scrollYProgress } = useScroll();
   const y1 = useTransform(scrollYProgress, [0, 1], [0, -200]);
 
@@ -191,7 +193,7 @@ const Hero = () => {
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
           className="absolute bottom-24 left-6 right-6 md:bottom-12 md:right-12 md:left-auto z-30 max-w-[calc(100%-48px)] md:max-w-md w-auto md:w-[420px] bg-white/95 backdrop-blur-md p-4 md:p-5 rounded-2xl shadow-[0_20px_50px_rgba(0,0,0,0.15)] border border-white/20 flex gap-4 cursor-pointer hover:scale-[1.02] hover:-translate-y-1 transition-all duration-300 group"
           onClick={() => {
-            window.location.href = `/projects?project=${currentProject.id}`;
+            setSelectedProject(currentProject);
           }}
         >
           {/* Left: Project Image Thumbnail */}
@@ -248,6 +250,15 @@ const Hero = () => {
         </span>
         <div className="w-[80px] md:w-[120px] h-[1px] bg-gradient-to-r from-brand-primary to-transparent" />
       </motion.div>
+      {/* Project Modal */}
+      {selectedProject && (
+        <ProjectModal
+          project={selectedProject}
+          allProjects={projects && projects.length > 0 ? projects : Object.values(fallbackSlidesData)}
+          onClose={() => setSelectedProject(null)}
+          onNavigate={(proj) => setSelectedProject(proj)}
+        />
+      )}
     </section>
   );
 };
