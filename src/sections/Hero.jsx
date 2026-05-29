@@ -177,15 +177,15 @@ const Hero = () => {
             projects across Uttar Pradesh, Bihar, and Nepal.
           </p>
 
-          <div className="flex flex-col sm:flex-row gap-4 md:gap-5">
+          <div className="flex flex-row gap-3 md:gap-5">
             <Button
               variant="primary"
               icon={ArrowUpRight}
               rotateOnHover
               href="/services"
-              className="w-full sm:w-fit xl:w-[303px]"
+              className="flex-1 sm:flex-none xl:w-[273px]"
             >
-              View All Services
+              Our Services
             </Button>
 
             <Button
@@ -193,7 +193,7 @@ const Hero = () => {
               icon={ArrowUpRight}
               rotateOnHover
               href="/projects"
-              className="w-full sm:w-fit xl:w-[273px]"
+              className="flex-1 sm:flex-none xl:w-[273px]"
             >
               Our Projects
             </Button>
@@ -209,7 +209,7 @@ const Hero = () => {
           animate={{ opacity: 1, y: 0, scale: 1 }}
           exit={{ opacity: 0, y: -20, scale: 0.95 }}
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-          className="hero-responsive-card absolute bottom-4 right-4 sm:bottom-6 sm:right-6 md:bottom-10 md:right-10 lg:bottom-12 lg:right-12 z-30 w-[280px] sm:w-[320px] md:w-[380px] lg:w-[420px] bg-white/95 backdrop-blur-md p-3 sm:p-4 md:p-5 rounded-xl sm:rounded-2xl shadow-[0_20px_50px_rgba(0,0,0,0.15)] border border-white/20 flex gap-3 sm:gap-4 cursor-pointer hover:scale-[1.02] hover:-translate-y-1 transition-all duration-300 group"
+          className="hero-responsive-card absolute bottom-4 right-6 sm:bottom-6 sm:right-6 md:bottom-10 md:right-10 lg:bottom-12 lg:right-12 z-30 w-[280px] sm:w-[320px] md:w-[380px] lg:w-[380px] xl:w-[380px] bg-white/95 backdrop-blur-md p-3 sm:p-4 md:p-5 rounded-xl sm:rounded-2xl shadow-[0_20px_50px_rgba(0,0,0,0.15)] border border-white/20 flex gap-3 sm:gap-4 cursor-pointer hover:scale-[1.02] hover:-translate-y-1 transition-all duration-300 group"
           onClick={() => {
             setSelectedProject(currentProject);
           }}
@@ -290,7 +290,6 @@ const Hero = () => {
           .hero-responsive-card {
             bottom: 6px !important;
             right: 6px !important;
-            width: 280px !important;
             padding: 10px !important;
           }
         }
