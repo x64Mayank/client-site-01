@@ -3,7 +3,7 @@ import React from "react";
 const leaders = [
   {
     name: "Abhishek Tiwari",
-    role: "Director",
+    role: "Founder & Chairman",
     img: "/images/Team/Leader1.png",
     sign: "/images/Team/Sign1.png",
   },
@@ -21,7 +21,7 @@ const leaders = [
   },
   {
     name: "Abhinav Tiwari",
-    role: "Founder & Chairman",
+    role: "Director",
     img: "/images/Team/Leader4.png",
     sign: "/images/Team/Sign4.png",
   },
